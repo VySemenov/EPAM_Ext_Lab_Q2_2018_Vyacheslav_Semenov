@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Task_1.Models;
-
-namespace Task_1
+﻿namespace Task_1
 {
+    using System;
+    using System.Collections.Generic;
+    using Task_1.Models;
+
     /// <summary>
     /// Keeps a list of logs.
     /// Built on the principle of singleton.
@@ -11,12 +11,13 @@ namespace Task_1
     public class Repository
     {
         private static volatile Repository instance;
-        private static object syncRoot = new Object();
-        private Repository() { }
+        private static object syncRoot = new object();
 
         private List<LogLine> logLines = new List<LogLine>();
 
-        public List<LogLine> LogLines => this.logLines;
+        private Repository()
+        {
+        }
 
         public static Repository Instance
         {
@@ -27,11 +28,16 @@ namespace Task_1
                     lock (syncRoot)
                     {
                         if (instance == null)
+                        {
                             instance = new Repository();
+                        }
                     }
                 }
+
                 return instance;
             }
         }
+
+        public List<LogLine> LogLines => this.logLines;
     }
 }

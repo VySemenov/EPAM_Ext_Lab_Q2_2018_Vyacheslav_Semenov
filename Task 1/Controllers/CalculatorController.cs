@@ -1,9 +1,9 @@
-﻿using System;
-using System.Web.Mvc;
-using Task_1.Models;
-
-namespace Task_1.Controllers
+﻿namespace Task_1.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+    using Task_1.Models;
+
     public class CalculatorController : Controller
     {
         /// <summary>
@@ -19,31 +19,45 @@ namespace Task_1.Controllers
             ViewBag.LogLines = Repository.Instance.LogLines;
             int x = 0;
             int y = 0;
-            string result = "";
+            string result = string.Empty;
 
             if (!int.TryParse(arg1, out x) || !int.TryParse(arg2, out y))
             {
                 ViewBag.Message = "Enter the numbers";
-                return View();
+                return this.View();
             }
 
             switch (operation)
             {
-                case "+": result = Sum(x, y); break;
-                case "*": result = Prod(x, y); break;
+                case "+": result = this.Sum(x, y);
+                                   break;
+                case "*": result = this.Prod(x, y);
+                                   break;
             }
 
             Repository.Instance.LogLines.Add(new LogLine(DateTime.Now, arg1, arg2, operation, result));
 
-            return View();
+            return this.View();
         }
 
-        public string Sum (int x, int y)
+        /// <summary>
+        /// Sums up two numbers and return it as string
+        /// </summary>
+        /// <param name="x">First number</param>
+        /// <param name="y">Second number</param>
+        /// <returns></returns>
+        public string Sum(int x, int y)
         {
             return (x + y).ToString();
         }
 
-        public string Prod (int x, int y)
+        /// <summary>
+        /// Multiplies two numbers and return it as string
+        /// </summary>
+        /// <param name="x">First number</param>
+        /// <param name="y">Second number</param>
+        /// <returns></returns>
+        public string Prod(int x, int y)
         {
             return (x * y).ToString();
         }
