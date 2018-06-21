@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using Task_1.Models;
 
 namespace Task_1
 {
+    /// <summary>
+    /// Keeps a list of logs.
+    /// Built on the principle of singleton.
+    /// </summary>
     public class Repository
     {
         private static volatile Repository instance;

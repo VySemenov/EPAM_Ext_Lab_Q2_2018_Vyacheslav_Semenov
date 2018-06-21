@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Task_1.Models
 {
+    /// <summary>
+    /// It is a log model.
+    /// </summary>
     public class LogLine
     {
         public DateTime Time { get; set; }

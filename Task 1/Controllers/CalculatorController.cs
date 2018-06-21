@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Task_1.Models;
 
@@ -10,11 +7,12 @@ namespace Task_1.Controllers
     public class CalculatorController : Controller
     {
         /// <summary>
-        /// 
+        /// Accepts two numbers on the input and, depending on the operation, 
+        /// add a new LogLine
         /// </summary>
-        /// <param name="arg1"></param>
-        /// <param name="arg2"></param>
-        /// <param name="operation"></param>
+        /// <param name="arg1">First number</param>
+        /// <param name="arg2">Second number</param>
+        /// <param name="operation">Math operation</param>
         /// <returns></returns>
         public ActionResult Calc(string arg1, string arg2, string operation)
         {
