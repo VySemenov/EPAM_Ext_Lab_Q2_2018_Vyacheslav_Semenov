@@ -9,6 +9,13 @@ namespace Task_1.Controllers
 {
     public class CalculatorController : Controller
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="arg1"></param>
+        /// <param name="arg2"></param>
+        /// <param name="operation"></param>
+        /// <returns></returns>
         public ActionResult Calc(string arg1, string arg2, string operation)
         {
             ViewBag.LogLines = Repository.Instance.LogLines;
