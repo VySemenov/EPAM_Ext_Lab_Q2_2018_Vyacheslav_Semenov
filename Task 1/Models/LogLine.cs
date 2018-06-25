@@ -28,7 +28,7 @@
 
         public override string ToString()
         {
-            return this.Time.ToString() + 
+            return this.Time.ToString() + //todo pn string.Format не нравится?
                 " " + this.Arg1 + 
                 " " + this.Operation + 
                 " " + this.Arg2 + 
