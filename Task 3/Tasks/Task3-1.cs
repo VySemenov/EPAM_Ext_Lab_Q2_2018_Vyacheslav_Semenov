@@ -9,7 +9,10 @@ namespace Task_3.Tasks
 {
     class Task3_1
     {
-        public static void start()
+        /// <summary>
+        /// Starting method of the task
+        /// </summary>
+        public static void Start()
         {
             Console.WriteLine(Captions.Separator);
 
@@ -20,6 +23,7 @@ namespace Task_3.Tasks
             Console.Write("b: ");
             int b;
             int.TryParse(Console.ReadLine(), out b);
+
             if(a <= 0 || b <= 0)
             {
                 Console.WriteLine(Captions.InputIsIncorrect);

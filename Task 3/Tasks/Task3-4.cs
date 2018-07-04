@@ -9,7 +9,10 @@ namespace Task_3.Tasks
 {
     class Task3_4
     {
-        public static void start()
+        /// <summary>
+        /// Starting method of the task
+        /// </summary>
+        public static void Start()
         {
             Console.WriteLine(Captions.Separator);
 

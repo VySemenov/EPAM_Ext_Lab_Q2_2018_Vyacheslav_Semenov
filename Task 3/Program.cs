@@ -30,7 +30,7 @@ namespace Task_3
 
         static void Main(string[] args)
         {
-            int num = 0;
+            int input = 0;
             Console.WriteLine(Captions.SelectTask);
             do
             {
@@ -40,17 +40,17 @@ namespace Task_3
                 }
                 Console.WriteLine(Captions.Quit);
 
-                int.TryParse(Console.ReadLine(), out num);
-                switch (num)
+                int.TryParse(Console.ReadLine(), out input);
+                switch (input)
                 {
-                    case (int)TasksNums.Task1: Task3_1.start(); break;
-                    case (int)TasksNums.Task2: Task3_2.start(); break;
-                    case (int)TasksNums.Task3: Task3_3.start(); break;
-                    case (int)TasksNums.Task4: Task3_4.start(); break;
-                    case (int)TasksNums.Task5: Task3_5.start(); break;
+                    case (int)TasksNums.Task1: Task3_1.Start(); break;
+                    case (int)TasksNums.Task2: Task3_2.Start(); break;
+                    case (int)TasksNums.Task3: Task3_3.Start(); break;
+                    case (int)TasksNums.Task4: Task3_4.Start(); break;
+                    case (int)TasksNums.Task5: Task3_5.Start(); break;
                 }
             }
-            while (num != 0);
+            while (input != 0);
         }
     }
 }
