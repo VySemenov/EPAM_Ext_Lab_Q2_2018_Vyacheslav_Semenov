@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task_3.Resource;
 
 namespace Task_3.Tasks
 {
     class Task3_5
     {
-        private static int N = 10;
+        private static int N = 1000;
         private static int a = 3;
         private static int b = 5;
 
@@ -19,8 +20,10 @@ namespace Task_3.Tasks
         }
 
         public static void start()
-        {    
+        {
+            Console.WriteLine(Captions.Separator);
             Console.WriteLine(sum(a) + sum(b) - sum(a*b));
+            Console.WriteLine(Captions.Separator);
         }
     }
 }

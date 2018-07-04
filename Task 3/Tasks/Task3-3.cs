@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task_3.Resource;
 
 namespace Task_3.Tasks
 {
@@ -10,7 +11,9 @@ namespace Task_3.Tasks
     {
         public static void start()
         {
-            Console.WriteLine("Enter the number");
+            Console.WriteLine(Captions.Separator);
+
+            Console.WriteLine(Captions.NumInputRequest);
             Console.Write("N: ");
             int n;
             int.TryParse(Console.ReadLine(), out n);
@@ -22,6 +25,8 @@ namespace Task_3.Tasks
                 Console.WriteLine(new string('*', j));
                 j += 2;
             }
+
+            Console.WriteLine(Captions.Separator);
         }
     }
 }
