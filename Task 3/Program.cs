@@ -11,7 +11,7 @@ namespace Task_3
     {
         static void Main(string[] args)
         {
-            Task3_4.start();
+            Task3_5.start();
             Console.ReadKey();
         }
     }

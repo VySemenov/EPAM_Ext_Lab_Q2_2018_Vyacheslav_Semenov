@@ -48,6 +48,7 @@
     <Compile Include="Tasks\Task3-2.cs" />
     <Compile Include="Tasks\Task3-3.cs" />
     <Compile Include="Tasks\Task3-4.cs" />
+    <Compile Include="Tasks\Task3-5.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
