@@ -49,11 +49,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Captions.resx</DependentUpon>
     </Compile>
-    <Compile Include="Tasks\Task3-1.cs" />
-    <Compile Include="Tasks\Task3-2.cs" />
-    <Compile Include="Tasks\Task3-3.cs" />
-    <Compile Include="Tasks\Task3-4.cs" />
-    <Compile Include="Tasks\Task3-5.cs" />
+    <Compile Include="Tasks\Task3_1.cs" />
+    <Compile Include="Tasks\Task3_2.cs" />
+    <Compile Include="Tasks\Task3_3.cs" />
+    <Compile Include="Tasks\Task3_4.cs" />
+    <Compile Include="Tasks\Task3_5.cs" />
+    <Compile Include="Tasks\Task3_6\Style.cs" />
+    <Compile Include="Tasks\Task3_10.cs" />
+    <Compile Include="Tasks\Task3_6\Task3_6.cs" />
+    <Compile Include="Tasks\Task3_7.cs" />
+    <Compile Include="Tasks\Task3_8.cs" />
+    <Compile Include="Tasks\Task3_9.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

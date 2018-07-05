@@ -29,7 +29,7 @@
 
             switch (operation)
             {
-                case "+": result = this.Sum(x, y);//todo pn операции лучше вынести в отдельную структуру, а не хардкодить.
+                case "+": result = this.Sum(x, y);  ////todo pn операции лучше вынести в отдельную структуру, а не хардкодить.
                                    break;
                 case "*": result = this.Prod(x, y);
                                    break;

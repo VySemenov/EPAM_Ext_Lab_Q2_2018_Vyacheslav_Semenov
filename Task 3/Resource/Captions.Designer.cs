@@ -61,11 +61,101 @@ namespace Task_3.Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на After replace.
+        /// </summary>
+        internal static string AfterRep {
+            get {
+                return ResourceManager.GetString("AfterRep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на After sorting.
+        /// </summary>
+        internal static string AfterSort {
+            get {
+                return ResourceManager.GetString("AfterSort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Before replace.
+        /// </summary>
+        internal static string BeforeRep {
+            get {
+                return ResourceManager.GetString("BeforeRep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Before sorting.
+        /// </summary>
+        internal static string BeforeSort {
+            get {
+                return ResourceManager.GetString("BeforeSort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на bold.
+        /// </summary>
+        internal static string Bold {
+            get {
+                return ResourceManager.GetString("Bold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Values and dimensions are generated randomly.
+        /// </summary>
+        internal static string ByRandom {
+            get {
+                return ResourceManager.GetString("ByRandom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Incorrect values entered.
         /// </summary>
         internal static string InputIsIncorrect {
             get {
                 return ResourceManager.GetString("InputIsIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на italic.
+        /// </summary>
+        internal static string Italic {
+            get {
+                return ResourceManager.GetString("Italic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Max.
+        /// </summary>
+        internal static string Max {
+            get {
+                return ResourceManager.GetString("Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Min.
+        /// </summary>
+        internal static string Min {
+            get {
+                return ResourceManager.GetString("Min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на None.
+        /// </summary>
+        internal static string None {
+            get {
+                return ResourceManager.GetString("None", resourceCulture);
             }
         }
         
@@ -88,7 +178,16 @@ namespace Task_3.Resource {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 0 - quit the program.
+        ///   Ищет локализованную строку, похожую на The three-dimensional is displayed &quot;by layers&quot;.
+        /// </summary>
+        internal static string PrintByLayers {
+            get {
+                return ResourceManager.GetString("PrintByLayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0 - exit.
         /// </summary>
         internal static string Quit {
             get {
@@ -120,6 +219,42 @@ namespace Task_3.Resource {
         internal static string Separator {
             get {
                 return ResourceManager.GetString("Separator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Sum of elements in even positions.
+        /// </summary>
+        internal static string SumInEvenPos {
+            get {
+                return ResourceManager.GetString("SumInEvenPos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на The sum of positive elements.
+        /// </summary>
+        internal static string SumOfPos {
+            get {
+                return ResourceManager.GetString("SumOfPos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Text style.
+        /// </summary>
+        internal static string TextStyle {
+            get {
+                return ResourceManager.GetString("TextStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на underline.
+        /// </summary>
+        internal static string Underline {
+            get {
+                return ResourceManager.GetString("Underline", resourceCulture);
             }
         }
     }

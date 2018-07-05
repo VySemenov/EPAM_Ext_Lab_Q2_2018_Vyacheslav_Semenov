@@ -117,8 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AfterRep" xml:space="preserve">
+    <value>After replace</value>
+  </data>
+  <data name="AfterSort" xml:space="preserve">
+    <value>After sorting</value>
+  </data>
+  <data name="BeforeRep" xml:space="preserve">
+    <value>Before replace</value>
+  </data>
+  <data name="BeforeSort" xml:space="preserve">
+    <value>Before sorting</value>
+  </data>
+  <data name="Bold" xml:space="preserve">
+    <value>bold</value>
+  </data>
+  <data name="ByRandom" xml:space="preserve">
+    <value>Values and dimensions are generated randomly</value>
+  </data>
   <data name="InputIsIncorrect" xml:space="preserve">
     <value>Incorrect values entered</value>
+  </data>
+  <data name="Italic" xml:space="preserve">
+    <value>italic</value>
+  </data>
+  <data name="Max" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="Min" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
   </data>
   <data name="NumInputRequest" xml:space="preserve">
     <value>Please, enter the number</value>
@@ -126,8 +156,11 @@
   <data name="NumsInputRequest" xml:space="preserve">
     <value>Please, enter the numbers</value>
   </data>
+  <data name="PrintByLayers" xml:space="preserve">
+    <value>The three-dimensional is displayed "by layers"</value>
+  </data>
   <data name="Quit" xml:space="preserve">
-    <value>0 - quit the program</value>
+    <value>0 - exit</value>
   </data>
   <data name="RectangleArea" xml:space="preserve">
     <value>Area of the rectangle</value>
@@ -137,5 +170,17 @@
   </data>
   <data name="Separator" xml:space="preserve">
     <value>==============================</value>
+  </data>
+  <data name="SumInEvenPos" xml:space="preserve">
+    <value>Sum of elements in even positions</value>
+  </data>
+  <data name="SumOfPos" xml:space="preserve">
+    <value>The sum of positive elements</value>
+  </data>
+  <data name="TextStyle" xml:space="preserve">
+    <value>Text style</value>
+  </data>
+  <data name="Underline" xml:space="preserve">
+    <value>underline</value>
   </data>
 </root>
