@@ -49,7 +49,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Captions.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tasks\Task3_11.cs" />
     <Compile Include="Tasks\Task3_1.cs" />
+    <Compile Include="Tasks\Task3_12.cs" />
     <Compile Include="Tasks\Task3_2.cs" />
     <Compile Include="Tasks\Task3_3.cs" />
     <Compile Include="Tasks\Task3_4.cs" />

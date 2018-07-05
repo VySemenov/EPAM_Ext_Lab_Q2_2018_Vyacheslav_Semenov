@@ -123,6 +123,9 @@
   <data name="AfterSort" xml:space="preserve">
     <value>After sorting</value>
   </data>
+  <data name="AvLen" xml:space="preserve">
+    <value>Average length</value>
+  </data>
   <data name="BeforeRep" xml:space="preserve">
     <value>Before replace</value>
   </data>
@@ -134,6 +137,15 @@
   </data>
   <data name="ByRandom" xml:space="preserve">
     <value>Values and dimensions are generated randomly</value>
+  </data>
+  <data name="DefStr" xml:space="preserve">
+    <value>It is a default string</value>
+  </data>
+  <data name="EnterStr" xml:space="preserve">
+    <value>Enter the string</value>
+  </data>
+  <data name="EnterStrPls" xml:space="preserve">
+    <value>Please, enter string</value>
   </data>
   <data name="InputIsIncorrect" xml:space="preserve">
     <value>Incorrect values entered</value>
@@ -182,5 +194,8 @@
   </data>
   <data name="Underline" xml:space="preserve">
     <value>underline</value>
+  </data>
+  <data name="UseDef" xml:space="preserve">
+    <value>Use default string</value>
   </data>
 </root>

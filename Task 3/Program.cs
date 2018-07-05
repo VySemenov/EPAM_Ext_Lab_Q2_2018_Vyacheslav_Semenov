@@ -22,7 +22,8 @@
             TasksNums.Task7,
             TasksNums.Task8,
             TasksNums.Task9,
-            TasksNums.Task10
+            TasksNums.Task10,
+            TasksNums.Task11
         };
 
         private enum TasksNums
@@ -36,7 +37,8 @@
             Task7,
             Task8,
             Task9,
-            Task10
+            Task10,
+            Task11
         }
 
         public static void Main(string[] args)
@@ -74,6 +76,8 @@
                     case (int)TasksNums.Task9: Task3_9.Start();
                                                break;
                     case (int)TasksNums.Task10: Task3_10.Start();
+                                                break;
+                    case (int)TasksNums.Task11: Task3_11.Start();
                                                 break;
                 }
             }

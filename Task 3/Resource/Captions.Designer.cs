@@ -79,6 +79,15 @@ namespace Task_3.Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Average length.
+        /// </summary>
+        internal static string AvLen {
+            get {
+                return ResourceManager.GetString("AvLen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Before replace.
         /// </summary>
         internal static string BeforeRep {
@@ -111,6 +120,33 @@ namespace Task_3.Resource {
         internal static string ByRandom {
             get {
                 return ResourceManager.GetString("ByRandom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на It is a default string.
+        /// </summary>
+        internal static string DefStr {
+            get {
+                return ResourceManager.GetString("DefStr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Enter the string.
+        /// </summary>
+        internal static string EnterStr {
+            get {
+                return ResourceManager.GetString("EnterStr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Please, enter string.
+        /// </summary>
+        internal static string EnterStrPls {
+            get {
+                return ResourceManager.GetString("EnterStrPls", resourceCulture);
             }
         }
         
@@ -255,6 +291,15 @@ namespace Task_3.Resource {
         internal static string Underline {
             get {
                 return ResourceManager.GetString("Underline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Use default string.
+        /// </summary>
+        internal static string UseDef {
+            get {
+                return ResourceManager.GetString("UseDef", resourceCulture);
             }
         }
     }
