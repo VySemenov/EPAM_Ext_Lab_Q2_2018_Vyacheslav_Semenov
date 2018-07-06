@@ -3,24 +3,24 @@
     using System;
     using Task_3.Resource;
 
-    public class Task3_2
+    public class Task3_2 : Task
     {
-        /// <summary>
-        /// Starting method of the task
-        /// </summary>
-        public static void Start()
+        public override void Start()
         {
-            Console.WriteLine(Captions.Separator);
-
             int n = 0;
-            Input(out n);
 
+            while (n <= 0)
+            {
+                Input(out n);
+                if (n <= 0)
+                {
+                    Console.WriteLine(Captions.InputIsIncorrect);
+                }
+            }
             for (int i = 1; i <= n; i++)
             {
                 Console.WriteLine(new string('*', i));
             }
-
-            Console.WriteLine(Captions.Separator);
         }
 
         private static void Input(out int n)

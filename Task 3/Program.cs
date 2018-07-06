@@ -6,40 +6,24 @@
     using Task_3.Tasks;
     using Task_3.Tasks.Task3_6;
 
-    /// <summary>
-    /// Starting class for Task 3
-    /// </summary>
     public class Program
     {
-        private static List<TasksNums> tasksList = new List<TasksNums>
+        private static List<Task> tasksList = new List<Task>
         {
-            TasksNums.Task1,
-            TasksNums.Task2,
-            TasksNums.Task3,
-            TasksNums.Task4,
-            TasksNums.Task5,
-            TasksNums.Task6,
-            TasksNums.Task7,
-            TasksNums.Task8,
-            TasksNums.Task9,
-            TasksNums.Task10,
-            TasksNums.Task11
+            new Task3_1(),
+            new Task3_2(),
+            new Task3_3(),
+            new Task3_4(),
+            new Task3_5(),
+            new Task3_6(),
+            new Task3_7(),
+            new Task3_8(),
+            new Task3_9(),
+            new Task3_10(),
+            new Task3_11(),
+            new Task3_12(),
+            new Task3_13()
         };
-
-        private enum TasksNums
-        {
-            Task1 = 1,
-            Task2,
-            Task3,
-            Task4,
-            Task5,
-            Task6,
-            Task7,
-            Task8,
-            Task9,
-            Task10,
-            Task11
-        }
 
         public static void Main(string[] args)
         {
@@ -47,38 +31,29 @@
             Console.WriteLine(Captions.SelectTask);
             do
             {
-                foreach (var t in tasksList)
+                for (int i = 0; i < tasksList.Count; i++)
                 {
-                    Console.WriteLine(string.Format("{0} - Task 3.{1}", (int)t, (int)t));
+                    Console.WriteLine("{0} - Task 3.{1}", i + 1, i + 1);
                 }
 
                 Console.WriteLine(Captions.Quit);
 
                 int.TryParse(Console.ReadLine(), out input);
-                switch (input)
+                if (input < 0 || input > tasksList.Count)
                 {
-                    case (int)TasksNums.Task1: Task3_1.Start();
-                                               break;
-                    case (int)TasksNums.Task2: Task3_2.Start();
-                                               break;
-                    case (int)TasksNums.Task3: Task3_3.Start();
-                                               break;
-                    case (int)TasksNums.Task4: Task3_4.Start();
-                                               break;
-                    case (int)TasksNums.Task5: Task3_5.Start();
-                                               break;
-                    case (int)TasksNums.Task6: Task3_6.Start();
-                                               break;
-                    case (int)TasksNums.Task7: Task3_7.Start();
-                                               break;
-                    case (int)TasksNums.Task8: Task3_8.Start();
-                                               break;
-                    case (int)TasksNums.Task9: Task3_9.Start();
-                                               break;
-                    case (int)TasksNums.Task10: Task3_10.Start();
-                                                break;
-                    case (int)TasksNums.Task11: Task3_11.Start();
-                                                break;
+                    Console.WriteLine(Captions.InputIsIncorrect);
+                    continue;
+                }
+                else
+                if (input > 0)
+                {
+                    Console.WriteLine(Captions.Separator);
+
+                    Task task = tasksList[input - 1];
+                    task.Start();
+
+                    Console.WriteLine(Captions.Separator);
+                    Console.WriteLine();
                 }
             }
             while (input != 0);

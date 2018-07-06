@@ -3,17 +3,15 @@
     using System;
     using Task_3.Resource;
 
-    public class Task3_7
+    public class Task3_7 : Task
     {
         private static int maxRandom = 50;
         private static int minRandom = -50;
         private static int maxArraySize = 20;
         private static int minArraySize = 1;
 
-        public static void Start()
+        public override void Start()
         {
-            Console.WriteLine(Captions.Separator);
-
             Random rnd = new Random();
             int size = rnd.Next(minArraySize, maxArraySize);
             int[] array = new int[size];
@@ -24,17 +22,15 @@
             }
 
             Console.WriteLine(Captions.ByRandom);
-            Console.WriteLine(string.Format("{0}:", Captions.BeforeSort));
+            Console.WriteLine("{0}:", Captions.BeforeSort);
             Print(array);
 
             Sort(array);
-            Console.WriteLine(string.Format("{0}:", Captions.AfterSort));
+            Console.WriteLine("{0}:", Captions.AfterSort);
             Print(array);
 
-            Console.WriteLine(string.Format("{0}: {1}", Captions.Min, FindMin(array)));
-            Console.WriteLine(string.Format("{0}: {1}", Captions.Max, FindMax(array)));
-
-            Console.WriteLine(Captions.Separator);
+            Console.WriteLine("{0}: {1}", Captions.Min, FindMin(array));
+            Console.WriteLine("{0}: {1}", Captions.Max, FindMax(array));
         }
 
         private static void Sort(int[] array)

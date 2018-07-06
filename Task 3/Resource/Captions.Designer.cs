@@ -124,11 +124,47 @@ namespace Task_3.Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Custom test.
+        /// </summary>
+        internal static string CustomTest {
+            get {
+                return ResourceManager.GetString("CustomTest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на It is a default string.
         /// </summary>
         internal static string DefStr {
             get {
                 return ResourceManager.GetString("DefStr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Default test (100 concatenations, 1000 iterations).
+        /// </summary>
+        internal static string DefTest {
+            get {
+                return ResourceManager.GetString("DefTest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Enter number concat.
+        /// </summary>
+        internal static string EnterNumConcat {
+            get {
+                return ResourceManager.GetString("EnterNumConcat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Enter number iterations.
+        /// </summary>
+        internal static string EnterNumIter {
+            get {
+                return ResourceManager.GetString("EnterNumIter", resourceCulture);
             }
         }
         
@@ -196,6 +232,15 @@ namespace Task_3.Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Numbering starts from zero.
+        /// </summary>
+        internal static string NumFromZero {
+            get {
+                return ResourceManager.GetString("NumFromZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Please, enter the number.
         /// </summary>
         internal static string NumInputRequest {
@@ -210,6 +255,15 @@ namespace Task_3.Resource {
         internal static string NumsInputRequest {
             get {
                 return ResourceManager.GetString("NumsInputRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на To continue, press any key.
+        /// </summary>
+        internal static string PressAnyKey {
+            get {
+                return ResourceManager.GetString("PressAnyKey", resourceCulture);
             }
         }
         
@@ -241,6 +295,24 @@ namespace Task_3.Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Result.
+        /// </summary>
+        internal static string Result {
+            get {
+                return ResourceManager.GetString("Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на The average time for StringBuilder.
+        /// </summary>
+        internal static string SbAvgTime {
+            get {
+                return ResourceManager.GetString("SbAvgTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Enter the task number to start.
         /// </summary>
         internal static string SelectTask {
@@ -255,6 +327,15 @@ namespace Task_3.Resource {
         internal static string Separator {
             get {
                 return ResourceManager.GetString("Separator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на The average time for String.
+        /// </summary>
+        internal static string StrAvgTime {
+            get {
+                return ResourceManager.GetString("StrAvgTime", resourceCulture);
             }
         }
         

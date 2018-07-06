@@ -3,16 +3,14 @@
     using System;
     using Task_3.Resource;
 
-    public class Task3_11
+    public class Task3_11 : Task
     {
         private static char[] delimiters = { ' ', '.', ',', '/', '?', '\"', '*', '!', '\t', ':' };
 
-        public static void Start()
+        public override void Start()
         {
-            Console.WriteLine(Captions.Separator);
-
-            Console.WriteLine(string.Format("1 - {0}", Captions.EnterStr));
-            Console.WriteLine(string.Format("2 - {0}", Captions.UseDef));
+            Console.WriteLine("1 - {0}", Captions.EnterStr);
+            Console.WriteLine("2 - {0}", Captions.UseDef);
 
             int input = 2;
             do
@@ -28,7 +26,7 @@
             string str = string.Empty;
             switch (input)
             {
-                case 1: Console.Write(string.Format("{0}: ", Captions.EnterStrPls));
+                case 1: Console.Write("{0}: ", Captions.EnterStrPls);
                         str = Console.ReadLine();
                         break;
                 case 2: Console.WriteLine(Captions.DefStr);
@@ -36,9 +34,7 @@
                         break;
             }
 
-            Console.WriteLine(string.Format("{0}: {1}", Captions.AvLen, GetAvl(str)));
-
-            Console.WriteLine(Captions.Separator);
+            Console.WriteLine("{0}: {1}", Captions.AvLen, GetAvl(str));
         }
 
         private static double GetAvl(string str)

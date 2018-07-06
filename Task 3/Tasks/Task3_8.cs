@@ -7,17 +7,15 @@
     using System.Threading.Tasks;
     using Task_3.Resource;
 
-    public class Task3_8
+    public class Task3_8 : Task
     {
         private static int maxRandom = 50;
         private static int minRandom = -50;
         private static int maxArraySize = 4;
         private static int minArraySize = 2;
 
-        public static void Start()
+        public override void Start()
         {
-            Console.WriteLine(Captions.Separator);
-
             Random rnd = new Random();
             int x = rnd.Next(minArraySize, maxArraySize);
             int y = rnd.Next(minArraySize, maxArraySize);
@@ -43,8 +41,6 @@
             ReplaceAllNegative(array);
             Console.WriteLine(Captions.AfterRep);
             Print(array);
-
-            Console.WriteLine(Captions.Separator);
         }
 
         /// <summary>
@@ -55,12 +51,12 @@
         {
             for (int i = 0; i < array.GetLength(0); i++)
             {
-                Console.WriteLine(string.Format("{0} layer", i));
+                Console.WriteLine("{0} layer", i);
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
                     for (int k = 0; k < array.GetLength(2); k++)
                     {
-                        Console.Write(string.Format("{0} ", array[i, j, k]));
+                        Console.Write("{0} ", array[i, j, k]);
                     }
 
                     Console.WriteLine();

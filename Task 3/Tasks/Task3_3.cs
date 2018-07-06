@@ -3,17 +3,20 @@
     using System;
     using Task_3.Resource;
 
-     public class Task3_3
+     public class Task3_3 : Task
     {
-        /// <summary>
-        /// Starting method of the task
-        /// </summary>
-        public static void Start()
+        public override void Start()
         {
-            Console.WriteLine(Captions.Separator);
-
             int n = 0;
-            Input(out n);
+
+            while (n <= 0)
+            {
+                Input(out n);
+                if (n <= 0)
+                {
+                    Console.WriteLine(Captions.InputIsIncorrect);
+                }
+            }
 
             int j = 1;
             for (int i = 1; i <= n; i++)
@@ -22,8 +25,6 @@
                 Console.WriteLine(new string('*', j));
                 j += 2;
             }
-
-            Console.WriteLine(Captions.Separator);
         }
 
         private static void Input(out int n)

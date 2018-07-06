@@ -3,21 +3,16 @@
     using System;
     using Task_3.Resource;
 
-    public class Task3_5
+    public class Task3_5 : Task
     {
         private static int n = 1000;
         private static int a = 3;
         private static int b = 5;
 
-        /// <summary>
-        /// Starting method of the task
-        /// </summary>
-        public static void Start()
+        public override void Start()
         {
-            Console.WriteLine(Captions.Separator);
             Console.WriteLine(string.Format("The sum of all numbers of multiples of {0} and {1} and less than {2}:", a, b, n));
             Console.WriteLine(Sum(a) + Sum(b) - Sum(a * b));
-            Console.WriteLine(Captions.Separator);
         }
 
         /// <summary>

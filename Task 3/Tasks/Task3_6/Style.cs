@@ -12,9 +12,9 @@
 
         private bool[] styleStateArray = new bool[styleNameArray.Length];
 
-        public static string[] StyleNameArray { get; set; }
+        public static string[] GetStyleNameArray() { return styleNameArray; }
 
-        public static bool[] StyleStateArray { get; set; }
+        public bool[] GetStyleStateArray() { return styleStateArray; }
 
         public void Switch(int styleNum)
         {

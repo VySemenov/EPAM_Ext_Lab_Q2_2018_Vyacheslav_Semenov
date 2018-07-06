@@ -3,17 +3,15 @@
     using System;
     using Task_3.Resource;
 
-    public class Task3_10
+    public class Task3_10 : Task
     {
         private static int maxRandom = 9;
         private static int minRandom = -9;
         private static int maxArraySize = 5;
         private static int minArraySize = 2;
 
-        public static void Start()
+        public override void Start()
         {
-            Console.WriteLine(Captions.Separator);
-
             Random rnd = new Random();
             int x = rnd.Next(minArraySize, maxArraySize);
             int y = rnd.Next(minArraySize, maxArraySize);
@@ -28,12 +26,11 @@
             }
 
             Console.WriteLine(Captions.ByRandom);
+            Console.WriteLine(Captions.NumFromZero);
 
             Print(array);
 
-            Console.WriteLine(string.Format("{0}: {1}", Captions.SumInEvenPos, Sum(array)));
-
-            Console.WriteLine(Captions.Separator);
+            Console.WriteLine("{0}: {1}", Captions.SumInEvenPos, Sum(array));
         }
 
         private static int Sum(int[,] array)
@@ -65,7 +62,7 @@
             {
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    Console.Write(string.Format("{0} ", array[i, j]));
+                    Console.Write("{0} ", array[i, j]);
                 }
 
                 Console.WriteLine();
