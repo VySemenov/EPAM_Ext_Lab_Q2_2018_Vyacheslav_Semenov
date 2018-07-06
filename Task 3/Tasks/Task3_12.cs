@@ -11,26 +11,26 @@
     {
         public override void Start()
         {
-            string ResultStr = string.Empty;
+            string resultStr = string.Empty;
             Console.Write("{0} 1: ", Captions.EnterStr);
-            string FirstStr = Console.ReadLine();
+            string firstStr = Console.ReadLine();
             Console.Write("{0} 2: ", Captions.EnterStr);
-            string SecondStr = Console.ReadLine();
+            string secondStr = Console.ReadLine();
 
-            foreach (char ch in FirstStr)
+            foreach (char ch in firstStr)
             {
-                if (!SecondStr.Contains(ch))
+                if (!secondStr.Contains(ch))
                 {
-                    ResultStr += ch;
+                    resultStr += ch;
                 }
                 else
                 {
-                    ResultStr += ch;
-                    ResultStr += ch;
+                    resultStr += ch;
+                    resultStr += ch;
                 }
             }
 
-            Console.WriteLine("{0}: {1}", Captions.Result, ResultStr);
+            Console.WriteLine("{0}: {1}", Captions.Result, resultStr);
         }
     }
 }

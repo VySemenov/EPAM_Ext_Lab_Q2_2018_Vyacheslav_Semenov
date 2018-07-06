@@ -151,6 +151,15 @@ namespace Task_3.Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Draw.
+        /// </summary>
+        internal static string Draw {
+            get {
+                return ResourceManager.GetString("Draw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Enter number concat.
         /// </summary>
         internal static string EnterNumConcat {
@@ -232,6 +241,15 @@ namespace Task_3.Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на NumConcat.
+        /// </summary>
+        internal static string NumConcat {
+            get {
+                return ResourceManager.GetString("NumConcat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Numbering starts from zero.
         /// </summary>
         internal static string NumFromZero {
@@ -286,6 +304,15 @@ namespace Task_3.Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ratio.
+        /// </summary>
+        internal static string Ratio {
+            get {
+                return ResourceManager.GetString("Ratio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Area of the rectangle.
         /// </summary>
         internal static string RectangleArea {
@@ -313,6 +340,15 @@ namespace Task_3.Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на StringBuilder avg time, ms.
+        /// </summary>
+        internal static string SbAvgTimeStlb {
+            get {
+                return ResourceManager.GetString("SbAvgTimeStlb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Enter the task number to start.
         /// </summary>
         internal static string SelectTask {
@@ -336,6 +372,33 @@ namespace Task_3.Resource {
         internal static string StrAvgTime {
             get {
                 return ResourceManager.GetString("StrAvgTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на String avg time, ms.
+        /// </summary>
+        internal static string StrAvgTimeStlb {
+            get {
+                return ResourceManager.GetString("StrAvgTimeStlb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на String.
+        /// </summary>
+        internal static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на StringBuilder.
+        /// </summary>
+        internal static string StringBuilder {
+            get {
+                return ResourceManager.GetString("StringBuilder", resourceCulture);
             }
         }
         
@@ -381,6 +444,15 @@ namespace Task_3.Resource {
         internal static string UseDef {
             get {
                 return ResourceManager.GetString("UseDef", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Winner.
+        /// </summary>
+        internal static string Winner {
+            get {
+                return ResourceManager.GetString("Winner", resourceCulture);
             }
         }
     }

@@ -33,10 +33,10 @@
             {
                 for (int i = 0; i < tasksList.Count; i++)
                 {
-                    Console.WriteLine("{0} - Task 3.{1}", i + 1, i + 1);
+                    Console.WriteLine("{0,2} - Task 3.{1}", i + 1, i + 1);
                 }
 
-                Console.WriteLine(Captions.Quit);
+                Console.WriteLine(" {0}", Captions.Quit);
 
                 int.TryParse(Console.ReadLine(), out input);
                 if (input < 0 || input > tasksList.Count)

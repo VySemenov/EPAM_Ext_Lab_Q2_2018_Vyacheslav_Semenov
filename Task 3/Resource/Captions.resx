@@ -147,6 +147,9 @@
   <data name="DefTest" xml:space="preserve">
     <value>Default test (100 concatenations, 1000 iterations)</value>
   </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Draw</value>
+  </data>
   <data name="EnterNumConcat" xml:space="preserve">
     <value>Enter number concat</value>
   </data>
@@ -174,6 +177,9 @@
   <data name="None" xml:space="preserve">
     <value>None</value>
   </data>
+  <data name="NumConcat" xml:space="preserve">
+    <value>NumConcat</value>
+  </data>
   <data name="NumFromZero" xml:space="preserve">
     <value>Numbering starts from zero</value>
   </data>
@@ -192,6 +198,9 @@
   <data name="Quit" xml:space="preserve">
     <value>0 - exit</value>
   </data>
+  <data name="Ratio" xml:space="preserve">
+    <value>Ratio</value>
+  </data>
   <data name="RectangleArea" xml:space="preserve">
     <value>Area of the rectangle</value>
   </data>
@@ -201,6 +210,9 @@
   <data name="SbAvgTime" xml:space="preserve">
     <value>The average time for StringBuilder</value>
   </data>
+  <data name="SbAvgTimeStlb" xml:space="preserve">
+    <value>StringBuilder avg time, ms</value>
+  </data>
   <data name="SelectTask" xml:space="preserve">
     <value>Enter the task number to start</value>
   </data>
@@ -209,6 +221,15 @@
   </data>
   <data name="StrAvgTime" xml:space="preserve">
     <value>The average time for String</value>
+  </data>
+  <data name="StrAvgTimeStlb" xml:space="preserve">
+    <value>String avg time, ms</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>String</value>
+  </data>
+  <data name="StringBuilder" xml:space="preserve">
+    <value>StringBuilder</value>
   </data>
   <data name="SumInEvenPos" xml:space="preserve">
     <value>Sum of elements in even positions</value>
@@ -224,5 +245,8 @@
   </data>
   <data name="UseDef" xml:space="preserve">
     <value>Use default string</value>
+  </data>
+  <data name="Winner" xml:space="preserve">
+    <value>Winner</value>
   </data>
 </root>

@@ -56,7 +56,7 @@
                 {
                     for (int k = 0; k < array.GetLength(2); k++)
                     {
-                        Console.Write("{0} ", array[i, j, k]);
+                        Console.Write("{0, 3} ", array[i, j, k]);
                     }
 
                     Console.WriteLine();
