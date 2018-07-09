@@ -35,19 +35,40 @@
 
         private static void Sort(int[] array)
         {
-            int temp;
-            for (int i = 0; i < array.Length; i++)
+            QuickSort(array, 0, array.Length - 1);
+        }
+
+        private static void QuickSort(int[] array, int start, int end)
+        {
+            if (start >= end)
             {
-                for (int j = i + 1; j < array.Length; j++)
+                return;
+            }
+
+            int pivot = Partition(array, start, end);
+            QuickSort(array, start, pivot - 1);
+            QuickSort(array, pivot + 1, end);
+        }
+
+        private static int Partition(int[] array, int start, int end)
+        {
+            int temp;
+            int marker = start;
+            for (int i = start; i <= end; i++)
+            {
+                if (array[i] < array[end])
                 {
-                    if (array[i] > array[j])
-                    {
-                        temp = array[i];//todo pn пузырьком?
-						array[i] = array[j];
-                        array[j] = temp;
-                    }
+                    temp = array[marker];
+                    array[marker] = array[i];
+                    array[i] = temp;
+                    marker += 1;
                 }
             }
+            
+            temp = array[marker];
+            array[marker] = array[end];
+            array[end] = temp;
+            return marker;
         }
 
         private static int FindMax(int[] array)

@@ -79,6 +79,15 @@ namespace Task_3.Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на and.
+        /// </summary>
+        internal static string and {
+            get {
+                return ResourceManager.GetString("and", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Average length.
         /// </summary>
         internal static string AvLen {
@@ -151,6 +160,15 @@ namespace Task_3.Resource {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на ,.&apos;/&apos;?&quot;*! :.
+        /// </summary>
+        internal static string Delimeters {
+            get {
+                return ResourceManager.GetString("Delimeters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Draw.
         /// </summary>
         internal static string Draw {
@@ -210,6 +228,15 @@ namespace Task_3.Resource {
         internal static string Italic {
             get {
                 return ResourceManager.GetString("Italic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на less than.
+        /// </summary>
+        internal static string lessThan {
+            get {
+                return ResourceManager.GetString("lessThan", resourceCulture);
             }
         }
         
@@ -399,6 +426,15 @@ namespace Task_3.Resource {
         internal static string StringBuilder {
             get {
                 return ResourceManager.GetString("StringBuilder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на The sum of all numbers of multiples of.
+        /// </summary>
+        internal static string SumAllNumMult {
+            get {
+                return ResourceManager.GetString("SumAllNumMult", resourceCulture);
             }
         }
         

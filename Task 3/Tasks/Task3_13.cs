@@ -65,7 +65,7 @@
                 "{0, -10} | {1, -20} | {2, -27} | {3, -10} | {4, -10}", 
                 Captions.NumConcat, 
                 Captions.StrAvgTimeStlb, 
-                Captions.StrAvgTimeStlb, 
+                Captions.SbAvgTimeStlb, 
                 Captions.Ratio, 
                 Captions.Winner);
 

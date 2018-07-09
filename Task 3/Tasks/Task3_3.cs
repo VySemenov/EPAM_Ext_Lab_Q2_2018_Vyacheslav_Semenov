@@ -5,6 +5,9 @@
 
      public class Task3_3 : Task
     {
+        private static char symbol = '*';
+        private static char space = ' ';
+
         public override void Start()
         {
             int n = 0;
@@ -21,9 +24,9 @@
             int j = 1;
             for (int i = 1; i <= n; i++)
             {
-                Console.Write(new string(' ', n - i));
-                Console.WriteLine(new string('*', j));//todo pn хардкод
-				j += 2;
+                Console.Write(new string(space, n - i));
+                Console.WriteLine(new string(symbol, j));
+                j += 2;
             }
         }
 

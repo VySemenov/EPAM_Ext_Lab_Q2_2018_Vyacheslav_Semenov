@@ -5,6 +5,8 @@
 
     public class Task3_2 : Task
     {
+        private static char symbol = '*';
+
         public override void Start()
         {
             int n = 0;
@@ -20,8 +22,8 @@
 
             for (int i = 1; i <= n; i++)
             {
-                Console.WriteLine(new string('*', i));//todo pn хардкод
-			}
+                Console.WriteLine(new string(symbol, i));
+            }
         }
 
         private static void Input(out int n)

@@ -123,6 +123,9 @@
   <data name="AfterSort" xml:space="preserve">
     <value>After sorting</value>
   </data>
+  <data name="and" xml:space="preserve">
+    <value>and</value>
+  </data>
   <data name="AvLen" xml:space="preserve">
     <value>Average length</value>
   </data>
@@ -147,6 +150,9 @@
   <data name="DefTest" xml:space="preserve">
     <value>Default test (100 concatenations, 1000 iterations)</value>
   </data>
+  <data name="Delimeters" xml:space="preserve">
+    <value>,.'/'?"*! :</value>
+  </data>
   <data name="Draw" xml:space="preserve">
     <value>Draw</value>
   </data>
@@ -167,6 +173,9 @@
   </data>
   <data name="Italic" xml:space="preserve">
     <value>italic</value>
+  </data>
+  <data name="lessThan" xml:space="preserve">
+    <value>less than</value>
   </data>
   <data name="Max" xml:space="preserve">
     <value>Max</value>
@@ -230,6 +239,9 @@
   </data>
   <data name="StringBuilder" xml:space="preserve">
     <value>StringBuilder</value>
+  </data>
+  <data name="SumAllNumMult" xml:space="preserve">
+    <value>The sum of all numbers of multiples of</value>
   </data>
   <data name="SumInEvenPos" xml:space="preserve">
     <value>Sum of elements in even positions</value>
