@@ -11,8 +11,8 @@
 
         public override void Start()
         {
-            Console.WriteLine(string.Format("The sum of all numbers of multiples of {0} and {1} and less than {2}:", a, b, n));
-            Console.WriteLine(Sum(a) + Sum(b) - Sum(a * b));
+            Console.WriteLine(string.Format("The sum of all numbers of multiples of {0} and {1} and less than {2}:", a, b, n));//todo pn хардкод. в ресурсы.
+			Console.WriteLine(Sum(a) + Sum(b) - Sum(a * b));
         }
 
         /// <summary>

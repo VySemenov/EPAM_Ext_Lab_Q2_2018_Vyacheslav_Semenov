@@ -5,7 +5,7 @@
 
     public class Task3_11 : Task
     {
-        private static char[] delimiters = { ' ', '.', ',', '/', '?', '\"', '*', '!', '\t', ':' };
+        private static char[] delimiters = { ' ', '.', ',', '/', '?', '\"', '*', '!', '\t', ':' };//todo pn хардкод
 
         public override void Start()
         {

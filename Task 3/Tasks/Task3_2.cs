@@ -20,8 +20,8 @@
 
             for (int i = 1; i <= n; i++)
             {
-                Console.WriteLine(new string('*', i));
-            }
+                Console.WriteLine(new string('*', i));//todo pn хардкод
+			}
         }
 
         private static void Input(out int n)

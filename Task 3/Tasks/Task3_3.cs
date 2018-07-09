@@ -22,8 +22,8 @@
             for (int i = 1; i <= n; i++)
             {
                 Console.Write(new string(' ', n - i));
-                Console.WriteLine(new string('*', j));
-                j += 2;
+                Console.WriteLine(new string('*', j));//todo pn хардкод
+				j += 2;
             }
         }
 
