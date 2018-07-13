@@ -7,5 +7,6 @@
 
     public class AttachmentsRepository : Repository
     {
+        public List<Attachment> Attachments { get; set; }
     }
 }

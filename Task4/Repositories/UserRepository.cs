@@ -7,5 +7,6 @@
 
     public class UsersRepository : Repository
     {
+        public List<User> Users { get; set; }
     }
 }

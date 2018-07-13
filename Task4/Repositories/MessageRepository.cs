@@ -7,5 +7,6 @@
 
     public class MessagesRepository : Repository
     {
+        public List<Message> Messages { get; set; }
     }
 }

@@ -7,6 +7,8 @@
 
     public class User
     {
+        public int Id { get; set; }
+
         public UserDetailInfo DetailInfo { get; set; }
 
         public string Firstname { get; set; }
@@ -26,5 +28,7 @@
         public List<Post> Posts { get; set; }
 
         public UserRole UserRole { get; set; }
+
+        public List<User> Friends { get; set; }
     }
 }
