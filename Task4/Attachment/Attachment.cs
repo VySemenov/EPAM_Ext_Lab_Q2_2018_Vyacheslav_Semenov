@@ -2,12 +2,6 @@
 {
     public class Attachment
     {
-        public int Id
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public int Id { get; set; }
     }
 }

@@ -7,21 +7,9 @@
 
     public class Post
     {
-        public int Id
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public int Id { get; set; }
 
-        public int Text
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public int Text { get; set; }
 
         public List<Attachment> Attachments { get; set; }
     }

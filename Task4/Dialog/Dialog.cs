@@ -4,22 +4,10 @@
 
     public class Dialog
     {
-        public int Id
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public int Id { get; set; }
 
         public List<Message> Messages { get; set; }
 
-        public List<User> Users
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public List<User> Users { get; set; }
     }
 }

@@ -7,21 +7,9 @@
 
     public class Message
     {
-        public int Id
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public int Id { get; set; }
 
-        public int Text
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public int Text { get; set; }
 
         public List<Attachment> Attachment { get; set; }
     }
