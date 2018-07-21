@@ -6,18 +6,18 @@
     using System.Text;
     using Task4.Repositories;
 
-    public class UsersRepository : IBaseRepository<User>
+    public class DialogsRepository : IBaseRepository<Dialog>
     {
-        private static volatile UsersRepository instance;
+        private static volatile DialogsRepository instance;
         private static object syncRoot = new object();
 
-        private List<User> users = new List<User>();
+        private List<Dialog> dialogs = new List<Dialog>();
 
-        private UsersRepository()
+        private DialogsRepository()
         {
         }
 
-        public static UsersRepository Instance
+        public static DialogsRepository Instance
         {
             get
             {
@@ -27,7 +27,7 @@
                     {
                         if (instance == null)
                         {
-                            instance = new UsersRepository();
+                            instance = new DialogsRepository();
                         }
                     }
                 }
@@ -36,28 +36,28 @@
             }
         }
 
-        public User Get(int id)
+        public Dialog Get(int id)
         {
-            User user = users.Find(u => u.Id == id);
-            return user;
+            Dialog dialog = dialogs.Find(a => a.Id == id);
+            return dialog;
         }
 
-        public List<User> GetAll()
+        public List<Dialog> GetAll()
         {
-            return users;
+            return dialogs;
         }
 
-        public bool Save(User entity)
+        public bool Save(Dialog entity)
         {
             if (entity == null)
             {
                 return false;
             }
 
-            User user = users.Find(u => u.Id == entity.Id);
-            if (user == null)
+            Dialog dialog = dialogs.Find(a => a.Id == entity.Id);
+            if (dialog == null)
             {
-                users.Add(entity);
+                dialogs.Add(entity);
                 return true;
             }
             else
@@ -68,13 +68,13 @@
 
         public bool Delete(int id)
         {
-            User user = users.Find(u => u.Id == id);
-            if (user == null)
+            Dialog dialog = dialogs.Find(a => a.Id == id);
+            if (dialog == null)
             {
                 return false;
             }
 
-            users.Remove(user);
+            dialogs.Remove(dialog);
             return true;
         }
     }

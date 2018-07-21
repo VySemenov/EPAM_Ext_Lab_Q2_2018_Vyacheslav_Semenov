@@ -44,11 +44,12 @@
     <Compile Include="Repositories\AttachmentsRepository.cs" />
     <Compile Include="Dialog\Dialog.cs" />
     <Compile Include="Dialog\Message.cs" />
-    <Compile Include="Repositories\MessageRepository.cs" />
+    <Compile Include="Repositories\DialogsRepository.cs" />
+    <Compile Include="Repositories\MessagesRepository.cs" />
     <Compile Include="Post\Post.cs" />
     <Compile Include="Repositories\PostsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\IBaseRepository.cs" />
     <Compile Include="User\User.cs" />
     <Compile Include="User\UserDetailInfo.cs" />
     <Compile Include="Repositories\UserRepository.cs" />

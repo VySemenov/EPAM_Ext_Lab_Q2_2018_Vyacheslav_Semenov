@@ -6,18 +6,18 @@
     using System.Text;
     using Task4.Repositories;
 
-    public class UsersRepository : IBaseRepository<User>
+    public class MessagesRepository : IBaseRepository<Message>
     {
-        private static volatile UsersRepository instance;
+        private static volatile MessagesRepository instance;
         private static object syncRoot = new object();
 
-        private List<User> users = new List<User>();
+        private List<Message> messages = new List<Message>();
 
-        private UsersRepository()
+        private MessagesRepository()
         {
         }
 
-        public static UsersRepository Instance
+        public static MessagesRepository Instance
         {
             get
             {
@@ -27,7 +27,7 @@
                     {
                         if (instance == null)
                         {
-                            instance = new UsersRepository();
+                            instance = new MessagesRepository();
                         }
                     }
                 }
@@ -36,28 +36,29 @@
             }
         }
 
-        public User Get(int id)
+        public Message Get(int id)
         {
-            User user = users.Find(u => u.Id == id);
-            return user;
+            Message message = messages.Find(m => m.Id == id);
+
+            return message;
         }
 
-        public List<User> GetAll()
+        public List<Message> GetAll()
         {
-            return users;
+            return messages;
         }
 
-        public bool Save(User entity)
+        public bool Save(Message entity)
         {
             if (entity == null)
             {
                 return false;
             }
 
-            User user = users.Find(u => u.Id == entity.Id);
-            if (user == null)
+            Message msg = messages.Find(m => m.Id == entity.Id);
+            if (msg == null)
             {
-                users.Add(entity);
+                messages.Add(entity);
                 return true;
             }
             else
@@ -68,13 +69,13 @@
 
         public bool Delete(int id)
         {
-            User user = users.Find(u => u.Id == id);
-            if (user == null)
+            Message message = messages.Find(m => m.Id == id);
+            if (message == null)
             {
                 return false;
             }
 
-            users.Remove(user);
+            messages.Remove(message);
             return true;
         }
     }
