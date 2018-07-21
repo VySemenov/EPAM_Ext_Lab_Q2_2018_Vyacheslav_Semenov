@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    interface IBaseRepository<T> where T : class, new()
+    public interface IBaseRepository<T> where T : class, new()
     {
         T Get(int id);
 

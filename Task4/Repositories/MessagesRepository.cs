@@ -38,14 +38,14 @@
 
         public Message Get(int id)
         {
-            Message message = messages.Find(m => m.Id == id);
+            Message message = this.messages.Find(m => m.Id == id);
 
             return message;
         }
 
         public List<Message> GetAll()
         {
-            return messages;
+            return this.messages;
         }
 
         public bool Save(Message entity)
@@ -55,10 +55,10 @@
                 return false;
             }
 
-            Message msg = messages.Find(m => m.Id == entity.Id);
+            Message msg = this.messages.Find(m => m.Id == entity.Id);
             if (msg == null)
             {
-                messages.Add(entity);
+                this.messages.Add(entity);
                 return true;
             }
             else
@@ -69,13 +69,13 @@
 
         public bool Delete(int id)
         {
-            Message message = messages.Find(m => m.Id == id);
+            Message message = this.messages.Find(m => m.Id == id);
             if (message == null)
             {
                 return false;
             }
 
-            messages.Remove(message);
+            this.messages.Remove(message);
             return true;
         }
     }

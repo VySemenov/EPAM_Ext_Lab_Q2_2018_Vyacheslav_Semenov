@@ -8,7 +8,7 @@
     [TestClass]
     public class AttachmentRepUnitTest
     {
-        public void FillAttachmentsRepository(int n = 10)
+        public static void FillAttachmentsRepository(int n = 10)
         {
             AttachmentsRepository rep = AttachmentsRepository.Instance;
             if (rep.GetAll().Count > 0)
@@ -22,7 +22,7 @@
             }
         }
 
-        public void RemoveAll()
+        public static void RemoveAll()
         {
             AttachmentsRepository rep = AttachmentsRepository.Instance;
             if (rep.GetAll().Count > 0)
@@ -47,7 +47,7 @@
             Attachment attachment = rep.Get(testId);
             if (attachment != null)
             {
-                Assert.Fail("");
+                Assert.Fail();
             }
         }
 
@@ -104,7 +104,7 @@
             RemoveAll();
 
             int uniqueId = 111;
-            Attachment attachment = new Attachment { Id = uniqueId};
+            Attachment attachment = new Attachment { Id = uniqueId };
             rep.Save(attachment);
 
             Attachment attachmentFromList = rep.Get(uniqueId);
@@ -165,13 +165,13 @@
 
             List<Attachment> list = new List<Attachment>
             {
-                new Attachment { Id = 1},
-                new Attachment { Id = 2},
-                new Attachment { Id = 3},
-                new Attachment { Id = 4},
-                new Attachment { Id = 5},
-                new Attachment { Id = 6},
-                new Attachment { Id = 7},
+                new Attachment { Id = 1 },
+                new Attachment { Id = 2 },
+                new Attachment { Id = 3 },
+                new Attachment { Id = 4 },
+                new Attachment { Id = 5 },
+                new Attachment { Id = 6 },
+                new Attachment { Id = 7 },
             };
 
             foreach (var u in list)
@@ -224,6 +224,5 @@
                 Assert.Fail();
             }
         }
-
     }
 }

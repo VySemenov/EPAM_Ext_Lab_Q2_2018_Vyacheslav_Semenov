@@ -17,17 +17,17 @@
         {
             var message = obj as Message;
             return message != null &&
-                   Id == message.Id &&
-                   Text == message.Text &&
-                   EqualityComparer<List<Attachment>>.Default.Equals(Attachment, message.Attachment);
+                   this.Id == message.Id &&
+                   this.Text == message.Text &&
+                   EqualityComparer<List<Attachment>>.Default.Equals(this.Attachment, message.Attachment);
         }
 
         public override int GetHashCode()
         {
             var hashCode = -1059379818;
-            hashCode = hashCode * -1521134295 + Id.GetHashCode();
-            hashCode = hashCode * -1521134295 + Text.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<List<Attachment>>.Default.GetHashCode(Attachment);
+            hashCode = (hashCode * -1521134295) + this.Id.GetHashCode();
+            hashCode = (hashCode * -1521134295) + this.Text.GetHashCode();
+            hashCode = (hashCode * -1521134295) + EqualityComparer<List<Attachment>>.Default.GetHashCode(this.Attachment);
             return hashCode;
         }
     }

@@ -38,13 +38,13 @@
 
         public User Get(int id)
         {
-            User user = users.Find(u => u.Id == id);
+            User user = this.users.Find(u => u.Id == id);
             return user;
         }
 
         public List<User> GetAll()
         {
-            return users;
+            return this.users;
         }
 
         public bool Save(User entity)
@@ -54,10 +54,10 @@
                 return false;
             }
 
-            User user = users.Find(u => u.Id == entity.Id);
+            User user = this.users.Find(u => u.Id == entity.Id);
             if (user == null)
             {
-                users.Add(entity);
+                this.users.Add(entity);
                 return true;
             }
             else
@@ -68,13 +68,13 @@
 
         public bool Delete(int id)
         {
-            User user = users.Find(u => u.Id == id);
+            User user = this.users.Find(u => u.Id == id);
             if (user == null)
             {
                 return false;
             }
 
-            users.Remove(user);
+            this.users.Remove(user);
             return true;
         }
     }

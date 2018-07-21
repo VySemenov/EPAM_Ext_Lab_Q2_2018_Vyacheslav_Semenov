@@ -38,13 +38,13 @@
 
         public Attachment Get(int id)
         {
-            Attachment attachment = attachments.Find(a => a.Id == id);
+            Attachment attachment = this.attachments.Find(a => a.Id == id);
             return attachment;
         }
 
         public List<Attachment> GetAll()
         {
-            return attachments;
+            return this.attachments;
         }
 
         public bool Save(Attachment entity)
@@ -54,10 +54,10 @@
                 return false;
             }
 
-            Attachment attachment = attachments.Find(a => a.Id == entity.Id);
+            Attachment attachment = this.attachments.Find(a => a.Id == entity.Id);
             if (attachment == null)
             {
-                attachments.Add(entity);
+                this.attachments.Add(entity);
                 return true;
             }
             else
@@ -68,13 +68,13 @@
 
         public bool Delete(int id)
         {
-            Attachment attachment = attachments.Find(a => a.Id == id);
+            Attachment attachment = this.attachments.Find(a => a.Id == id);
             if (attachment == null)
             {
                 return false;
             }
 
-            attachments.Remove(attachment);
+            this.attachments.Remove(attachment);
             return true;
         }
     }

@@ -38,13 +38,13 @@
 
         public Dialog Get(int id)
         {
-            Dialog dialog = dialogs.Find(a => a.Id == id);
+            Dialog dialog = this.dialogs.Find(a => a.Id == id);
             return dialog;
         }
 
         public List<Dialog> GetAll()
         {
-            return dialogs;
+            return this.dialogs;
         }
 
         public bool Save(Dialog entity)
@@ -54,10 +54,10 @@
                 return false;
             }
 
-            Dialog dialog = dialogs.Find(a => a.Id == entity.Id);
+            Dialog dialog = this.dialogs.Find(a => a.Id == entity.Id);
             if (dialog == null)
             {
-                dialogs.Add(entity);
+                this.dialogs.Add(entity);
                 return true;
             }
             else
@@ -68,13 +68,13 @@
 
         public bool Delete(int id)
         {
-            Dialog dialog = dialogs.Find(a => a.Id == id);
+            Dialog dialog = this.dialogs.Find(a => a.Id == id);
             if (dialog == null)
             {
                 return false;
             }
 
-            dialogs.Remove(dialog);
+            this.dialogs.Remove(dialog);
             return true;
         }
     }

@@ -35,35 +35,35 @@
         {
             var user = obj as User;
             return user != null &&
-                   Id == user.Id &&
-                   EqualityComparer<UserDetailInfo>.Default.Equals(DetailInfo, user.DetailInfo) &&
-                   Firstname == user.Firstname &&
-                   Surname == user.Surname &&
-                   Email == user.Email &&
-                   Phone == user.Phone &&
-                   Password == user.Password &&
-                   EqualityComparer<List<Dialog>>.Default.Equals(Dialogs, user.Dialogs) &&
-                   EqualityComparer<List<Message>>.Default.Equals(Messages, user.Messages) &&
-                   EqualityComparer<List<Post>>.Default.Equals(Posts, user.Posts) &&
-                   UserRole == user.UserRole &&
-                   EqualityComparer<List<User>>.Default.Equals(Friends, user.Friends);
+                   this.Id == user.Id &&
+                   EqualityComparer<UserDetailInfo>.Default.Equals(this.DetailInfo, user.DetailInfo) &&
+                   this.Firstname == user.Firstname &&
+                   this.Surname == user.Surname &&
+                   this.Email == user.Email &&
+                   this.Phone == user.Phone &&
+                   this.Password == user.Password &&
+                   EqualityComparer<List<Dialog>>.Default.Equals(this.Dialogs, user.Dialogs) &&
+                   EqualityComparer<List<Message>>.Default.Equals(this.Messages, user.Messages) &&
+                   EqualityComparer<List<Post>>.Default.Equals(this.Posts, user.Posts) &&
+                   this.UserRole == user.UserRole &&
+                   EqualityComparer<List<User>>.Default.Equals(this.Friends, user.Friends);
         }
 
         public override int GetHashCode()
         {
             var hashCode = -307512703;
-            hashCode = hashCode * -1521134295 + Id.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<UserDetailInfo>.Default.GetHashCode(DetailInfo);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Firstname);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Surname);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Email);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Phone);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Password);
-            hashCode = hashCode * -1521134295 + EqualityComparer<List<Dialog>>.Default.GetHashCode(Dialogs);
-            hashCode = hashCode * -1521134295 + EqualityComparer<List<Message>>.Default.GetHashCode(Messages);
-            hashCode = hashCode * -1521134295 + EqualityComparer<List<Post>>.Default.GetHashCode(Posts);
-            hashCode = hashCode * -1521134295 + UserRole.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<List<User>>.Default.GetHashCode(Friends);
+            hashCode = (hashCode * -1521134295) + this.Id.GetHashCode();
+            hashCode = (hashCode * -1521134295) + EqualityComparer<UserDetailInfo>.Default.GetHashCode(this.DetailInfo);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<string>.Default.GetHashCode(this.Firstname);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<string>.Default.GetHashCode(this.Surname);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<string>.Default.GetHashCode(this.Email);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<string>.Default.GetHashCode(this.Phone);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<string>.Default.GetHashCode(this.Password);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<List<Dialog>>.Default.GetHashCode(this.Dialogs);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<List<Message>>.Default.GetHashCode(this.Messages);
+            hashCode = (hashCode * -1521134295) + EqualityComparer<List<Post>>.Default.GetHashCode(this.Posts);
+            hashCode = (hashCode * -1521134295) + this.UserRole.GetHashCode();
+            hashCode = (hashCode * -1521134295) + EqualityComparer<List<User>>.Default.GetHashCode(this.Friends);
             return hashCode;
         }
     }

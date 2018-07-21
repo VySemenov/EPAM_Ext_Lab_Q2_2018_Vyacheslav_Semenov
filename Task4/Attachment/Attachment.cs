@@ -8,12 +8,12 @@
         {
             var attachment = obj as Attachment;
             return attachment != null &&
-                   Id == attachment.Id;
+                   this.Id == attachment.Id;
         }
 
         public override int GetHashCode()
         {
-            return 2108858624 + Id.GetHashCode();
+            return 2108858624 + this.Id.GetHashCode();
         }
     }
 }

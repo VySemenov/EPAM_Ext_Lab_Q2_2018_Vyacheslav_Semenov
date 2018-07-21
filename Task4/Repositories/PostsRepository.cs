@@ -38,13 +38,13 @@
 
         public Post Get(int id)
         {
-            Post post = posts.Find(p => p.Id == id);
+            Post post = this.posts.Find(p => p.Id == id);
             return post;
         }
 
         public List<Post> GetAll()
         {
-            return posts;
+            return this.posts;
         }
 
         public bool Save(Post entity)
@@ -54,10 +54,10 @@
                 return false;
             }
 
-            Post post = posts.Find(p => p.Id == entity.Id);
+            Post post = this.posts.Find(p => p.Id == entity.Id);
             if (post == null)
             {
-                posts.Add(entity);
+                this.posts.Add(entity);
                 return true;
             }
             else
@@ -68,13 +68,13 @@
 
         public bool Delete(int id)
         {
-            Post post = posts.Find(p => p.Id == id);
+            Post post = this.posts.Find(p => p.Id == id);
             if (post == null)
             {
                 return false;
             }
 
-            posts.Remove(post);
+            this.posts.Remove(post);
             return true;
         }
     }

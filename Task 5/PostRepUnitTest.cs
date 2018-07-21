@@ -8,7 +8,7 @@
     [TestClass]
     public class PostRepUnitTest
     {
-        public void FillPostsRepository(int n = 10)
+        public static void FillPostsRepository(int n = 10)
         {
             PostsRepository rep = PostsRepository.Instance;
             if (rep.GetAll().Count > 0)
@@ -22,7 +22,7 @@
             }
         }
 
-        public void RemoveAll()
+        public static void RemoveAll()
         {
             PostsRepository rep = PostsRepository.Instance;
             if (rep.GetAll().Count > 0)
@@ -47,7 +47,7 @@
             Post post = rep.Get(testId);
             if (post != null)
             {
-                Assert.Fail("");
+                Assert.Fail();
             }
         }
 
@@ -165,13 +165,13 @@
 
             List<Post> list = new List<Post>
             {
-                new Post { Id = 1},
-                new Post { Id = 2},
-                new Post { Id = 3},
-                new Post { Id = 4},
-                new Post { Id = 5},
-                new Post { Id = 6},
-                new Post { Id = 7},
+                new Post { Id = 1 },
+                new Post { Id = 2 },
+                new Post { Id = 3 },
+                new Post { Id = 4 },
+                new Post { Id = 5 },
+                new Post { Id = 6 },
+                new Post { Id = 7 },
             };
 
             foreach (var u in list)
@@ -224,6 +224,5 @@
                 Assert.Fail();
             }
         }
-
     }
 }

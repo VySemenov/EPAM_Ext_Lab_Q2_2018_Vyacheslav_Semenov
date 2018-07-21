@@ -8,7 +8,7 @@
     [TestClass]
     public class MsgRepUnitTest
     {
-        public void FillMessagesRepository(int n = 10)
+        public static void FillMessagesRepository(int n = 10)
         {
             MessagesRepository rep = MessagesRepository.Instance;
             if (rep.GetAll().Count > 0)
@@ -22,7 +22,7 @@
             }
         }
 
-        public void RemoveAll()
+        public static void RemoveAll()
         {
             MessagesRepository rep = MessagesRepository.Instance;
             if (rep.GetAll().Count > 0)
@@ -47,7 +47,7 @@
             Message message = rep.Get(testId);
             if (message != null)
             {
-                Assert.Fail("");
+                Assert.Fail();
             }
         }
 
@@ -165,13 +165,13 @@
 
             List<Message> list = new List<Message>
             {
-                new Message { Id = 1, Text = "1"},
-                new Message { Id = 2, Text = "2"},
-                new Message { Id = 3, Text = "3"},
-                new Message { Id = 4, Text = "4"},
-                new Message { Id = 5, Text = "1"},
-                new Message { Id = 6, Text = "123"},
-                new Message { Id = 7, Text = "2"},
+                new Message { Id = 1, Text = "1" },
+                new Message { Id = 2, Text = "2" },
+                new Message { Id = 3, Text = "3" },
+                new Message { Id = 4, Text = "4" },
+                new Message { Id = 5, Text = "1" },
+                new Message { Id = 6, Text = "123" },
+                new Message { Id = 7, Text = "2" },
             };
 
             foreach (var u in list)
@@ -224,6 +224,5 @@
                 Assert.Fail();
             }
         }
-
     }
 }

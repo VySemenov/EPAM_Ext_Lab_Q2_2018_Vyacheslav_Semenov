@@ -8,7 +8,7 @@
     [TestClass]
     public class UserRepUnitTest
     {
-        public void FillUsersRepository(int n = 10)
+        public static void FillUsersRepository(int n = 10)
         {
             UsersRepository rep = UsersRepository.Instance;
             if (rep.GetAll().Count > 0)
@@ -18,11 +18,11 @@
 
             for (int i = 0; i < n; i++)
             {
-                rep.Save(new User { Id = i});
+                rep.Save(new User { Id = i });
             }
         }
 
-        public void RemoveAll()
+        public static void RemoveAll()
         {
             UsersRepository rep = UsersRepository.Instance;
             if (rep.GetAll().Count > 0)
@@ -47,7 +47,7 @@
             User user = rep.Get(testId);
             if (user != null)
             {
-                Assert.Fail("");
+                Assert.Fail();
             }
         }
 
@@ -165,13 +165,13 @@
 
             List<User> list = new List<User>
             {
-                new User { Id = 1, Firstname = "1"},
-                new User { Id = 2, Firstname = "2"},
-                new User { Id = 3, Firstname = "3"},
-                new User { Id = 4, Firstname = "4"},
-                new User { Id = 5, Firstname = "1"},
-                new User { Id = 6, Firstname = "123"},
-                new User { Id = 7, Firstname = "2"},
+                new User { Id = 1, Firstname = "1" },
+                new User { Id = 2, Firstname = "2" },
+                new User { Id = 3, Firstname = "3" },
+                new User { Id = 4, Firstname = "4" },
+                new User { Id = 5, Firstname = "1" },
+                new User { Id = 6, Firstname = "123" },
+                new User { Id = 7, Firstname = "2" },
             };
 
             foreach (var u in list)
@@ -213,7 +213,7 @@
 
             for (int i = 0; i < n; i++)
             {
-                if(!rep.Delete(i))
+                if (!rep.Delete(i))
                 {
                     Assert.Fail();
                 }
@@ -224,6 +224,5 @@
                 Assert.Fail();
             }
         }
-
     }
 }

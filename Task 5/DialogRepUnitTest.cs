@@ -8,7 +8,7 @@
     [TestClass]
     public class DialogRepUnitTest
     {
-        public void FillDialogsRepository(int n = 10)
+        public static void FillDialogsRepository(int n = 10)
         {
             DialogsRepository rep = DialogsRepository.Instance;
             if (rep.GetAll().Count > 0)
@@ -22,7 +22,7 @@
             }
         }
 
-        public void RemoveAll()
+        public static void RemoveAll()
         {
             DialogsRepository rep = DialogsRepository.Instance;
             if (rep.GetAll().Count > 0)
@@ -47,7 +47,7 @@
             Dialog dialog = rep.Get(testId);
             if (dialog != null)
             {
-                Assert.Fail("");
+                Assert.Fail();
             }
         }
 
@@ -118,7 +118,7 @@
         [TestMethod]
         public void DialogSaveNullTest()
         {
-            DialogsRepository rep =DialogsRepository.Instance;
+            DialogsRepository rep = DialogsRepository.Instance;
             RemoveAll();
 
             if (rep.Save(null))
@@ -165,13 +165,13 @@
 
             List<Dialog> list = new List<Dialog>
             {
-                new Dialog { Id = 1},
-                new Dialog { Id = 2},
-                new Dialog { Id = 3},
-                new Dialog { Id = 4},
-                new Dialog { Id = 5},
-                new Dialog { Id = 6},
-                new Dialog { Id = 7},
+                new Dialog { Id = 1 },
+                new Dialog { Id = 2 },
+                new Dialog { Id = 3 },
+                new Dialog { Id = 4 },
+                new Dialog { Id = 5 },
+                new Dialog { Id = 6 },
+                new Dialog { Id = 7 },
             };
 
             foreach (var u in list)
@@ -224,6 +224,5 @@
                 Assert.Fail();
             }
         }
-
     }
 }
