@@ -30,7 +30,7 @@
             SortMethod sortMethod = CompareStr;
             switch (choice)
             {
-                case "yes":
+                case "yes"://todo pn ну, ё-маё. Хардкод
                     getStr = UseInput;
                     Sort(getStr, sortMethod);
                     break;
