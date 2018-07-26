@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-image:url(../images/bg.jpg);
+	background-size:cover;
+	/*background: #0CC;*/
+}
+.content{
+	background-color: rgba(01, 31, 31, 0.5);
+	padding:15px;
+}
+.content.short{
+	width:500px;
+}
+.header{
+	background-color:rgba(01, 31, 31, 0.7);
+	padding:15px;
+	text-align:center;
+	color:white;
+}
+.header.short{
+	width:500px;
+}
+.fr{
+	margin:15px;
+}
+.lbl{
+	color:#FFF;
+}
+.lbl.dark{
+	color:#000;
+}
+.btn_lnk{
+	width:16px;
+	height:16px;
+		}
+.list-footer{
+	text-align:right;
+}
+.ni{
+	color:#FFF;
+}
+.footer{
+	background-color: rgba(01, 31, 31, 0.7);
+}
