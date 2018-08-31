@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>SocNetwork</Name>
+    <Name>SocNetwork.Db</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{ea7882ba-c25d-4931-a173-b0d47dfa47c9}</ProjectGuid>
@@ -23,6 +23,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <TargetDatabase>SocNetwork</TargetDatabase>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -72,5 +73,6 @@
   <ItemGroup>
     <None Include="Scripts\Post-Deployment\USERS.sql" />
     <None Include="Scripts\Post-Deployment\USERROLE.sql" />
+    <None Include="Scripts\Post-Deployment\GetAllUsers.sql" />
   </ItemGroup>
 </Project>

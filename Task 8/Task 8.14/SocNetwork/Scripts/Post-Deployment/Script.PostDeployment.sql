@@ -14,3 +14,4 @@ DELETE FROM [dbo].[M_USERROLE]
 
 :r .\USERROLE.sql
 :r .\USERS.sql
+:r .\GetAllUsers.sql
