@@ -39,7 +39,7 @@
                     if (reader.Read())
                     {
                         User user = new User();
-                        user.Id = (int)reader["UID"];
+                        user.Id = (int)reader["UID"];//todo pn лучше все же именование колонок вынести куда-нибудь в константы, поскольку ты их используешь здесь неоднократно
                         user.Firstname = (string)reader["FIRSTNAME"];
                         user.Surname = (string)reader["LASTNAME"];
                         user.Email = (string)reader["EMAIL"];
