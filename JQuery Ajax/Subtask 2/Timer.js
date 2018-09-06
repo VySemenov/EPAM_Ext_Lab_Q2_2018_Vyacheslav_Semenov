@@ -51,5 +51,5 @@ function previous() {
     history.back(); 
 }
 function next() {
-    history.forward();
+    move();
 }

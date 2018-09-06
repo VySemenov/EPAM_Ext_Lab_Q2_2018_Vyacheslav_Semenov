@@ -1,6 +1,6 @@
-﻿function Move(where) {
-    var rightList = document.getElementById("right");
-    var leftList = document.getElementById("left");
+﻿function Move(where, leftid, rightid) {
+    var rightList = document.getElementById(rightid);
+    var leftList = document.getElementById(leftid);
     var changeList = [];
 
     if (where == "toLeft") {
@@ -59,9 +59,9 @@
     }
 }
 
-function MoveAll(where) {
-    var leftList = document.getElementById("left");
-    var rightList = document.getElementById("right");
+function MoveAll(where, leftid, rightid) {
+    var leftList = document.getElementById(leftid);
+    var rightList = document.getElementById(rightid);
 
     for (var i = 0; i < leftList.options.length; i++) {
         leftList.options[i].selected = "selected";
@@ -70,5 +70,5 @@ function MoveAll(where) {
         rightList.options[i].selected = "selected";
     }
 
-    Move(where);
+    Move(where, leftid, rightid);
 }

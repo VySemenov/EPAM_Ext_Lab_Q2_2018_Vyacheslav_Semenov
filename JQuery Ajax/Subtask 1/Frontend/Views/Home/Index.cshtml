@@ -8,21 +8,52 @@
             <div class="col-md-1">
                 <p>LeftList</p>
                 <select id="left" name="left" multiple>
-                    @foreach(var l in ViewBag.Left)
+                    @foreach (var l in ViewBag.Left)
                     {
                         <option value="@l">@l</option>
                     }
                 </select>
             </div>
             <div class="col-md-1">
-                <p><input type="button" id="btn1" name=">>" value=">>" onclick="MoveAll('toRight')"></p>
-                <p><input type="button" id="btn2" name=">" value=">" onclick="Move('toRight')"></p>
-                <p><input type="button" id="btn3" name="<" value="<" onclick="Move('toLeft')"></p>
-                <p><input type="button" id="btn4" name="<<" value="<<" onclick="MoveAll('toLeft')"></p>
+                <p><input type="button" id="btn1" name=">>" value=">>" onclick="MoveAll('toRight', 'left', 'right')"></p>
+                <p><input type="button" id="btn2" name=">" value=">" onclick="Move('toRight', 'left', 'right')"></p>
+                <p><input type="button" id="btn3" name="<" value="<" onclick="Move('toLeft', 'left', 'right')"></p>
+                <p><input type="button" id="btn4" name="<<" value="<<" onclick="MoveAll('toLeft', 'left', 'right')"></p>
             </div>
             <div class="col-md-1">
                 <p>RightList</p>
                 <select id="right" name="right" multiple>
+                    @foreach (var r in ViewBag.Right)
+                    {
+                        <option value="@r">@r</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </form>
+
+    <hr />
+
+    <form name="form2" id="form2">
+        <div class="row">
+            <div class="col-md-1">
+                <p>LeftList</p>
+                <select id="left2" name="left2" multiple>
+                    @foreach (var l in ViewBag.Left)
+                    {
+                        <option value="@l">@l</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-1">
+                <p><input type="button" id="btn5" name="btn5" value=">>" onclick="MoveAll('toRight', 'left2', 'right2')"></p>
+                <p><input type="button" id="btn6" name="btn6" value=">" onclick="Move('toRight', 'left2', 'right2')"></p>
+                <p><input type="button" id="btn7" name="btn7" value="<" onclick="Move('toLeft', 'left2', 'right2')"></p>
+                <p><input type="button" id="btn8" name="btn8" value="<<" onclick="MoveAll('toLeft', 'left2', 'right2')"></p>
+            </div>
+            <div class="col-md-1">
+                <p>RightList</p>
+                <select id="right2" name="right2" multiple>
                     @foreach (var r in ViewBag.Right)
                     {
                         <option value="@r">@r</option>
