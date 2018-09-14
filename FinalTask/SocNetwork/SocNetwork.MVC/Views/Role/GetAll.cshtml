@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "GetAll";
+}
+
+<div class="container content header">
+    <h2>GetAll</h2>
+</div>
+<div class="container content text-light">
+    <div>
+        <h3>Список ролей</h3>
+        <table class="table">
+            <tr>
+                <td>ID</td>
+                <td>Название</td>
+                <td>Действия</td>
+            </tr>
+            @foreach (var r in ViewBag.UserRole)
+            {
+                <tr>
+                    <td>@((int)r)</td>
+                    <td>@r.ToString()</td>
+                    <td>
+                        <a href="/role/@((int)r)"><span class="glyphicon glyphicon-user"></span></a>
+                        <a href="/role/@((int)r)/edit"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="/role/@((int)r)/delete"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "GetAll";
+}
+
+<div class="container content header">
+</div>
+<div class="container content text-light">
+    <div>
+        <h3>Список пользователей</h3>
+        <table class="table">
+            <tr>
+                <td>ID</td>
+                <td>Имя</td>
+                <td>Фамилия</td>
+                <td>Email</td>
+                <td>Действие</td>
+            </tr>
+            @foreach (var u in ViewBag.Users)
+            {
+                <tr>
+                    <td>@u.Id</td>
+                    <td>@u.Firstname</td>
+                    <td>@u.Surname</td>
+                    <td>@u.Email</td>
+                    <td>
+                        <a href="/user/@u.Id"><span class="glyphicon glyphicon-user"></span></a>
+                        <a href="/user/@u.Id/edit"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="/user/@u.Id/delete"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

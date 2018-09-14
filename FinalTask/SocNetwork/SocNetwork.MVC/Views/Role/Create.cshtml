@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container content header">
+    <h2>Создание роли</h2>
+</div>
+<div class="container content">
+    <form action="/Role/Create" method="post">
+        <div class="form-group">
+            <input type="text" name="ID" class="form-control" placeholder="ID" />
+        </div>
+        <div class="form-group">
+            <input type="text" name="Name" class="form-control" placeholder="Название роли" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn" value="Создать" />
+        </div>
+    </form>
+</div>
