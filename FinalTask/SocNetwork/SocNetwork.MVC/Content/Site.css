@@ -27,6 +27,7 @@ body {
     background-image: url(Images/bg.jpg);
     background-size: cover;
     /*background: #0CC;*/
+    /*background: #75d4d4*/
 }
 
 .content {
@@ -34,9 +35,16 @@ body {
     padding: 15px;
 }
 
-    .content.short {
-        width: 500px;
-    }
+
+
+.content.short {
+   width: 500px;
+}
+
+.content-dark {
+    background-color: rgba(01, 31, 31, 0.9);
+    padding: 15px;
+}
 
 .header {
     background-color: rgba(01, 31, 31, 0.7);
@@ -117,6 +125,11 @@ a{
 .avatar{
     width:200px;
     height:200px;
+}
+
+.avatar-small{
+    width:50px;
+    height:50px;
 }
 
 .btn-link.white {

@@ -16,11 +16,11 @@
             routes.MapRoute(
                 name: "Users",
                 url: "users",
-                defaults: new { controller = "User", action = "GetAll"});
+                defaults: new { controller = "User", action = "GetAll" });
             routes.MapRoute(
                 name: "User-control",
                 url: "admin/users",
-                defaults: new { controller = "User", action = "Control"});
+                defaults: new { controller = "User", action = "Control" });
             routes.MapRoute(
                 name: "User-edit",
                 url: "user/{id}/edit",
@@ -28,19 +28,31 @@
             routes.MapRoute(
                 name: "User-delete",
                 url: "user/{id}/delete",
-                defaults: new { controller = "User", action = "Delete", id = UrlParameter.Optional });
+                defaults: new { controller = "User", action = "Delete" });
             routes.MapRoute(
                 name: "User",
                 url: "user/{id}",
-                defaults: new { controller = "User", action = "Get", id = UrlParameter.Optional });
+                defaults: new { controller = "User", action = "Get" });
             routes.MapRoute(
                 name: "User-create",
                 url: "create-user",
-                defaults: new { controller = "User", action = "Create"});
+                defaults: new { controller = "User", action = "Create" });
+            routes.MapRoute(
+                name: "User-registration",
+                url: "registration",
+                defaults: new { controller = "User", action = "Registration" });
+            routes.MapRoute(
+                name: "Roles",
+                url: "roles",
+                defaults: new { controller = "Role", action = "GetAll" });
+            routes.MapRoute(
+               name: "Role-control",
+               url: "admin/roles",
+               defaults: new { controller = "Role", action = "Control" });
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+                url: "{controller}/{action}",
+                defaults: new { controller = "Account", action = "LogOn" });
         }
     }
 }

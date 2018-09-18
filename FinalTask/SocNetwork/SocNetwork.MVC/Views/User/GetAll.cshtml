@@ -7,16 +7,16 @@
 </div>
 <div class="container content text-light">
     <div>
-        <h3>Список пользователей</h3>
+        <h3>List of users</h3>
         <table class="table">
             <tr>
                 <td>ID</td>
-                <td>Имя</td>
-                <td>Фамилия</td>
+                <td>Firstname</td>
+                <td>Lastname</td>
                 <td>Email</td>
-                <td>Действие</td>
+                <td>Actions</td>
             </tr>
-            @foreach (var u in ViewBag.Users)
+            @foreach (var u in Model)
             {
                 <tr>
                     <td>@u.Id</td>

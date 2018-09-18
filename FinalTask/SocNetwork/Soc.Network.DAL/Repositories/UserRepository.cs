@@ -39,12 +39,12 @@
                     if (reader.Read())
                     {
                         User user = new User();
-                        user.Id = (int)reader["UID"];//todo pn лучше все же именование колонок вынести куда-нибудь в константы, поскольку ты их используешь здесь неоднократно
+                        user.Id = (int)reader["UID"];
                         user.Firstname = (string)reader["FIRSTNAME"];
                         user.Surname = (string)reader["LASTNAME"];
                         user.Email = (string)reader["EMAIL"];
                         user.Password = (string)reader["PASSWORD"];
-                        user.UserRole = (UserRole)((short)reader["ROLEID"]);
+                        user.UserRoleId = (short)reader["ROLEID"];
 
                         return user;
                     }
@@ -79,7 +79,7 @@
                         user.Surname = (string)reader["LASTNAME"];
                         user.Email = (string)reader["EMAIL"];
                         user.Password = (string)reader["PASSWORD"];
-                        user.UserRole = (UserRole)((short)reader["ROLEID"]);
+                        user.UserRoleId = (short)reader["ROLEID"];
 
                         users.Add(user);
                     }
@@ -118,7 +118,7 @@
                         user.Surname = (string)reader["LASTNAME"];
                         user.Email = (string)reader["EMAIL"];
                         user.Password = (string)reader["PASSWORD"];
-                        user.UserRole = (UserRole)((short)reader["ROLEID"]);
+                        user.UserRoleId = (short)reader["ROLEID"];
 
                         users.Add(user);
                     }
@@ -152,7 +152,7 @@
                     entity.Surname,
                     entity.Email,
                     entity.Password,
-                    entity.UserRole,
+                    entity.UserRoleId,
                     entity.Id);
 
                     var result = command.ExecuteNonQuery();
@@ -179,7 +179,7 @@
                     entity.Surname,
                     entity.Email,
                     entity.Password,
-                    (int)entity.UserRole);
+                    entity.UserRoleId);
 
                     var result = command.ExecuteNonQuery();
 

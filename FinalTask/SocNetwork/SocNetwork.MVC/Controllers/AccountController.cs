@@ -1,8 +1,5 @@
 ﻿namespace SocNetwork.Controllers
 {
-    using DAL.Entities.Users;
-    using DAL.Repositories;
-    using SocNetwork.Models;
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -11,47 +8,54 @@
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Security;
+    using DAL.Entities.Users;
+    using DAL.Repositories;
+    using SocNetwork.Models;
 
     public class AccountController : Controller
     {
-        UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
         public ActionResult LogOn()
         {
             if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
             {
-                return Redirect(string.Format("/user/{0}", Thread.CurrentPrincipal.Identity.Name));
+                return this.Redirect(string.Format("/user/{0}", Thread.CurrentPrincipal.Identity.Name));
             }
 
-            return View();
+            return this.View();
         }
 
         [HttpPost]
-        public ActionResult LogOn(LoginViewModel userAndPassword, string ReturnUrl)
+        public ActionResult LogOn(LoginViewModel userAndPassword, string returnUrl)
         {
+            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
             if (!string.IsNullOrEmpty(userAndPassword.Email) && !string.IsNullOrEmpty(userAndPassword.Password))
             {
-                User user = repo.GetAll().Find(e => e.Email == userAndPassword.Email);
+                User user = repo.GetAll().Find(e => e.Email.Equals(userAndPassword.Email));
                 if (user != null)
                 {
                     if (user.Password.Trim(' ').Equals(userAndPassword.Password))
                     {
                         FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
-                        ReturnUrl = string.Format("/user/{0}", user.Id);
 
-                        return Redirect(ReturnUrl);
+                        if (returnUrl == null || returnUrl.Equals(string.Empty))
+                        {
+                            returnUrl = string.Format("/user/{0}", user.Id);
+                        }
+
+                        return this.Redirect(returnUrl);
                     }
                 }
             }
 
-            return View(userAndPassword);
+            return this.View(userAndPassword);
         }
 
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
 
-            return Redirect("~/");
+            return this.Redirect("~/");
         }
     }
 }

@@ -15,28 +15,86 @@
 }
 <div class="container content text-light">
     <div class="row">
-        <div class="col-md-3">
-            <h3 class="center">
-                @ViewBag.User.Firstname @ViewBag.User.Surname
-            </h3>
+        <div class="col-md-3 center">
+            <div class="container content header">
+                <span class="center">
+                    @Model.Firstname @Model.Surname
+                </span>
+            </div>
+            <div class="container content">
+                <div>
+                    <img class="avatar" src="~/Content/Images/default-avatar.png" />
+                </div>
+                <div>
+                    <span class="user_action"><a class="btn-link"><span class="glyphicon glyphicon-pencil"></span> Write a message</a></span>
+                    <br /><span class="user_action"><a class="btn-link"><span class="glyphicon glyphicon-plus"></span> Add as Friend</a></span>
+                </div>
+            </div>
         </div>
-        <div class="col-md-5">
-
+        <div class="col-md-9">
+            <div class="container content header">
+                <span>Information</span>
+            </div>
+            <div class="container content">
+                <h5>City: </h5>
+                <h5>Date of birth: </h5>
+                <h5>Phone number: @Model.Phone</h5>
+            </div>
         </div>
     </div>
+    <br />
     <div class="row">
         <div class="col-md-3 center">
-            <div>
-                <img class="avatar" src="~/Content/Images/default-avatar.png" />
+            <div class="container content header">
+                <a class="btn-link white"><span class="glyphicon glyphicon-user"></span> Friends</a>
             </div>
-            <div>
-                <span class="user_action"><a class="btn-link"><span class="glyphicon glyphicon-pencil"></span> Написать сообщение</a></span>
-                <br /><span class="user_action"><a class="btn-link"><span class="glyphicon glyphicon-plus"></span> Добавить в друзья</a></span>
+            <div class="container content">
+                <div class="row">
+                    <div class="col-md-1 center"><img src="~/Content/Images/default-avatar.png" class="avatar-small" /></div>
+                    <div class="col-md-9 center" style="padding-top:5%">very long name</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-1 center"><img src="~/Content/Images/default-avatar.png" class="avatar-small" /></div>
+                    <div class="col-md-9 center" style="padding-top:5%">very long name</div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-1 center"><img src="~/Content/Images/default-avatar.png" class="avatar-small" /></div>
+                    <div class="col-md-9 center" style="padding-top:5%">very long name</div>
+                </div>
             </div>
         </div>
-        <div class="col-md-5">
-            <h4>E-mail: @ViewBag.User.Email</h4>
-            <h4>Phone: @ViewBag.User.Phone</h4>
+        <div class="col-md-9">
+            <div class="container content header">Place for posts</div>
+            <div class="container content">
+                <div class="container header content">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img src="~/Content/Images/default-avatar.png" class="avatar-small" />
+                        </div>
+                        <div class="col-md-10">
+                            <div class="row">
+                                Name name
+                            </div>
+                            <div class="row">
+                                01/01/1901
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container content">
+                    Some content
+                </div>
+                <br />
+                <div class="container content">
+                    Post
+                </div>
+                <br />
+                <div class=" container content">
+                    Post
+                </div>
+            </div>
         </div>
     </div>
 </div>

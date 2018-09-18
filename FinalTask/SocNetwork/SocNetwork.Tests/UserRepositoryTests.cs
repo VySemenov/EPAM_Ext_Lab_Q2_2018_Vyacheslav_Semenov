@@ -92,7 +92,7 @@
             user.Surname = "Keks";
             user.Email = "email";
             user.Password = "supersecurepass";
-            user.UserRole = UserRole.User;
+            user.UserRoleId = UserRole.User;
 
             if (!repo.Save(user))
             {
@@ -122,7 +122,7 @@
             user.Surname = "Keks";
             user.Email = "email";
             user.Password = "supersecurepass";
-            user.UserRole = UserRole.User;
+            user.UserRoleId = UserRole.User;
 
             if (!repo.Save(user))
             {
@@ -148,7 +148,7 @@
             user.Surname = "Keks";
             user.Email = "email";
             user.Password = "supersecurepass";
-            user.UserRole = UserRole.User;
+            user.UserRoleId = UserRole.User;
 
             if (!repo.Save(user))
             {

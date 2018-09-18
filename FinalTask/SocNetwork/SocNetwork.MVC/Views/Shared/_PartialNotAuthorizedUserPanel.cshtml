@@ -2,11 +2,10 @@
     <table style="width:100%">
         <tr>
             <td style="width:50%">
-                <span class="user_action"><a class="btn-link white" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Войти</a></span>
-                <span class="user_action"><a class="btn-link white" data-toggle="modal" data-target="#registrationModal"><span class="glyphicon glyphicon-user"></span> Регистрация</a></span>
             </td>
             <td style="text-align:right; width:50%">
-                <span class="user_action"><a class="btn-link white">Забыли пароль?</a></span>
+                <span class="user_action"><a class="btn-link white" data-toggle="modal" data-target="#registrationModal"><span class="glyphicon glyphicon-user"></span> Registration</a></span>
+                <span class="user_action"><a class="btn-link white" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></span>
             </td>
         </tr>
     </table>
@@ -15,14 +14,14 @@
 <!-- LoginModal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content content-dark">
             <div class="modal-header">
-                <h5 class="modal-title">Login</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title text-light">Login</h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body center">
+            <div class="modal-body center text-light">
                 <form action="/Account/Logon" method="post">
                     <div class="form-group">
                         <input type="email" name="Email" class="form-control" placeholder="E-mail" />
@@ -32,14 +31,14 @@
                     </div>
                     <div class="form-group">
                         <div class="checkbox">
-                            <label class="lbl text-dark">
+                            <label class="lbl">
                                 <input type="checkbox" />Remember me
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn" value="Login" />
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#registrationModal">Don't have an account?</a>
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#registrationModal" data-dismiss="modal">Don't have an account?</a>
                     </div>
                     <div>
                         <a class="btn-link">Forgot password?</a>
@@ -56,10 +55,10 @@
 <!-- RegistrationModal -->
 <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content content-dark">
             <div class="modal-header">
-                <h5 class="modal-title">Registration</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title text-light">Registration</h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
