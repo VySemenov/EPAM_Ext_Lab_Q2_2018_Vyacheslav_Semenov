@@ -1,27 +1,27 @@
-﻿
+﻿@using SocNetwork.Resources;
 @{
     ViewBag.Title = "Create";
 }
 
 <div class="container content header">
-    <h2>Создание пользователя</h2>
+    <h2>@Captions.CreateUser</h2>
 </div>
 <div class="container content">
     <form action="/User/Create" method="post">
         <div class="form-group">
-            <input type="text" name="Firstname" class="form-control" placeholder="Firstname" />
+            <input type="text" name="Firstname" class="form-control" placeholder="@Captions.Firstname" />
         </div>
         <div class="form-group">
-            <input type="text" name="Lastname" class="form-control" placeholder="Lastname" />
+            <input type="text" name="Lastname" class="form-control" placeholder="@Captions.Lastname" />
         </div>
         <div class="form-group">
-            <input type="email" name="Email" class="form-control" placeholder="E-mail" />
+            <input type="email" name="Email" class="form-control" placeholder="@Captions.Email" />
         </div>
         <div class="form-group">
-            <input type="password" name="Password" class="form-control" placeholder="Password" />
+            <input type="password" name="Password" class="form-control" placeholder="@Captions.Password" />
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Create" />
+            <input type="submit" class="btn btn-primary" value="@Captions.Create" />
         </div>
     </form>
 </div>

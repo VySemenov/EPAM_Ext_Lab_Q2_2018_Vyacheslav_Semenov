@@ -1,4 +1,6 @@
 ﻿@using System.Threading;
+@using SocNetwork.Resources;
+
 @{
     ViewBag.Title = "Get";
 }
@@ -26,14 +28,14 @@
                     <img class="avatar" src="~/Content/Images/default-avatar.png" />
                 </div>
                 <div>
-                    <span class="user_action"><a class="btn-link"><span class="glyphicon glyphicon-pencil"></span> Write a message</a></span>
-                    <br /><span class="user_action"><a class="btn-link"><span class="glyphicon glyphicon-plus"></span> Add as Friend</a></span>
+                    <span class="user_action"><a class="btn-link"><span class="glyphicon glyphicon-pencil"></span> @Captions.WriteMsg</a></span>
+                    <br /><span class="user_action"><a class="btn-link"><span class="glyphicon glyphicon-plus"></span> @Captions.AddFriend</a></span>
                 </div>
             </div>
         </div>
         <div class="col-md-9">
             <div class="container content header">
-                <span>Information</span>
+                <span>@Captions.Information</span>
             </div>
             <div class="container content">
                 <h5>City: </h5>
@@ -46,7 +48,7 @@
     <div class="row">
         <div class="col-md-3 center">
             <div class="container content header">
-                <a class="btn-link white"><span class="glyphicon glyphicon-user"></span> Friends</a>
+                <a class="btn-link white"><span class="glyphicon glyphicon-user"></span> @Captions.Friends</a>
             </div>
             <div class="container content">
                 <div class="row">

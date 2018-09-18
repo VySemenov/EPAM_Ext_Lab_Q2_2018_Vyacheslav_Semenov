@@ -1,13 +1,13 @@
-﻿
+﻿@using SocNetwork.Resources;
 @{
     ViewBag.Title = "User management";
 }
 
 <div class="container content header">
-    <h2>User management</h2>
+    <h2>@Captions.User @Captions.Management</h2>
 </div>
 <div class="container content">
-    <a href="/users" class="btn-block"><span class="glyphicon glyphicon-user"></span> List of users</a>
-    <a href="/create-user" class="btn-block"><span class="glyphicon glyphicon-plus"></span> Create user</a>
+    <a href="/users" class="btn-block"><span class="glyphicon glyphicon-user"></span> @Captions.ListOfUsers</a>
+    <a href="/create-user" class="btn-block"><span class="glyphicon glyphicon-plus"></span> @Captions.CreateUser</a>
 </div>
 

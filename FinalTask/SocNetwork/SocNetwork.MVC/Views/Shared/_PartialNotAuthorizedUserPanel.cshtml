@@ -1,11 +1,13 @@
-﻿<div class="container content header">
+﻿@using SocNetwork.Resources;
+
+<div class="container content header">
     <table style="width:100%">
         <tr>
             <td style="width:50%">
             </td>
             <td style="text-align:right; width:50%">
-                <span class="user_action"><a class="btn-link white" data-toggle="modal" data-target="#registrationModal"><span class="glyphicon glyphicon-user"></span> Registration</a></span>
-                <span class="user_action"><a class="btn-link white" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></span>
+                <span class="user_action"><a class="btn-link white" data-toggle="modal" data-target="#registrationModal"><span class="glyphicon glyphicon-user"></span> @Captions.Registration</a></span>
+                <span class="user_action"><a class="btn-link white" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> @Captions.Login</a></span>
             </td>
         </tr>
     </table>
@@ -16,7 +18,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content content-dark">
             <div class="modal-header">
-                <h5 class="modal-title text-light">Login</h5>
+                <h5 class="modal-title text-light">@Captions.Login</h5>
                 <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -24,29 +26,29 @@
             <div class="modal-body center text-light">
                 <form action="/Account/Logon" method="post">
                     <div class="form-group">
-                        <input type="email" name="Email" class="form-control" placeholder="E-mail" />
+                        <input type="email" name="Email" class="form-control" placeholder="@Captions.Email" />
                     </div>
                     <div class="form-group">
-                        <input type="password" name="Password" class="form-control" placeholder="Password" />
+                        <input type="password" name="Password" class="form-control" placeholder="@Captions.Password" />
                     </div>
                     <div class="form-group">
                         <div class="checkbox">
                             <label class="lbl">
-                                <input type="checkbox" />Remember me
+                                <input type="checkbox" />@Captions.Remember
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn" value="Login" />
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#registrationModal" data-dismiss="modal">Don't have an account?</a>
+                        <input type="submit" class="btn" value="@Captions.Login" />
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#registrationModal" data-dismiss="modal">@Captions.DontHaveAcc</a>
                     </div>
                     <div>
-                        <a class="btn-link">Forgot password?</a>
+                        <a class="btn-link">@Captions.ForgotPass</a>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Captions.Close</button>
             </div>
         </div>
     </div>
@@ -57,7 +59,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content content-dark">
             <div class="modal-header">
-                <h5 class="modal-title text-light">Registration</h5>
+                <h5 class="modal-title text-light">@Captions.Registration</h5>
                 <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -65,24 +67,24 @@
             <div class="modal-body center">
                 <form action="/create-user" method="post">
                     <div class="form-group">
-                        <input type="text" name="Firstname" class="form-control" placeholder="Firstname" />
+                        <input type="text" name="Firstname" class="form-control" placeholder="@Captions.Firstname" />
                     </div>
                     <div class="form-group">
-                        <input type="text" name="Lastname" class="form-control" placeholder="Lastname" />
+                        <input type="text" name="Lastname" class="form-control" placeholder="@Captions.Lastname" />
                     </div>
                     <div class="form-group">
-                        <input type="email" name="Email" class="form-control" placeholder="E-mail" />
+                        <input type="email" name="Email" class="form-control" placeholder="@Captions.Email" />
                     </div>
                     <div class="form-group">
-                        <input type="password" name="Password" class="form-control" placeholder="Password" />
+                        <input type="password" name="Password" class="form-control" placeholder="@Captions.Password" />
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Registration" />
+                        <input type="submit" class="btn btn-primary" value="@Captions.Registration" />
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Captions.Close</button>
             </div>
         </div>
     </div>

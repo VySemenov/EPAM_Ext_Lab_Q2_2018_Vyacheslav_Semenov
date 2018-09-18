@@ -1,18 +1,17 @@
-﻿
+﻿@using SocNetwork.Resources;
 @{
     ViewBag.Title = "Roles";
 }
 
 <div class="container content header">
-    <h2>GetAll</h2>
+    <h2>@Captions.ListOfRoles</h2>
 </div>
 <div class="container content text-light">
     <div>
-        <h3>List of roles</h3>
         <table class="table">
             <tr>
-                <td>ID</td>
-                <td>Name</td>
+                <td>@Captions.Id</td>
+                <td>@Captions.Name</td>
             </tr>
             @foreach (var r in Model)
             {

@@ -1,16 +1,18 @@
-﻿<div class="navbar navbar-inverse navbar-fixed-top">
+﻿@using SocNetwork.Resources;
+
+<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <div class="navbar-brand">
-                <span>Admin panel</span>
+                <span>@Captions.AdminPanel</span>
             </div>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">Index</a></li>
+                <li><a href="/">@Captions.Index</a></li>
                 <li><a href="/user/1">Get/1</a></li>
-                <li><a href="/admin/users">User management</a></li>
-                <li><a href="/admin/roles">Role management</a></li>
+                <li><a href="/admin/users">@Captions.User @Captions.Management</a></li>
+                <li><a href="/admin/roles">@Captions.Role @Captions.Management</a></li>
             </ul>
         </div>
     </div>
