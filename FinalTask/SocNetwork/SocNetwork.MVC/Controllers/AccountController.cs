@@ -27,7 +27,7 @@
         [HttpPost]
         public ActionResult LogOn(LoginViewModel userAndPassword, string returnUrl)
         {
-            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString); //todo pn не корректно так создавать экзепляр репозитория. Он должен создаваться в конструкторе.
 
             if (!string.IsNullOrEmpty(userAndPassword.Email) && !string.IsNullOrEmpty(userAndPassword.Password))
             {

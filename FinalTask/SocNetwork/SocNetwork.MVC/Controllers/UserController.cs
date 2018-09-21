@@ -28,7 +28,7 @@
 
         public ActionResult Get(int id)
         {
-            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);//todo pn самого копипаст не смутил? я все же советую тебе конфиг создать в DAL проекте, а UI проект просто завязывать на сборку DAL.
 
             User user = repo.Get(id);
             if (user != null)
@@ -40,7 +40,7 @@
         }
 
         [Authorize]
-        public ActionResult GetAll(int num = 20)
+        public ActionResult GetAll(int num = 20)//todo pn в константы
         {
             int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
             if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
@@ -65,8 +65,8 @@
             int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
             if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
             {
-                return this.Redirect(string.Format("/user/{0}", uId));
-            }
+                return this.Redirect(string.Format("/user/{0}", uId));//todo pn RedirectToAction будет безопаснее, потому что не нужно думать о том, что линка может поменяться
+			}
 
             return this.View();
         }
@@ -102,8 +102,8 @@
 
         [HttpPost]
         [Authorize]
-        public ActionResult Create(FormCollection collection)
-        {
+        public ActionResult Create(FormCollection collection)//todo pn корректнее работать с сущностью пользователя или её ViewModel, чем с FormCollection (приведение к типам полей сущности будет происходить автоматически. Если нужна какая-то кастомизация, то просто пишешь наследника : DefaultModelBinder)
+		{
             int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
             if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
             {

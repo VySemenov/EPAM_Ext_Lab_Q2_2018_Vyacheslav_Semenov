@@ -9,7 +9,7 @@
     [TestClass]
     public class UserRepositoryTests
     {
-        private string connectionString = @"Data Source=BUG\EPAM_SQL17;Initial Catalog=SocNetwork;Integrated Security=True";
+        private string connectionString = @"Data Source=BUG\EPAM_SQL17;Initial Catalog=SocNetwork;Integrated Security=True";//todo pn в конфиг
 
         [TestMethod]
         public void GetAllNotNullTest()
@@ -92,7 +92,7 @@
             user.Surname = "Keks";
             user.Email = "email";
             user.Password = "supersecurepass";
-            user.UserRoleId = UserRole.User;
+            user.UserRoleId = UserRole.User;//todo pn не дает привести тип и пишет ошибку
 
             if (!repo.Save(user))
             {
@@ -122,9 +122,9 @@
             user.Surname = "Keks";
             user.Email = "email";
             user.Password = "supersecurepass";
-            user.UserRoleId = UserRole.User;
+            user.UserRoleId = UserRole.User;//todo pn не дает привести тип и пишет ошибку
 
-            if (!repo.Save(user))
+			if (!repo.Save(user))
             {
                 Assert.Fail();
             }
@@ -148,9 +148,9 @@
             user.Surname = "Keks";
             user.Email = "email";
             user.Password = "supersecurepass";
-            user.UserRoleId = UserRole.User;
+            user.UserRoleId = UserRole.User;//todo pn не дает привести тип и пишет ошибку
 
-            if (!repo.Save(user))
+			if (!repo.Save(user))
             {
                 Assert.Fail("Not saved");
             }
