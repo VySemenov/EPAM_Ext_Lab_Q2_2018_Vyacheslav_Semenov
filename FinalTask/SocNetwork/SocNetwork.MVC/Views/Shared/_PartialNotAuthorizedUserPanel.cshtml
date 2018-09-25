@@ -1,0 +1,92 @@
+﻿@using SocNetwork.Resources;
+
+<div class="container content header">
+    <table style="width:100%">
+        <tr>
+            <td style="width:50%">
+                <span class="user_action"><a href="/search" class="btn-link white"><span class="glyphicon glyphicon-search"></span> Search</a></span>
+            </td>
+            <td style="text-align:right; width:50%">
+                <span class="user_action"><a class="btn-link white" data-toggle="modal" data-target="#registrationModal"><span class="glyphicon glyphicon-user"></span> @Captions.Registration</a></span>
+                <span class="user_action"><a class="btn-link white" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> @Captions.Login</a></span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<!-- LoginModal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content content-dark">
+            <div class="modal-header">
+                <h5 class="modal-title text-light">@Captions.Login</h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body center text-light">
+                <form action="/Account/Logon" method="post">
+                    <div class="form-group">
+                        <input type="email" name="Email" class="form-control" placeholder="@Captions.Email" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="Password" class="form-control" placeholder="@Captions.Password" />
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label class="lbl">
+                                <input type="checkbox" />@Captions.Remember
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn" value="@Captions.Login" />
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#registrationModal" data-dismiss="modal">@Captions.DontHaveAcc</a>
+                    </div>
+                    <div>
+                        <a class="btn-link">@Captions.ForgotPass</a>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Captions.Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- RegistrationModal -->
+<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content content-dark">
+            <div class="modal-header">
+                <h5 class="modal-title text-light">@Captions.Registration</h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body center">
+                <form action="/create-user" method="post">
+                    <div class="form-group">
+                        <input type="text" name="Firstname" class="form-control" placeholder="@Captions.Firstname" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="Lastname" class="form-control" placeholder="@Captions.Lastname" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="Email" class="form-control" placeholder="@Captions.Email" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="Password" class="form-control" placeholder="@Captions.Password" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="@Captions.Registration" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Captions.Close</button>
+            </div>
+        </div>
+    </div>
+</div>
