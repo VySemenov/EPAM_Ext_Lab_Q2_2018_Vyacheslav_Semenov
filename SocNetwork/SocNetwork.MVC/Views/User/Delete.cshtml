@@ -1,0 +1,18 @@
+﻿@using SocNetwork.Resources;
+@{
+    ViewBag.Title = "Delete profile";
+}
+
+<div class="container content header">
+    <h2>@Captions.DeleteProfile</h2>
+</div>
+<div class="container content text-light">
+    <form action="/user/@Model/delete" method="post">
+        <div>
+            <h3>@Captions.ConfirmDeleting</h3>
+        </div>
+        <input type="text" name="ID" hidden value="@Model"/>
+        <input type="submit" class="btn btn-danger" value="@Captions.Delete" />
+    </form>
+</div>
+
