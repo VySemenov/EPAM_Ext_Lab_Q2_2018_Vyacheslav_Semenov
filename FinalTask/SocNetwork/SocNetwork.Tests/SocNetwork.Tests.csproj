@@ -48,6 +48,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RoleRepositoryTests.cs" />
+    <Compile Include="FriendsRepositoryTests.cs" />
+    <Compile Include="PostRepositoryTest.cs" />
     <Compile Include="UserRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

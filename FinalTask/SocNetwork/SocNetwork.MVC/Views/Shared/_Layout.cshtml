@@ -2,6 +2,8 @@
 @using System.Configuration;
 @using DAL.Repositories;
 @using DAL.Entities.Users;
+@using DAL.ConnectionStrings;
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,12 +13,16 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/autosize.js"></script>
 </head>
 <body>
     @{
         if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
         {
-            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+            UserRepository repo = new UserRepository(ConnectionString.GetConnectionString());
             User user = repo.Get(int.Parse(Thread.CurrentPrincipal.Identity.Name));
             if (user.UserRoleId == (int)UserRole.Admin)
             {
@@ -28,9 +34,5 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

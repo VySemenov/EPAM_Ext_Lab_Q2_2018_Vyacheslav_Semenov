@@ -8,19 +8,30 @@
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Security;
+    using DAL.ConnectionStrings;
     using DAL.Entities.Users;
     using DAL.Repositories;
+    using SocNetwork.Helpers;
     using SocNetwork.Models;
 
     public class UserController : Controller
     {
+        private readonly int fetchnum;
+        private UserRepository userRepository;
+
+        public UserController()
+        {
+            this.userRepository = new UserRepository(ConnectionString.GetConnectionString());
+            this.fetchnum = 20;
+        }
+
         [Authorize]
         public ActionResult Control()
         {
             int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
             if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
             {
-                return this.Redirect(string.Format("/user/{0}", uId));
+                return this.RedirectToRoute("User", new { id = uId });
             }
 
             return this.View();
@@ -28,35 +39,35 @@
 
         public ActionResult Get(int id)
         {
-            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
-            User user = repo.Get(id);
-            if (user != null)
+            if (ModelState.IsValid)
             {
-                return this.View(user);
+                User user = this.userRepository.Get(id);
+                if (user != null)
+                {
+                    return this.View(new GetUserViewModel(user));
+                }
             }
 
             return new HttpNotFoundResult();
         }
 
         [Authorize]
-        public ActionResult GetAll(int num = 20)
+        public ActionResult GetAll(int page = 1)
         {
             int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
             if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
             {
-                return this.Redirect(string.Format("/user/{0}", uId));
+                return this.RedirectToRoute("User", new { id = uId });
             }
 
-            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
-            List<User> users = repo.GetAll(num);
+            int offset = (page - 1) * this.fetchnum;
+            List<User> users = this.userRepository.GetOffset(offset, this.fetchnum);
             if (users != null)
             {
-                return this.View(users);
+                return this.View(new GetAllUsersViewModel(users, page));
             }
 
-            return this.View(new List<User>());
+            return this.View(new GetAllUsersViewModel(new List<User>(), page));
         }
 
         [Authorize]
@@ -65,74 +76,68 @@
             int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
             if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
             {
-                return this.Redirect(string.Format("/user/{0}", uId));
+                return this.RedirectToRoute("User", new { id = uId });
             }
 
-            return this.View();
-        }
-
-        [HttpPost]
-        public ActionResult Registration(FormCollection collection)
-        {
-            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
-            try
-            {
-                User user = new User();
-                user.Firstname = collection.Get("Firstname");
-                user.Surname = collection.Get("Lastname");
-                user.Password = collection.Get("Password");
-                user.Email = collection.Get("Email");
-                user.UserRoleId = (int)UserRole.User;
-
-                if (repo.Save(user))
-                {
-                    User up = repo.GetAll().Find(e => e.Email.Equals(user.Email));
-                    FormsAuthentication.SetAuthCookie(up.Id.ToString(), false);
-                    return this.Redirect(string.Format("/user/{0}", up.Id));
-                }
-
-                return this.View();
-            }
-            catch
-            {
-                return this.View();
-            }
+            return this.View(new CreateUserViewModel());
         }
 
         [HttpPost]
         [Authorize]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(User user)
         {
             int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
             if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
             {
-                return this.Redirect(string.Format("/user/{0}", uId));
+                return this.RedirectToRoute("User", new { id = uId });
             }
 
-            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
-            try
+            if (ModelState.IsValid)
             {
-                User user = new User();
-                user.Firstname = collection.Get("Firstname");
-                user.Surname = collection.Get("Lastname");
-                user.Password = collection.Get("Password");
-                user.Email = collection.Get("Email");
-                user.UserRoleId = (int)UserRole.User;
-
-                if (repo.Save(user))
+                try
                 {
-                    User up = repo.GetAll().Find(e => e.Email.Equals(user.Email));
-                    return this.Redirect(string.Format("/user/{0}", up.Id));
-                }
+                    if (this.userRepository.Save(user))
+                    {
+                        User up = this.userRepository.GetAll().Find(e => e.Email.Equals(user.Email));
+                        return this.RedirectToRoute("User", new { id = up.Id });
+                    }
 
-                return this.View();
+                    return this.RedirectToAction("Create");
+                }
+                catch
+                {
+                    return this.RedirectToAction("Create");
+                }
             }
-            catch
+
+            return this.RedirectToAction("Create");
+        }
+
+        [HttpPost]
+        public ActionResult Registration(User user)
+        {
+            if (ModelState.IsValid)
             {
-                return this.View();
+                try
+                {
+                    user.UserRoleId = (int)UserRole.User;
+
+                    if (this.userRepository.Save(user))
+                    {
+                        User up = this.userRepository.GetAll().Find(e => e.Email.Equals(user.Email));
+                        FormsAuthentication.SetAuthCookie(up.Id.ToString(), false);
+                        return this.RedirectToRoute("User", new { id = up.Id });
+                    }
+
+                    return this.View();
+                }
+                catch
+                {
+                    return this.View();
+                }
             }
+
+            return this.View();
         }
 
         [Authorize]
@@ -141,53 +146,49 @@
             int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
             if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
             {
-                return this.Redirect(string.Format("/user/{0}", uId));
+                return this.RedirectToRoute("User", new { id = uId });
             }
 
-            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
-            User user = repo.Get(id);
-            if (user != null)
+            if (ModelState.IsValid)
             {
-                return this.View(user);
+                User user = this.userRepository.Get(id);
+                if (user != null)
+                {
+                    return this.View(new EditUserViewModel(user));
+                }
             }
 
-            return this.View();
+            return this.RedirectToAction("Control");
         }
 
         [HttpPost]
         [Authorize]
-        public ActionResult Edit(FormCollection collection)
+        public ActionResult Edit(User user)
         {
             int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
             if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
             {
-                return this.Redirect(string.Format("/user/{0}", uId));
+                return this.RedirectToRoute("User", new { id = uId });
             }
 
-            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
-            try
+            if (ModelState.IsValid)
             {
-                int id;
-                int.TryParse(collection.Get("Id"), out id);
-                User user = new User(repo.Get(id));
-                user.Id = id;
-                user.Firstname = collection.Get("Firstname");
-                user.Surname = collection.Get("Lastname");
-                user.Email = collection.Get("Email");
-
-                if (repo.Save(user))
+                try
                 {
-                    return this.Redirect(string.Format("/user/{0}", id));
-                }
+                    if (this.userRepository.Save(user))
+                    {
+                        return this.RedirectToRoute("User", new { user.Id });
+                    }
 
-                return this.RedirectToAction("Index");
+                    return this.RedirectToRoute("User", new { user.Id });
+                }
+                catch
+                {
+                    return this.View();
+                }
             }
-            catch
-            {
-                return this.View();
-            }
+
+            return this.View();
         }
 
         [Authorize]
@@ -196,7 +197,7 @@
             int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
             if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
             {
-                return this.Redirect(string.Format("/user/{0}", uId));
+                return this.RedirectToRoute("User", new { id = uId });
             }
 
             return this.View(id);
@@ -204,32 +205,33 @@
 
         [HttpPost]
         [Authorize]
-        public ActionResult Delete(FormCollection collection)
+        public ActionResult Delete(DeleteUserViewModel model)
         {
             int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
             if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
             {
-                return this.Redirect(string.Format("/user/{0}", uId));
+                return this.RedirectToRoute("User", new { id = uId });
             }
 
-            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-            try
+            if (ModelState.IsValid)
             {
-                int id;
-                int.TryParse(collection.Get("ID"), out id);
-
-                User user = repo.Get(id);
-                if (user != null)
+                try
                 {
-                    repo.Delete(id);
-                }
+                    User user = this.userRepository.Get(model.Id);
+                    if (user != null)
+                    {
+                        this.userRepository.Delete(model.Id);
+                    }
 
-                return this.Redirect("/users");
+                    return this.RedirectToRoute("Users");
+                }
+                catch
+                {
+                    return this.RedirectToRoute("Users");
+                }
             }
-            catch
-            {
-                return this.Redirect("/users");
-            }
+
+            return this.RedirectToRoute("Users");
         }
     }
 }

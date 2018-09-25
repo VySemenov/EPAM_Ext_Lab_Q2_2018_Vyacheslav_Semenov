@@ -40,25 +40,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectionStrings\ConnectionString.cs" />
     <Compile Include="Entities\Attachments\Attachment.cs" />
     <Compile Include="Entities\Dialogs\Dialog.cs" />
     <Compile Include="Entities\Dialogs\Message.cs" />
+    <Compile Include="Entities\Friends\Friends.cs" />
+    <Compile Include="Entities\Friends\Relation.cs" />
     <Compile Include="Entities\Posts\Post.cs" />
     <Compile Include="Entities\Users\User.cs" />
     <Compile Include="Entities\Users\UserDetailInfo.cs" />
     <Compile Include="Entities\Users\UserRole.cs" />
+    <Compile Include="Helpers\DbCommandAddParamExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\FriendsRepository.cs" />
     <Compile Include="Repositories\IBaseRepository.cs" />
+    <Compile Include="Repositories\IPostRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
+    <Compile Include="Repositories\IUserDetailInfoRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\UserDetailInfoRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\IBaseService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

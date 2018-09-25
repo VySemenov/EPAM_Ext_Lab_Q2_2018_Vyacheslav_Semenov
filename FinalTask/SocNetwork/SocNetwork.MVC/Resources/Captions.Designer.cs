@@ -61,6 +61,15 @@ namespace SocNetwork.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Accept.
+        /// </summary>
+        public static string Accept {
+            get {
+                return ResourceManager.GetString("Accept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Actions.
         /// </summary>
         public static string Actions {
@@ -84,6 +93,33 @@ namespace SocNetwork.Resources {
         public static string AdminPanel {
             get {
                 return ResourceManager.GetString("AdminPanel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Back to User Management.
+        /// </summary>
+        public static string BackToUM {
+            get {
+                return ResourceManager.GetString("BackToUM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на City.
+        /// </summary>
+        public static string City {
+            get {
+                return ResourceManager.GetString("City", resourceCulture);
             }
         }
         
@@ -142,11 +178,38 @@ namespace SocNetwork.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Dismiss.
+        /// </summary>
+        public static string Dismiss {
+            get {
+                return ResourceManager.GetString("Dismiss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Date of birth.
+        /// </summary>
+        public static string DOB {
+            get {
+                return ResourceManager.GetString("DOB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Don&apos;t have an account?.
         /// </summary>
         public static string DontHaveAcc {
             get {
                 return ResourceManager.GetString("DontHaveAcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
         
@@ -205,6 +268,15 @@ namespace SocNetwork.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Incoming request.
+        /// </summary>
+        public static string IncomingRequest {
+            get {
+                return ResourceManager.GetString("IncomingRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Index.
         /// </summary>
         public static string Index {
@@ -223,11 +295,38 @@ namespace SocNetwork.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Interests.
+        /// </summary>
+        public static string Interests {
+            get {
+                return ResourceManager.GetString("Interests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Lastname.
         /// </summary>
         public static string Lastname {
             get {
                 return ResourceManager.GetString("Lastname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на List of Friends.
+        /// </summary>
+        public static string ListFriends {
+            get {
+                return ResourceManager.GetString("ListFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на List of incoming request.
+        /// </summary>
+        public static string ListIncRequest {
+            get {
+                return ResourceManager.GetString("ListIncRequest", resourceCulture);
             }
         }
         
@@ -246,6 +345,15 @@ namespace SocNetwork.Resources {
         public static string ListOfUsers {
             get {
                 return ResourceManager.GetString("ListOfUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на List of outgoing request.
+        /// </summary>
+        public static string ListOutRequest {
+            get {
+                return ResourceManager.GetString("ListOutRequest", resourceCulture);
             }
         }
         
@@ -286,6 +394,15 @@ namespace SocNetwork.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на My Friends.
+        /// </summary>
+        public static string MyFriends {
+            get {
+                return ResourceManager.GetString("MyFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на My page.
         /// </summary>
         public static string MyPage {
@@ -304,11 +421,47 @@ namespace SocNetwork.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Outgoing request.
+        /// </summary>
+        public static string OutgoingRequest {
+            get {
+                return ResourceManager.GetString("OutgoingRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Password.
         /// </summary>
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Phone.
+        /// </summary>
+        public static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Post.
+        /// </summary>
+        public static string Post {
+            get {
+                return ResourceManager.GetString("Post", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Posts.
+        /// </summary>
+        public static string Posts {
+            get {
+                return ResourceManager.GetString("Posts", resourceCulture);
             }
         }
         
@@ -327,6 +480,15 @@ namespace SocNetwork.Resources {
         public static string Remember {
             get {
                 return ResourceManager.GetString("Remember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Remove.
+        /// </summary>
+        public static string Remove {
+            get {
+                return ResourceManager.GetString("Remove", resourceCulture);
             }
         }
         

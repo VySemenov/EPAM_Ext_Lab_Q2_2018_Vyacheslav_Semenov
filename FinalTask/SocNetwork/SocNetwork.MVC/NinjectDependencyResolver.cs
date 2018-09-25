@@ -31,6 +31,11 @@
         {
             this.kernel.Bind<IUserService>().To<UserService>();
             this.kernel.Bind<IUserRepository>().To<UserRepository>();
+
+            this.kernel.Bind<IUserDetailInfoRepository>().To<UserDetailInfoRepository>();
+            this.kernel.Bind<IPostRepository>().To<PostRepository>();
+            this.kernel.Bind<IRoleRepository>().To<RoleRepository>();
+
         }
     }
 }

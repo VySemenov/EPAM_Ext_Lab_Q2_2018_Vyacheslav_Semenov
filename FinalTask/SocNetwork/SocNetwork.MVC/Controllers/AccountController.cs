@@ -8,17 +8,25 @@
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Security;
+    using DAL.ConnectionStrings;
     using DAL.Entities.Users;
     using DAL.Repositories;
     using SocNetwork.Models;
 
     public class AccountController : Controller
     {
+        private UserRepository userRepository;
+
+        public AccountController()
+        {
+            this.userRepository = new UserRepository(ConnectionString.GetConnectionString());
+        }
+
         public ActionResult LogOn()
         {
             if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
             {
-                return this.Redirect(string.Format("/user/{0}", Thread.CurrentPrincipal.Identity.Name));
+                return this.RedirectToRoute("User", new { id = int.Parse(Thread.CurrentPrincipal.Identity.Name) });
             }
 
             return this.View();
@@ -27,20 +35,34 @@
         [HttpPost]
         public ActionResult LogOn(LoginViewModel userAndPassword, string returnUrl)
         {
-            UserRepository repo = new UserRepository(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
-
             if (!string.IsNullOrEmpty(userAndPassword.Email) && !string.IsNullOrEmpty(userAndPassword.Password))
             {
-                User user = repo.GetAll().Find(e => e.Email.Equals(userAndPassword.Email));
+                User user = this.userRepository.GetAll().Find(e => e.Email.Equals(userAndPassword.Email));
                 if (user != null)
                 {
                     if (user.Password.Trim(' ').Equals(userAndPassword.Password))
                     {
-                        FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
+                        if (userAndPassword.RememberMe)
+                        {
+                            Response.Cookies.Clear();
+
+                            DateTime expiryDate = DateTime.Now.AddDays(30);
+                            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(2, user.Id.ToString(), DateTime.Now, expiryDate, false, string.Empty);
+                            string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+                            HttpCookie authenticationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                            authenticationCookie.Expires = ticket.Expiration;
+
+                            Response.Cookies.Add(authenticationCookie);
+
+                        }
+                        else
+                        {
+                            FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
+                        }
 
                         if (returnUrl == null || returnUrl.Equals(string.Empty))
                         {
-                            returnUrl = string.Format("/user/{0}", user.Id);
+                            return this.RedirectToRoute("User", new { id = user.Id });
                         }
 
                         return this.Redirect(returnUrl);

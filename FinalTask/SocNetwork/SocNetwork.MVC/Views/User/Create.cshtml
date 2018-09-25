@@ -6,19 +6,32 @@
 <div class="container content header">
     <h2>@Captions.CreateUser</h2>
 </div>
-<div class="container content">
-    <form action="/User/Create" method="post">
+<div class="container content text-light">
+    <form action="/create-user" method="post">
         <div class="form-group">
-            <input type="text" name="Firstname" class="form-control" placeholder="@Captions.Firstname" />
+            <label for="Firstname">@Captions.Firstname</label>
+            <input type="text" name="Firstname" class="form-control" placeholder="@Captions.Firstname" maxlength="20" required />
         </div>
         <div class="form-group">
-            <input type="text" name="Lastname" class="form-control" placeholder="@Captions.Lastname" />
+            <label for="Surname">@Captions.Lastname</label>
+            <input type="text" name="Surname" class="form-control" placeholder="@Captions.Lastname" maxlength="20" required />
         </div>
         <div class="form-group">
-            <input type="email" name="Email" class="form-control" placeholder="@Captions.Email" />
+            <label for="Email">@Captions.Email</label>
+            <input type="email" name="Email" class="form-control" placeholder="@Captions.Email" maxlength="20" required />
         </div>
         <div class="form-group">
-            <input type="password" name="Password" class="form-control" placeholder="@Captions.Password" />
+            <label for="Password">@Captions.Password</label>
+            <input type="password" name="Password" class="form-control" placeholder="@Captions.Password" maxlength="16" required />
+        </div>
+        <div class="form-group">
+            <label for="Select">@Captions.Role</label>
+            <select class="form-control" id="Select" name="UserRoleId">
+                @foreach(var r in Model.UserRoles)
+                {
+                    <option value="@((int)r)">@r</option>
+                }
+            </select>
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="@Captions.Create" />

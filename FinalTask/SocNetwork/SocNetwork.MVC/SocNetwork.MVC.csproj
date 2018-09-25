@@ -155,13 +155,31 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FriendController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserDetailInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DbCommandAddParamExtension.cs" />
+    <Compile Include="Helpers\PostListToPostWithAuthorList.cs" />
+    <Compile Include="Helpers\RelListToUserListExtension.cs" />
+    <Compile Include="Models\CreatePostViewModel.cs" />
+    <Compile Include="Models\CreateUserViewModel.cs" />
+    <Compile Include="Models\DeleteUserViewModel.cs" />
+    <Compile Include="Models\EditDetailInfoViewModel.cs" />
+    <Compile Include="Models\EditPostViewModel.cs" />
+    <Compile Include="Models\EditUserViewModel.cs" />
+    <Compile Include="Models\FriendsViewModel.cs" />
+    <Compile Include="Models\GetAllUsersViewModel.cs" />
+    <Compile Include="Models\GetUserViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
-    <Compile Include="Models\RoleAuth.cs" />
+    <Compile Include="Helpers\RoleAuth.cs" />
+    <Compile Include="Models\PostWithAuthor.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="NinjectDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Captions.Designer.cs">
@@ -179,6 +197,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\autosize.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -202,7 +221,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -218,9 +239,18 @@
     <Content Include="Views\Shared\_PartialAuthorizedUserPanel.cshtml" />
     <Content Include="Views\Shared\_PartialNotAuthorizedUserPanel.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Friend\Get.cshtml" />
+    <Content Include="Views\Friend\Index.cshtml" />
+    <Content Include="Views\Friend\GetIncomingRequest.cshtml" />
+    <Content Include="Views\Friend\GetOutgoingRequest.cshtml" />
+    <Content Include="Views\UserDetailInfo\Edit.cshtml" />
+    <Content Include="Views\Shared\_PartialUserActions.cshtml" />
+    <Content Include="Views\Friend\_PartialFriendsMenu.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Post\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

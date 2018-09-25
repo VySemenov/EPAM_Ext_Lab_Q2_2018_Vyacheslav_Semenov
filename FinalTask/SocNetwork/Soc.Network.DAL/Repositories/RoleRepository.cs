@@ -9,6 +9,7 @@
     using System.Text;
     using System.Threading.Tasks;
     using DAL.Entities.Users;
+    using DAL.Helpers;
 
     public class RoleRepository : IRoleRepository
     {
@@ -32,7 +33,9 @@
 
                 IDbCommand command = connection.CreateCommand();
 
-                command.CommandText = string.Format("SELECT * FROM dbo.M_USERROLE WHERE UID = {0}", id);
+                command.CommandText = "SELECT * FROM dbo.M_USERROLE " +
+                                      "WHERE RID = @RID";
+                command.AddParameter("@RID", id);
 
                 using (IDataReader reader = command.ExecuteReader())
                 {
@@ -90,12 +93,11 @@
 
                 if (this.Get((int)entity) != UserRole.None)
                 {
-                    command.CommandText = string.Format("UPDATE dbo.M_USERROLE SET " +
-                    "RID = '{0}', " +
-                    "ROLE_NAME = '{1}' " +
-                    "WHERE RID = '{2}'",
-                    (int)entity,
-                    entity.ToString());
+                    command.CommandText = "UPDATE dbo.M_USERROLE SET " +
+                                            "RID = @RID, ROLE_NAME = @ROLE " +
+                                          "WHERE RID = @RID";
+                    command.AddParameter("@RID", (int)entity);
+                    command.AddParameter("@ROLE", entity.ToString());
 
                     var result = command.ExecuteNonQuery();
 
@@ -110,12 +112,11 @@
                 }
                 else
                 {
-                    command.CommandText = string.Format("INSERT INTO dbo.M_USERROLE" +
-                    "(RID, " +
-                    "ROLE_NAME " +
-                    "VALUES ('{0}', '{1}')",
-                    (int)entity,
-                    entity.ToString());
+                    command.CommandText = "INSERT INTO dbo.M_USERROLE" +
+                                            "(RID, ROLE_NAME) " +
+                                          "VALUES (@RID, @ROLE)";
+                    command.AddParameter("@RID", (int)entity);
+                    command.AddParameter("@ROLE", entity.ToString());
 
                     var result = command.ExecuteNonQuery();
 
@@ -144,7 +145,9 @@
 
                 if (this.Get(id) != UserRole.None)
                 {
-                    command.CommandText = string.Format("DELETE FROM dbo.M_USERROLE WHERE RID = '{0}'", id);
+                    command.CommandText = "DELETE FROM dbo.M_USERROLE " +
+                                          "WHERE RID = @RID";
+                    command.AddParameter("@RID", id);
 
                     var result = command.ExecuteNonQuery();
 

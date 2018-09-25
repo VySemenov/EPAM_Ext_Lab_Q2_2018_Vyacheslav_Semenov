@@ -1,0 +1,73 @@
+﻿@using System.Threading;
+@using SocNetwork.Resources;
+@using DAL.Entities.Friends;
+
+@{
+    ViewBag.Title = "Get";
+}
+
+@{
+    if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
+    {
+        @Html.Partial("_PartialAuthorizedUserPanel");
+    }
+    else
+    {
+        @Html.Partial("_PartialNotAuthorizedUserPanel");
+    }
+}
+<div class="container content text-light">
+
+    <div class="row">
+        <div class="col-md-3 center">
+            <div class="container content header">
+                <span class="center">
+                    @Model.User.Firstname @Model.User.Surname
+                </span>
+            </div>
+            <div class="container content">
+                <div>
+                    <img class="avatar" src="~/Content/Images/default-avatar.png" />
+                </div>
+                <div>
+                    @if (Thread.CurrentPrincipal.Identity.IsAuthenticated && int.Parse(Thread.CurrentPrincipal.Identity.Name) != Model.User.Id)
+                    {
+                        @Html.Partial("_PartialUserActions");
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="container content header">
+                <span>@Captions.Friends of @Model.User.Firstname @Model.User.Surname</span>
+            </div>
+            <div class="container content">
+                <table>
+                    @foreach (var f in Model.Friends)
+                    {
+                        <tr>
+                            <td style="width:5%;"><a href="/user/@f.Id"><img src="~/Content/Images/default-avatar.png" class="avatar-small" /></a></td>
+                            <td style="width:25%; text-align:left;"><a href="/user/@f.Id">@f.Firstname @f.Surname</a></td>
+                            <td style="text-align:right; width:50%;">
+                            @if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
+                            { 
+                                int id = int.Parse(Thread.CurrentPrincipal.Identity.Name);
+                                if (!((List<Friends>)f.Friends).Exists(p => p.UserId == id || p.FriendId == id) && f.Id != id)
+                                {
+                                    <a href="/user/@f.Id/add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> @Captions.AddFriend</a>
+                                }
+                                else
+                                if (f.Id != id)
+                                {
+                                    <a href="/user/@f.Id/dismiss" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> @Captions.Remove</a>
+                                }
+                                <a href="#" class="btn btn-primary">@Captions.WriteMsg</a>
+                            }
+                        </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

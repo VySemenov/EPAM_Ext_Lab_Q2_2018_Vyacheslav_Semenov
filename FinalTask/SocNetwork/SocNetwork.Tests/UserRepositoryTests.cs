@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using DAL.ConnectionStrings;
     using DAL.Entities.Users;
     using DAL.Repositories;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,7 +10,7 @@
     [TestClass]
     public class UserRepositoryTests
     {
-        private string connectionString = @"Data Source=BUG\EPAM_SQL17;Initial Catalog=SocNetwork;Integrated Security=True";
+        private string connectionString = ConnectionString.GetConnectionString();
 
         [TestMethod]
         public void GetAllNotNullTest()
@@ -92,7 +93,7 @@
             user.Surname = "Keks";
             user.Email = "email";
             user.Password = "supersecurepass";
-            user.UserRoleId = UserRole.User;
+            user.UserRoleId = (int)UserRole.User;
 
             if (!repo.Save(user))
             {
@@ -122,7 +123,7 @@
             user.Surname = "Keks";
             user.Email = "email";
             user.Password = "supersecurepass";
-            user.UserRoleId = UserRole.User;
+            user.UserRoleId = (int)UserRole.User;
 
             if (!repo.Save(user))
             {
@@ -148,7 +149,7 @@
             user.Surname = "Keks";
             user.Email = "email";
             user.Password = "supersecurepass";
-            user.UserRoleId = UserRole.User;
+            user.UserRoleId = (int)UserRole.User;
 
             if (!repo.Save(user))
             {
@@ -160,7 +161,9 @@
                 Assert.Fail("Not equal");
             }
 
-            repo.Delete(uniqueId);
+            User u = repo.GetAll().Find(e => e.Email.Equals(user.Email));
+
+            repo.Delete(u.Id);
         }
     }
 }
