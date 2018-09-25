@@ -1,9 +1,0 @@
-﻿@using System.Threading;
-@using SocNetwork.Resources;
-@using DAL.Entities.Friends;
-
-<span class="user_action"><a class="btn-link"><span class="glyphicon glyphicon-pencil"></span> @Captions.WriteMsg</a></span>
-@if (!((List<Friends>)Model.User.Friends).Exists(u => u.UserId == int.Parse(Thread.CurrentPrincipal.Identity.Name) || u.FriendId == int.Parse(Thread.CurrentPrincipal.Identity.Name)))
-{
-    <br /><span class="user_action"><a href="/user/@Model.User.Id/add" class="btn-link"><span class="glyphicon glyphicon-plus"></span> @Captions.AddFriend</a></span>
-}

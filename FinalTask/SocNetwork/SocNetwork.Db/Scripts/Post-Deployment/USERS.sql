@@ -1,3 +1,0 @@
-﻿INSERT [dbo].[M_USERS] ([UID], [FIRSTNAME], [LASTNAME], [EMAIL], [PASSWORD], [ROLEID]) VALUES (1, N'Kek1', N'Keks1', N'kek1@kek.ru', N'kekeke1', N'1')
-INSERT [dbo].[M_USERS] ([UID], [FIRSTNAME], [LASTNAME], [EMAIL], [PASSWORD], [ROLEID]) VALUES (2, N'Kek2', N'Keks2', N'kek2@kek.ru', N'kekeke2', N'2')
-INSERT [dbo].[M_USERS] ([UID], [FIRSTNAME], [LASTNAME], [EMAIL], [PASSWORD], [ROLEID]) VALUES (3, N'Kek3', N'Keks3', N'kek3@kek.ru', N'kekeke3', N'3')
