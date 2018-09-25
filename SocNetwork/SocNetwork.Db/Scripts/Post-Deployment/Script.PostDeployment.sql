@@ -9,6 +9,8 @@
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+DELETE FROM [dbo].[M_POSTS]
+DELETE FROM [dbo].[M_USERDETAILINFO]
 DELETE FROM [dbo].[M_USERS]
 DELETE FROM [dbo].[M_USERROLE]
 

@@ -66,6 +66,9 @@
   <ItemGroup>
     <Build Include="SocNetwork\Tables\M_USERS.sql" />
     <Build Include="SocNetwork\Tables\M_USERROLE.sql" />
+    <Build Include="SocNetwork\Tables\M_FRIENDS.sql" />
+    <Build Include="SocNetwork\Tables\M_USERDETAILINFO.sql" />
+    <Build Include="SocNetwork\Tables\M_POSTS.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Post-Deployment\Script.PostDeployment.sql" />
