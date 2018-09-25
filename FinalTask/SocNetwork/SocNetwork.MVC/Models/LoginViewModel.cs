@@ -7,7 +7,7 @@
 
     public class LoginViewModel
     {
-        public string Email { get; set; }
+        public string Email { get; set; }//todo pn сюда бы регулярку с проверкой почты
 
         public string Password { get; set; }
 

@@ -125,7 +125,7 @@
             user.Password = "supersecurepass";
             user.UserRoleId = (int)UserRole.User;
 
-            if (!repo.Save(user))
+			if (!repo.Save(user))
             {
                 Assert.Fail();
             }
@@ -151,7 +151,7 @@
             user.Password = "supersecurepass";
             user.UserRoleId = (int)UserRole.User;
 
-            if (!repo.Save(user))
+			if (!repo.Save(user))
             {
                 Assert.Fail("Not saved");
             }
