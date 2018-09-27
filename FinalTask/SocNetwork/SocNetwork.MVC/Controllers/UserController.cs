@@ -224,6 +224,14 @@
             {
                 try
                 {
+                    string errorMsg;
+                    User u = this.userRepository.GetAll().Find(e => e.Email.Equals(user.Email));
+                    if (u != null && u.Id != user.Id)
+                    {
+                        errorMsg = Captions.EmailInUse;
+                        return this.View(new EditUserViewModel(user, errorMsg));
+                    }
+
                     if (this.userRepository.Save(user))
                     {
                         return this.RedirectToRoute("User", new { user.Id });

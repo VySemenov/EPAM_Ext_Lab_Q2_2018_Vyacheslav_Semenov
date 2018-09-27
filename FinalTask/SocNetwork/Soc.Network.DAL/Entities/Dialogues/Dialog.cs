@@ -35,9 +35,9 @@
         public override int GetHashCode()
         {
             var hashCode = 111572479;
-            hashCode = hashCode * -1521134295 + this.Id.GetHashCode();
-            hashCode = hashCode * -1521134295 + this.UserId.GetHashCode();
-            hashCode = hashCode * -1521134295 + this.InterlocutorId.GetHashCode();
+            hashCode = (hashCode * -1521134295) + this.Id.GetHashCode();
+            hashCode = (hashCode * -1521134295) + this.UserId.GetHashCode();
+            hashCode = (hashCode * -1521134295) + this.InterlocutorId.GetHashCode();
             return hashCode;
         }
     }

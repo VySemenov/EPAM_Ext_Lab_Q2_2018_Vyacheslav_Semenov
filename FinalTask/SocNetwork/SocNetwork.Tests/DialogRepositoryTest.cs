@@ -20,7 +20,7 @@
         [TestMethod]
         public void GetAllNotNullTest()
         {
-            IDialogRepository repo = new DialogRepository(connectionString, connectionDbType);
+            IDialogRepository repo = new DialogRepository(this.connectionString, this.connectionDbType);
             List<Dialog> dialogues = repo.GetAll();
             if (dialogues == null)
             {
@@ -31,7 +31,7 @@
         [TestMethod]
         public void GetAllNotEmptyest()
         {
-            IDialogRepository repo = new DialogRepository(connectionString, connectionDbType);
+            IDialogRepository repo = new DialogRepository(this.connectionString, this.connectionDbType);
             repo.Save(new Dialog() { UserId = 0, InterlocutorId = 0 });
             List<Dialog> dialogues = repo.GetAll();
             if (dialogues.Count < 1)
@@ -46,7 +46,7 @@
         [TestMethod]
         public void GetNotNullTest()
         {
-            IDialogRepository repo = new DialogRepository(connectionString, connectionDbType);
+            IDialogRepository repo = new DialogRepository(this.connectionString, this.connectionDbType);
             repo.Save(new Dialog() { UserId = 0, InterlocutorId = 0 });
 
             Dialog dialog = repo.Get(0, 0);
@@ -61,7 +61,7 @@
         [TestMethod]
         public void SaveEqualsTest()
         {
-            IDialogRepository repo = new DialogRepository(connectionString, connectionDbType);
+            IDialogRepository repo = new DialogRepository(this.connectionString, this.connectionDbType);
             repo.Save(new Dialog() { UserId = 0, InterlocutorId = 0 });
 
             Dialog dialog = repo.Get(0, 0);
@@ -76,7 +76,7 @@
         [TestMethod]
         public void DeleteTest()
         {
-            IDialogRepository repo = new DialogRepository(connectionString, connectionDbType);
+            IDialogRepository repo = new DialogRepository(this.connectionString, this.connectionDbType);
             repo.Save(new Dialog() { UserId = 0, InterlocutorId = 0 });
 
             Dialog dialog = repo.Get(0, 0);

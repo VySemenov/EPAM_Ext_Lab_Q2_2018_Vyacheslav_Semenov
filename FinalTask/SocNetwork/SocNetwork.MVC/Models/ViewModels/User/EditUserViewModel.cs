@@ -8,9 +8,10 @@
 
     public class EditUserViewModel
     {
-        public EditUserViewModel(User user)
+        public EditUserViewModel(User user, string error = "")
         {
             this.User = user;
+            this.ErrorMessage = error;
             this.UserRoles = new List<UserRole>();
             foreach (UserRole r in Enum.GetValues(typeof(UserRole)))
             {
@@ -24,5 +25,7 @@
         public User User { get; set; }
 
         public List<UserRole> UserRoles { get; set; }
+
+        public string ErrorMessage { get; set; }
     }
 }

@@ -20,7 +20,7 @@
         [TestMethod]
         public void GetAllNotNullTest()
         {
-            IUserDetailInfoRepository repo = new UserDetailInfoRepository(connectionString, connectionDbType);
+            IUserDetailInfoRepository repo = new UserDetailInfoRepository(this.connectionString, this.connectionDbType);
             List<UserDetailInfo> infos = repo.GetAll();
             if (infos == null)
             {

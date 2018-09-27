@@ -20,7 +20,7 @@
         [TestMethod]
         public void GetAllNotNullTest()
         {
-            IMessageRepository repo = new MessageRepository(connectionString, connectionDbType);
+            IMessageRepository repo = new MessageRepository(this.connectionString, this.connectionDbType);
             List<Message> messages = repo.GetAll();
             if (messages == null)
             {
