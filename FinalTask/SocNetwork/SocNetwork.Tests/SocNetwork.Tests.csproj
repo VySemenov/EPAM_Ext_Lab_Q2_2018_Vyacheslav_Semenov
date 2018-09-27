@@ -50,7 +50,10 @@
   <ItemGroup>
     <Compile Include="RoleRepositoryTests.cs" />
     <Compile Include="FriendsRepositoryTests.cs" />
-    <Compile Include="PostRepositoryTest.cs" />
+    <Compile Include="PostRepositoryTests.cs" />
+    <Compile Include="DialogRepositoryTest.cs" />
+    <Compile Include="MessageRepositoryTests.cs" />
+    <Compile Include="UserDetailInfoRepositoryTests.cs" />
     <Compile Include="UserRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

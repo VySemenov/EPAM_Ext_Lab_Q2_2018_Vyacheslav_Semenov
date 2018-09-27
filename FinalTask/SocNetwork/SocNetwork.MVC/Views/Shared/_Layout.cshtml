@@ -1,10 +1,4 @@
-﻿@using System.Threading;
-@using System.Configuration;
-@using DAL.Repositories;
-@using DAL.Entities.Users;
-@using DAL.ConnectionStrings;
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,18 +13,6 @@
     <script src="~/Scripts/autosize.js"></script>
 </head>
 <body>
-    @{
-        if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
-        {
-            UserRepository repo = new UserRepository(ConnectionString.GetConnectionString());
-            User user = repo.Get(int.Parse(Thread.CurrentPrincipal.Identity.Name));
-            if (user.UserRoleId == (int)UserRole.Admin)
-            {
-                @Html.Partial("_PartialAdminPanel");
-            }
-        }
-    }
-
     <div class="container body-content">
         @RenderBody()
     </div>

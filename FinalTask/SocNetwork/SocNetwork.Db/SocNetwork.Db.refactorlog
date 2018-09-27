@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="d5208212-b375-405e-ab74-43f535d8f0c4" ChangeDateTime="09/26/2018 17:07:49">
+    <Property Name="ElementName" Value="[dbo].[M_MESSAGES].[DIALOGUE_ID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[M_MESSAGES]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DIALOG_ID" />
+  </Operation>
+</Operations>

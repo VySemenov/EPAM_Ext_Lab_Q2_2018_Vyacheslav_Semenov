@@ -11,11 +11,12 @@
     public class RoleRepositoryTests
     {
         private string connectionString = ConnectionString.GetConnectionString();
+        private string connectionDbType = ConnectionString.GetConnectionDbType();
 
         [TestMethod]
         public void GetAllNotNullTest()
         {
-            RoleRepository roleRepository = new RoleRepository(this.connectionString);
+            RoleRepository roleRepository = new RoleRepository(this.connectionString, this.connectionDbType);
             List<UserRole> roles = roleRepository.GetAll();
             if (roles == null)
             {
@@ -26,7 +27,7 @@
         [TestMethod]
         public void GetNotNullTest()
         {
-            RoleRepository roleRepository = new RoleRepository(this.connectionString);
+            RoleRepository roleRepository = new RoleRepository(this.connectionString, this.connectionDbType);
             UserRole role = roleRepository.Get((int)UserRole.Admin);
             if (role == UserRole.None || role != UserRole.Admin)
             {

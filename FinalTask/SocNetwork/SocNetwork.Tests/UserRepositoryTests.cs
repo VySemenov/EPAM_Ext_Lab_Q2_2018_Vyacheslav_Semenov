@@ -5,17 +5,19 @@
     using DAL.ConnectionStrings;
     using DAL.Entities.Users;
     using DAL.Repositories;
+    using DAL.Repositories.Abstract;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class UserRepositoryTests
     {
         private string connectionString = ConnectionString.GetConnectionString();
+        private string connectionDbType = ConnectionString.GetConnectionDbType();
 
         [TestMethod]
         public void GetAllNotNullTest()
         {
-            UserRepository repo = new UserRepository(this.connectionString);
+            IUserRepository repo = new UserRepository(this.connectionString, this.connectionDbType);
             List<User> users = repo.GetAll();
             if (users.Count == 0)
             {
@@ -31,7 +33,7 @@
         [TestMethod]
         public void GetNotNullTest()
         {
-            UserRepository repo = new UserRepository(this.connectionString);
+            IUserRepository repo = new UserRepository(this.connectionString, this.connectionDbType);
             User user = repo.Get(1);
             if (user == null)
             {
@@ -45,7 +47,7 @@
         public void GetAllUsersTest()
         {
             int num = 2;
-            UserRepository repo = new UserRepository(this.connectionString);
+            IUserRepository repo = new UserRepository(this.connectionString, this.connectionDbType);
             List<User> users = repo.GetAll(num);
             if (users.Count != num)
             {
@@ -61,7 +63,7 @@
         [TestMethod]
         public void GetNullTest()
         {
-            UserRepository repo = new UserRepository(this.connectionString);
+            IUserRepository repo = new UserRepository(this.connectionString, this.connectionDbType);
             int nonExistId = 999;
 
             User user = repo.Get(nonExistId);
@@ -74,7 +76,7 @@
         [TestMethod]
         public void DeleteNonExistTest()
         {
-            IUserRepository repo = new UserRepository(this.connectionString);
+            IUserRepository repo = new UserRepository(this.connectionString, this.connectionDbType);
             int nonExistId = 999;
             
             if (repo.Delete(nonExistId))
@@ -86,7 +88,7 @@
         [TestMethod]
         public void DeleteTest()
         {
-            IUserRepository repo = new UserRepository(this.connectionString);
+            IUserRepository repo = new UserRepository(this.connectionString, this.connectionDbType);
 
             User user = new User();
             user.Firstname = "Kek";
@@ -116,7 +118,7 @@
         [TestMethod]
         public void SaveTest()
         {
-            IUserRepository repo = new UserRepository(this.connectionString);
+            IUserRepository repo = new UserRepository(this.connectionString, this.connectionDbType);
 
             User user = new User();
             user.Firstname = "Kek";
@@ -138,7 +140,7 @@
         [TestMethod]
         public void SaveEqualTest()
         {
-            IUserRepository repo = new UserRepository(this.connectionString);
+            IUserRepository repo = new UserRepository(this.connectionString, this.connectionDbType);
 
             int uniqueId = 123;
             repo.Delete(uniqueId);

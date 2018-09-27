@@ -11,18 +11,20 @@
     using DAL.Entities.Friends;
     using DAL.Entities.Users;
     using DAL.Repositories;
+    using DAL.Repositories.Abstract;
     using SocNetwork.Helpers;
     using SocNetwork.Models;
+    using SocNetwork.Models.ViewModels.Friends;
 
     public class FriendController : Controller
     {
-        private FriendsRepository friendsRepository;
-        private UserRepository userRepository;
+        private IFriendsRepository friendsRepository;
+        private IUserRepository userRepository;
         
-        public FriendController()
+        public FriendController(IFriendsRepository frepo, IUserRepository urepo)
         {
-            this.friendsRepository = new FriendsRepository(ConnectionString.GetConnectionString());
-            this.userRepository = new UserRepository(ConnectionString.GetConnectionString());
+            this.friendsRepository = frepo;
+            this.userRepository = urepo;
         }
 
         [Authorize]

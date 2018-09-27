@@ -2,11 +2,9 @@
 @using SocNetwork.Resources;
 @using SocNetwork.Helpers;
 @using DAL.Entities.Users;
-
 @{
     ViewBag.Title = "Get";
 }
-
 @{
     if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
     {
@@ -17,7 +15,6 @@
         @Html.Partial("_PartialNotAuthorizedUserPanel");
     }
 }
-
 <div class="container content text-light">
     <div class="row">
         <div class="col-md-3 center">
@@ -27,8 +24,8 @@
                 </span>
             </div>
             <div class="container content">
-                <div>
-                    <img class="avatar" src="~/Content/Images/default-avatar.png" />
+                <div class="img-circle avatar-block">
+                    <img class="avatar" src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@Model.User.DetailInfo.Avatar" />
                 </div>
                 <div>
                     @if (Thread.CurrentPrincipal.Identity.IsAuthenticated && int.Parse(Thread.CurrentPrincipal.Identity.Name) != Model.User.Id)
@@ -57,13 +54,13 @@
             </div>
             <div class="container content">
                 <table>
-                    @{ 
+                    @{
                         int i = 0;
                         foreach (var f in Model.Friends)
                         {
                             i++;
                             <tr>
-                                <td><a href="/user/@f.Id"><img src="~/Content/Images/default-avatar.png" class="avatar-small" /></a></td>
+                                <td><div class="avatar-small-block img-circle"><a href="/user/@f.Id"><img src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@f.DetailInfo.Avatar" class="avatar-small" /></a></div></td>
                                 <td width="100%" align="left"><a href="/user/@f.Id">@f.Firstname @f.Surname</a></td>
                             </tr>
                             if (i == 3)
@@ -79,36 +76,42 @@
             <div class="container content header">
                 <span>@Captions.Posts</span>
             </div>
+            @if(Thread.CurrentPrincipal.Identity.IsAuthenticated)
+            {
             <div class="container content">
                 <form action="/create-post" method="post">
                     <input type="hidden" name="PageId" value="@Model.User.Id" />
                     <table>
                         <tr>
                             <td>
-                                <img src="~/Content/Images/default-avatar.png" class="avatar-small" />
+                                <div class="avatar-small-block img-circle">
+                                    <img src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@Model.CurrentUser.DetailInfo.Avatar" class="avatar-small" />
+                                </div>
                             </td>
                             <td width="100%">
-                                <textarea class="form-control" id="textarea" name="Text" style="min-width: 100%" maxlength="800" required></textarea>
+                                <textarea class="form-control" id="textarea" name="Text" wrap="hard" cols="60" style="min-width: 100%" maxlength="800" required></textarea>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td width="100%" align="right">
+                                <div class="text-danger">@Model.ErrorMessage</div>
                                 <input type="submit" class=" btn btn-primary" value="@Captions.Post" />
                             </td>
                         </tr>
                     </table>
                 </form>
             </div>
-            <div class="container content">
+            }
+            <div class="container content pre-scrollable">
                 @foreach (var p in Model.Posts)
                 {
                     <div class="container header content">
                         <table style="width:100%">
                             <tr>
-                                <td> <a href="/user/@p.Post.AuthorId"><img src="~/Content/Images/default-avatar.png" class="avatar-small" /></a></td>
+                                <td><div class="avatar-small-block img-circle"><a href="/user/@p.Post.AuthorId"><img src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@p.User.DetailInfo.Avatar" class="avatar-small" /></a></div></td>
                                 <td width="50%">
-                                    <a href="/user/@p.Post.AuthorId">@p.Firstname @p.Lastname</a>
+                                    <a href="/user/@p.Post.AuthorId">@p.User.Firstname @p.User.Surname</a>
                                     <br />
                                     <span><small>@p.Post.PublicationDate.ToString()</small></span>
                                 </td>
@@ -116,7 +119,19 @@
                                     @if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
                                     {
                                         int id = int.Parse(Thread.CurrentPrincipal.Identity.Name);
-                                        if (id == Model.User.Id || id == p.Post.AuthorId)
+                                        if (id == Model.User.Id)
+                                        {
+                                            <small>
+                                                @if(id == p.Post.AuthorId)
+                                                {
+                                                    <a data-toggle="modal" data-target="#editPostModal" id="@p.Post.Id" class="btn-link"><span class="glyphicon glyphicon-pencil"></span> @Captions.Edit</a>
+                                                    <span> | </span>
+                                                }
+                                                <a href="/post/@p.Post.Id/delete" class="btn-link"><span class="glyphicon glyphicon-remove"></span> @Captions.Delete</a>
+                                            </small>
+                                        }
+                                        else
+                                        if (id == p.Post.AuthorId)
                                         {
                                             <small>
                                                 <a data-toggle="modal" data-target="#editPostModal" id="@p.Post.Id" class="btn-link"><span class="glyphicon glyphicon-pencil"></span> @Captions.Edit</a>
@@ -138,7 +153,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="container content" id="@string.Format("text{0}", p.Post.Id)">
+                    <div class="container content" id="@string.Format("text{0}", p.Post.Id)" style="word-wrap: break-word;">
                         @Html.Raw(p.Post.Text.Replace("\n", "<br/>"))
                     </div>
                     <br />
@@ -147,13 +162,12 @@
         </div>
     </div>
 </div>
-
 <!-- EditPostModal -->
 <div class="modal fade" id="editPostModal" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content content-dark">
             <div class="modal-header">
-                <h5 class="modal-title text-light">New post</h5>
+                <h5 class="modal-title text-light">@Captions.Edit</h5>
                 <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -176,6 +190,7 @@
         </div>
     </div>
 </div>
+<!--End EditModal-->
 
 <script type="text/javascript">
     $('[data-target="#editPostModal"]').click(function () {

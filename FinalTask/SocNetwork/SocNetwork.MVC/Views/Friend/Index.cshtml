@@ -1,10 +1,8 @@
 ﻿@using System.Threading;
 @using SocNetwork.Resources;
-
 @{
     ViewBag.Title = "Get";
 }
-
 @{
     if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
     {
@@ -15,9 +13,7 @@
         @Html.Partial("_PartialNotAuthorizedUserPanel");
     }
 }
-
 <div class="container content text-light">
-
     <div class="row">
         <div class="col-md-3 center">
             <div class="container content header">
@@ -38,10 +34,10 @@
                     @foreach (var f in Model.Friends)
                     {
                         <tr>
-                            <td width="5%"><a href="/user/@f.Id"><img src="~/Content/Images/default-avatar.png" class="avatar-small" /></a></td>
+                            <td width="5%"><a href="/user/@f.Id"><img src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@f.DetailInfo.Avatar" class="avatar-small img-circle" /></a></td>
                             <td align="left" width="25%"><a href="/user/@f.Id">@f.Firstname @f.Surname</a></td>
                             <td align="right" width="50%">
-                                <a href="#" class="btn btn-primary">@Captions.WriteMsg</a>
+                                <a data-toggle="modal" data-target="#writeMessageModal" id="@f.Id" class="btn btn-primary">@Captions.WriteMsg</a>
                                 <a href="/user/@f.Id/dismiss" class="btn btn-danger">@Captions.Remove</a>
                             </td>
                         </tr>
@@ -51,3 +47,37 @@
         </div>
     </div>
 </div>
+<!--WriteMessageModal-->
+<div class="modal fade" id="writeMessageModal" tabindex="-1" role="dialog" aria-labelledby="writeMessageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content content-dark">
+            <div class="modal-header">
+                <h5 class="modal-title text-light">@Captions.SendMsg</h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body center text-light">
+                <form action="/create-message" method="post" id="whiteMessageForm">
+                    <input type="hidden" name="InterlocutorId" id="InterlocutorId" value="" />
+                    <div class="form-group">
+                        <textarea name="Text" id="Text" rows="4" cols="60" class="form-control" maxlength="800" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn" value="@Captions.Send" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Captions.Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->
+
+<script type="text/javascript">
+    $('[data-target="#writeMessageModal"]').click(function () {
+        $('#InterlocutorId').val(this.id);
+    });
+</script>

@@ -6,12 +6,13 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using DAL.ConnectionStrings;
     using DAL.Entities;
-    using DAL.Entities.Dialogs;
+    using DAL.Entities.Dialogues;
     using DAL.Entities.Friends;
     using DAL.Entities.Posts;
-    using DAL.ConnectionStrings;
     using DAL.Repositories;
+    using DAL.Repositories.Abstract;
 
     public class User
     {
@@ -29,24 +30,25 @@
             this.DetailInfo = new UserDetailInfo();
         }
 
-        public User(int Id, string Firstname, string Surname, string Email, string Password, int UserRoleId)
+        public User(int id, string firstname, string surname, string email, string password, int userRoleId)
         {
-            this.Id = Id;
-            this.Firstname = Firstname;
-            this.Surname = Surname;
-            this.Email = Email;
-            this.Password = Password;
-            this.UserRoleId = UserRoleId;
+            this.Id = id;
+            this.Firstname = firstname;
+            this.Surname = surname;
+            this.Email = email;
+            this.Password = password;
+            this.UserRoleId = userRoleId;
 
             string connectionString = ConnectionString.GetConnectionString();
+            string connectionDbType = ConnectionString.GetConnectionDbType();
 
-            FriendsRepository friendsRepository = new FriendsRepository(connectionString);
+            IFriendsRepository friendsRepository = new FriendsRepository(connectionString, connectionDbType);
             this.Friends = friendsRepository.GetAllFriends(this.Id);
 
-            PostRepository postRepository = new PostRepository(connectionString);
+            IPostRepository postRepository = new PostRepository(connectionString, connectionDbType);
             this.Posts = postRepository.GetPostsByPageId(this.Id).OrderByDescending(p => p.PublicationDate).ToList();
 
-            UserDetailInfoRepository userDetailInfoRepository = new UserDetailInfoRepository(connectionString);
+            IUserDetailInfoRepository userDetailInfoRepository = new UserDetailInfoRepository(connectionString, connectionDbType);
             this.DetailInfo = userDetailInfoRepository.Get(this.Id);
             if (this.DetailInfo == null)
             {

@@ -11,17 +11,20 @@
     using DAL.ConnectionStrings;
     using DAL.Entities.Users;
     using DAL.Repositories;
+    using DAL.Repositories.Abstract;
     using SocNetwork.Helpers;
     using SocNetwork.Models;
+    using SocNetwork.Models.ViewModels.User;
+    using SocNetwork.Resources;
 
     public class UserController : Controller
     {
         private readonly int fetchnum;
-        private UserRepository userRepository;
+        private IUserRepository userRepository;
 
-        public UserController()
+        public UserController(IUserRepository repo)
         {
-            this.userRepository = new UserRepository(ConnectionString.GetConnectionString());
+            this.userRepository = repo;
             this.fetchnum = 20;
         }
 
@@ -41,10 +44,27 @@
         {
             if (ModelState.IsValid)
             {
-                User user = this.userRepository.Get(id);
-                if (user != null)
+                try
                 {
-                    return this.View(new GetUserViewModel(user));
+                    User currentUser;
+                    if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
+                    {
+                        currentUser = this.userRepository.Get(int.Parse(Thread.CurrentPrincipal.Identity.Name));
+                    }
+                    else
+                    {
+                        currentUser = new User();
+                    }
+
+                    User user = this.userRepository.Get(id);
+                    if (user != null)
+                    {
+                        return this.View(new GetUserViewModel(user, currentUser));
+                    }
+                }
+                catch
+                {
+                    return new HttpNotFoundResult();
                 }
             }
 
@@ -54,20 +74,27 @@
         [Authorize]
         public ActionResult GetAll(int page = 1)
         {
-            int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
-            if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
+            try
             {
-                return this.RedirectToRoute("User", new { id = uId });
-            }
+                int uId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
+                if (!RoleAuth.IsInRole(uId, (int)UserRole.Admin))
+                {
+                    return this.RedirectToRoute("User", new { id = uId });
+                }
 
-            int offset = (page - 1) * this.fetchnum;
-            List<User> users = this.userRepository.GetOffset(offset, this.fetchnum);
-            if (users != null)
+                int offset = (page - 1) * this.fetchnum;
+                List<User> users = this.userRepository.GetOffset(offset, this.fetchnum);
+                if (users != null)
+                {
+                    return this.View(new GetAllUsersViewModel(users, page));
+                }
+
+                return this.View(new GetAllUsersViewModel(new List<User>(), page));
+            }
+            catch
             {
-                return this.View(new GetAllUsersViewModel(users, page));
+                return this.RedirectToRoute("User");
             }
-
-            return this.View(new GetAllUsersViewModel(new List<User>(), page));
         }
 
         [Authorize]
@@ -96,6 +123,14 @@
             {
                 try
                 {
+                    string errorMsg;
+                    User u = this.userRepository.GetAll().Find(e => e.Email.Equals(user.Email));
+                    if (u != null)
+                    {
+                        errorMsg = Captions.EmailInUse;
+                        return this.View(new CreateUserViewModel(errorMsg));
+                    }
+
                     if (this.userRepository.Save(user))
                     {
                         User up = this.userRepository.GetAll().Find(e => e.Email.Equals(user.Email));
@@ -113,6 +148,12 @@
             return this.RedirectToAction("Create");
         }
 
+        [HttpGet]
+        public ActionResult Registration()
+        {
+            return this.View(new RegistrationViewModel());
+        }
+
         [HttpPost]
         public ActionResult Registration(User user)
         {
@@ -120,6 +161,14 @@
             {
                 try
                 {
+                    string errorMsg;
+                    User u = this.userRepository.GetAll().Find(e => e.Email.Equals(user.Email));
+                    if (u != null)
+                    {
+                        errorMsg = Captions.EmailInUse;
+                        return this.View(new RegistrationViewModel(user, errorMsg));
+                    }
+
                     user.UserRoleId = (int)UserRole.User;
 
                     if (this.userRepository.Save(user))
@@ -129,15 +178,15 @@
                         return this.RedirectToRoute("User", new { id = up.Id });
                     }
 
-                    return this.View();
+                    return this.View(new RegistrationViewModel(user, Captions.UnexpectedError));
                 }
-                catch
+                catch (Exception e)
                 {
-                    return this.View();
+                    return this.View(new RegistrationViewModel(user, e.Message));
                 }
             }
 
-            return this.View();
+            return this.View(new RegistrationViewModel(user, Captions.UnexpectedError));
         }
 
         [Authorize]

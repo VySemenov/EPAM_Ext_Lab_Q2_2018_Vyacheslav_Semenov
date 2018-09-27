@@ -9,16 +9,19 @@
     using DAL.ConnectionStrings;
     using DAL.Entities.Users;
     using DAL.Repositories;
+    using DAL.Repositories.Abstract;
     using SocNetwork.Models;
+    using SocNetwork.Models.ViewModels.Search;
+    using SocNetwork.Models.ViewModels.User;
 
     public class SearchController : Controller
     {
         private readonly int fetchnum;
-        private UserRepository userRepository;
+        private IUserRepository userRepository;
 
-        public SearchController()
+        public SearchController(IUserRepository repo)
         {
-            this.userRepository = new UserRepository(ConnectionString.GetConnectionString());
+            this.userRepository = repo;
             this.fetchnum = 20;
         }
 

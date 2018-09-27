@@ -6,17 +6,19 @@
     using DAL.Entities.Friends;
     using DAL.Entities.Users;
     using DAL.Repositories;
+    using DAL.Repositories.Abstract;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class FriendsRepositoryTests
     {
         private string connectionString = ConnectionString.GetConnectionString();
+        private string connectionDbType = ConnectionString.GetConnectionDbType();
 
         [TestMethod]
         public void GetAllNotNullTest()
         {
-            FriendsRepository friendsRepository = new FriendsRepository(this.connectionString);
+            IFriendsRepository friendsRepository = new FriendsRepository(this.connectionString, this.connectionDbType);
             int uid = 1;
             int fid = 2;
             int rel = 0;
@@ -27,13 +29,14 @@
                 friendsRepository.Delete(uid, fid);
                 Assert.Fail();
             }
+
             friendsRepository.Delete(uid, fid);
         }
 
         [TestMethod]
         public void SaveTest()
         {
-            FriendsRepository friendsRepository = new FriendsRepository(this.connectionString);
+            FriendsRepository friendsRepository = new FriendsRepository(this.connectionString, this.connectionDbType);
             int uid = 1;
             int fid = 2;
             int rel = 0;
@@ -48,7 +51,7 @@
         [TestMethod]
         public void SaveEqualsTest()
         {
-            FriendsRepository friendsRepository = new FriendsRepository(this.connectionString);
+            FriendsRepository friendsRepository = new FriendsRepository(this.connectionString, this.connectionDbType);
             int uid = 1;
             int fid = 2;
             int rel = 0;

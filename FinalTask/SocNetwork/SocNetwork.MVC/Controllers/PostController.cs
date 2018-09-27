@@ -11,38 +11,47 @@
     using DAL.Entities.Posts;
     using DAL.Entities.Users;
     using DAL.Repositories;
+    using DAL.Repositories.Abstract;
     using SocNetwork.Helpers;
     using SocNetwork.Models;
+    using SocNetwork.Models.ViewModels.Post;
 
     public class PostController : Controller
     {
-        private PostRepository postRepository;
+        private IPostRepository postRepository;
 
-        public PostController()
+        public PostController(IPostRepository repo)
         {
-            this.postRepository = new PostRepository(ConnectionString.GetConnectionString());
+            this.postRepository = repo;
         }
 
         [HttpPost]
         [Authorize]
         public ActionResult Create(CreatePostViewModel model)
         {
-            int uid = int.Parse(Thread.CurrentPrincipal.Identity.Name);
-            Post post = new Post()
+            try
             {
-                AuthorId = uid,
-                PageId = model.PageId,
-                PublicationDate = DateTime.Now,
-                Text = model.Text
-            };
+                int uid = int.Parse(Thread.CurrentPrincipal.Identity.Name);
+                Post post = new Post()
+                {
+                    AuthorId = uid,
+                    PageId = model.PageId,
+                    PublicationDate = DateTime.Now,
+                    Text = model.Text
+                };
 
-            if (this.postRepository.Save(post))
-            {
-                return this.RedirectToRoute("User", new { id = post.PageId });
+                if (this.postRepository.Save(post))
+                {
+                    return this.RedirectToRoute("User", new { id = post.PageId });
+                }
+                else
+                {
+                    return this.RedirectToRoute("User", new { id = post.PageId });
+                }
             }
-            else
+            catch
             {
-                return this.RedirectToRoute("User", new { id = post.PageId });
+                return this.RedirectToRoute("User", new { id = model.PageId });
             }
         }
 
@@ -57,7 +66,7 @@
             {
                 if (!RoleAuth.IsInRole(uid, (int)UserRole.Admin) && !RoleAuth.IsInRole(uid, (int)UserRole.Moderator))
                 {
-                    if (post.AuthorId != uid && post.PageId != uid)
+                    if (post.AuthorId != uid)
                     {
                         return this.RedirectToRoute("User", new { id = post.PageId });
                     }

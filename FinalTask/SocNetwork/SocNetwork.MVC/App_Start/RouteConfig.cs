@@ -103,6 +103,20 @@
                 defaults: new { controller = "Search", action = "Index" });
 
             routes.MapRoute(
+                name: "Dialogues",
+                url: "dialogues",
+                defaults: new { controller = "Dialog", action = "Index" });
+            routes.MapRoute(
+                name: "Dialog",
+                url: "dialog",
+                defaults: new { controller = "Dialog", action = "Get" });
+
+            routes.MapRoute(
+                name: "Create Message",
+                url: "create-message",
+                defaults: new { controller = "Message", action = "Create" });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
                 defaults: new { controller = "Account", action = "LogOn" });

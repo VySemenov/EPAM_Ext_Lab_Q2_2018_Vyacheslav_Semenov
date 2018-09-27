@@ -8,10 +8,11 @@
     using DAL.ConnectionStrings;
     using DAL.Entities.Users;
     using DAL.Repositories;
+    using DAL.Repositories.Abstract;
 
     public class RoleAuth
     {
-        private static UserRepository userRepository = new UserRepository(ConnectionString.GetConnectionString());
+        private static IUserRepository userRepository = new UserRepository(ConnectionString.GetConnectionString(), ConnectionString.GetConnectionDbType());
 
         /// <summary>
         /// Checks user role

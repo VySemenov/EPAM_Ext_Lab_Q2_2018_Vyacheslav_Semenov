@@ -1,0 +1,132 @@
+﻿@model SocNetwork.Models.ViewModels.Dialog.OpenDialogViewModel
+@using System.Threading;
+@using SocNetwork.Resources;
+@using DAL.Entities.Users;
+
+@{
+    ViewBag.Title = "Dialog";
+}
+@{
+    if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
+    {
+        @Html.Partial("_PartialAuthorizedUserPanel");
+    }
+    else
+    {
+        @Html.Partial("_PartialNotAuthorizedUserPanel");
+    }
+}
+<div class="container content text-light">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container content header">
+                <span>@Captions.Dialogues</span>
+            </div>
+            <div class="container content message-scroll pre-scrollable" id="scroll">
+                <table>
+                    @foreach (var m in Model.Messages)
+                    {
+                        int currentUserId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
+                        if (m.AuthorId == currentUserId)
+                        {
+                            if (currentUserId == Model.User.Id)
+                            {
+                                <tr>
+                                <td width="5%" valign="top"><a href="/user/@Model.User.Id"><img src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@Model.User.DetailInfo.Avatar" class="avatar-small img-circle" /></a></td>
+                                <td align="left" width="20%" valign="top">
+                                    <a href="/user/@Model.User.Id">@Model.User.Firstname @Model.User.Surname</a>
+                                    <br />
+                                    <span><small>@m.Time.ToString()</small></span>
+                                </td>
+                                <td><div class="message">@Html.Raw(m.Text.Replace("\n", "<br/>"))</div></td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                <td width="5%" valign="top"><a href="/user/@Model.Interlocutor.Id"><img src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@Model.Interlocutor.DetailInfo.Avatar" class="avatar-small img-circle" /></a></td>
+                                <td align="left" width="25%" valign="top">
+                                    <a href="/user/@Model.Interlocutor.Id">@Model.Interlocutor.Firstname @Model.Interlocutor.Surname</a>
+                                    <br />
+                                    <span><small>@m.Time.ToString()</small></span>
+                                </td>
+                                <td><div class="message">@Html.Raw(m.Text.Replace("\n", "<br/>"))</div></td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            if (currentUserId != Model.User.Id)
+                            {
+                                <tr>
+                                <td width="5%" valign="top"><a href="/user/@Model.User.Id"><img src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@Model.User.DetailInfo.Avatar" class="avatar-small img-circle" /></a></td>
+                                <td align="left" width="25%" valign="top">
+                                    <a href="/user/@Model.User.Id">@Model.User.Firstname @Model.User.Surname</a>
+                                    <br />
+                                    <span><small>@m.Time.ToString()</small></span>
+                                </td>
+                                <td><div class="message">@Html.Raw(m.Text.Replace("\n", "<br/>"))</div></td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                <td width="5%" valign="top"><a href="/user/@Model.Interlocutor.Id"><img src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@Model.Interlocutor.DetailInfo.Avatar" class="avatar-small img-circle" /></a></td>
+                                <td align="left" width="25%" valign="top">
+                                    <a href="/user/@Model.Interlocutor.Id">@Model.Interlocutor.Firstname @Model.Interlocutor.Surname</a>
+                                    <br />
+                                    <span><small>@m.Time.ToString()</small></span>
+                                </td>
+                                <td><div class="message">@Html.Raw(m.Text.Replace("\n", "<br/>"))</div></td>
+                                </tr>
+                            }
+                        }
+                    }
+                </table>
+            </div>
+            <div class="container content">
+                <form action="/Message/Create" method="post">
+                    <input type="hidden" name="InterlocutorId" value="@Model.Interlocutor.Id" />
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="avatar-small-block img-circle">
+                                    @{ 
+                                        int currentId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
+                                        if (currentId == Model.User.Id)
+                                        {
+                                            <img src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@Model.User.DetailInfo.Avatar" class="avatar-small img-circle" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@Model.Interlocutor.DetailInfo.Avatar" class="avatar-small img-circle" />
+                                        }
+                                    }
+                                </div>
+                            </td>
+                            <td width="100%">
+                                <textarea class="form-control message-textarea" id="textarea" name="Text" maxlength="800" wrap="hard" cols="60" required></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td width="100%" align="right">
+                                <input type="submit" class=" btn btn-primary" value="@Captions.Send" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        var scrollDiv = document.getElementById('scroll');
+        scrollDiv.scrollTop = 9999;
+    }
+</script>
+<script type="text/javascript">
+    autosize($('#textarea'));
+</script>

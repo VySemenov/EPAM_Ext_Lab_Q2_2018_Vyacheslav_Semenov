@@ -155,32 +155,40 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DialogController.cs" />
     <Compile Include="Controllers\FriendController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserDetailInfoController.cs" />
+    <Compile Include="FileUploading\FileUpload.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DbCommandAddParamExtension.cs" />
     <Compile Include="Helpers\PostListToPostWithAuthorList.cs" />
     <Compile Include="Helpers\RelListToUserListExtension.cs" />
-    <Compile Include="Models\CreatePostViewModel.cs" />
-    <Compile Include="Models\CreateUserViewModel.cs" />
-    <Compile Include="Models\DeleteUserViewModel.cs" />
-    <Compile Include="Models\EditDetailInfoViewModel.cs" />
-    <Compile Include="Models\EditPostViewModel.cs" />
-    <Compile Include="Models\EditUserViewModel.cs" />
-    <Compile Include="Models\FriendsViewModel.cs" />
-    <Compile Include="Models\GetAllUsersViewModel.cs" />
-    <Compile Include="Models\GetUserViewModel.cs" />
-    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\ViewModels\Post\CreatePostViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\CreateUserViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\DeleteUserViewModel.cs" />
+    <Compile Include="Models\ViewModels\Dialog\DialoguesViewModel.cs" />
+    <Compile Include="Models\ViewModels\Dialog\DialogViewModel.cs" />
+    <Compile Include="Models\ViewModels\Dialog\DialogWithLastMessage.cs" />
+    <Compile Include="Models\ViewModels\UserDetailInfo\EditDetailInfoViewModel.cs" />
+    <Compile Include="Models\ViewModels\Post\EditPostViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\EditUserViewModel.cs" />
+    <Compile Include="Models\ViewModels\Friends\FriendsViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\GetAllUsersViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\GetUserViewModel.cs" />
+    <Compile Include="Models\ViewModels\Account\LoginViewModel.cs" />
     <Compile Include="Helpers\RoleAuth.cs" />
-    <Compile Include="Models\PostWithAuthor.cs" />
-    <Compile Include="Models\SearchViewModel.cs" />
-    <Compile Include="NinjectDependencyResolver.cs" />
+    <Compile Include="Models\ViewModels\Dialog\OpenDialogViewModel.cs" />
+    <Compile Include="Models\ViewModels\Post\PostWithAuthor.cs" />
+    <Compile Include="Models\ViewModels\Search\SearchViewModel.cs" />
+    <Compile Include="Models\ViewModels\User\RegistrationViewModel.cs" />
+    <Compile Include="Ninject\NinjectDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Captions.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -192,7 +200,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\bg.jpg" />
-    <Content Include="Content\Images\default-avatar.png" />
+    <Content Include="Content\Uploads\UserAvatars\default-avatar.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -247,9 +255,14 @@
     <Content Include="Views\Shared\_PartialUserActions.cshtml" />
     <Content Include="Views\Friend\_PartialFriendsMenu.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Dialog\Index.cshtml" />
+    <Content Include="Views\Dialog\Get.cshtml" />
+    <Content Include="Views\User\Registration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Message\" />
     <Folder Include="Views\Post\" />
   </ItemGroup>
   <ItemGroup>

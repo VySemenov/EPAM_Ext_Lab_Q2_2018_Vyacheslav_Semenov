@@ -1,12 +1,12 @@
 ﻿@using SocNetwork.Resources;
 
 <div class="container content header">
-    <table style="width:100%">
+    <table style="width:100%;">
         <tr>
-            <td style="width:50%">
-                <span class="user_action"><a href="/search" class="btn-link white"><span class="glyphicon glyphicon-search"></span> Search</a></span>
+            <td width="50%" align="left">
+                <span class="user_action"><a href="/search" class="btn-link white"><span class="glyphicon glyphicon-search"></span> @Captions.Search</a></span>
             </td>
-            <td style="text-align:right; width:50%">
+            <td width="50%" align="right">
                 <span class="user_action"><a class="btn-link white" data-toggle="modal" data-target="#registrationModal"><span class="glyphicon glyphicon-user"></span> @Captions.Registration</a></span>
                 <span class="user_action"><a class="btn-link white" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span> @Captions.Login</a></span>
             </td>
@@ -35,7 +35,8 @@
                     <div class="form-group">
                         <div class="checkbox">
                             <label class="lbl">
-                                <input type="checkbox" />@Captions.Remember
+                                <input id="RememberMe" type="checkbox" value="true" name="RememberMe" />@Captions.Remember
+                                <input type="hidden" value="false" name="RememberMe" />
                             </label>
                         </div>
                     </div>
@@ -66,18 +67,18 @@
                 </button>
             </div>
             <div class="modal-body center">
-                <form action="/create-user" method="post">
+                <form action="/registration" method="post">
                     <div class="form-group">
-                        <input type="text" name="Firstname" class="form-control" placeholder="@Captions.Firstname" />
+                        <input type="text" name="Firstname" class="form-control" placeholder="@Captions.Firstname" maxlength="16" required />
                     </div>
                     <div class="form-group">
-                        <input type="text" name="Lastname" class="form-control" placeholder="@Captions.Lastname" />
+                        <input type="text" name="Surname" class="form-control" placeholder="@Captions.Lastname" maxlength="16" required />
                     </div>
                     <div class="form-group">
-                        <input type="email" name="Email" class="form-control" placeholder="@Captions.Email" />
+                        <input type="email" name="Email" class="form-control" placeholder="@Captions.Email" maxlength="20" required />
                     </div>
                     <div class="form-group">
-                        <input type="password" name="Password" class="form-control" placeholder="@Captions.Password" />
+                        <input type="password" name="Password" class="form-control" placeholder="@Captions.Password" maxlength="16" required />
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="@Captions.Registration" />

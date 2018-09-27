@@ -97,6 +97,15 @@ namespace SocNetwork.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Avatar.
+        /// </summary>
+        public static string Avatar {
+            get {
+                return ResourceManager.GetString("Avatar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Back to User Management.
         /// </summary>
         public static string BackToUM {
@@ -178,6 +187,15 @@ namespace SocNetwork.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Dialogues.
+        /// </summary>
+        public static string Dialogues {
+            get {
+                return ResourceManager.GetString("Dialogues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Dismiss.
         /// </summary>
         public static string Dismiss {
@@ -228,6 +246,15 @@ namespace SocNetwork.Resources {
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на This email is already in use.
+        /// </summary>
+        public static string EmailInUse {
+            get {
+                return ResourceManager.GetString("EmailInUse", resourceCulture);
             }
         }
         
@@ -466,6 +493,15 @@ namespace SocNetwork.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Profile info.
+        /// </summary>
+        public static string ProfileInfo {
+            get {
+                return ResourceManager.GetString("ProfileInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Registration.
         /// </summary>
         public static string Registration {
@@ -520,11 +556,47 @@ namespace SocNetwork.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Search.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Send.
+        /// </summary>
+        public static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Send a message.
+        /// </summary>
+        public static string SendMsg {
+            get {
+                return ResourceManager.GetString("SendMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Settings.
         /// </summary>
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Unexpected error.
+        /// </summary>
+        public static string UnexpectedError {
+            get {
+                return ResourceManager.GetString("UnexpectedError", resourceCulture);
             }
         }
         

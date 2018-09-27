@@ -1,3 +1,25 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@using System.Threading;
+@using DAL.Repositories.Abstract;
+@using DAL.Repositories;
+@using DAL.ConnectionStrings;
+@using DAL.Entities.Users;
+
+@{
+    if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
+    {
+        IUserRepository repo = new UserRepository(ConnectionString.GetConnectionString(), ConnectionString.GetConnectionDbType());
+        User user = repo.Get(int.Parse(Thread.CurrentPrincipal.Identity.Name));
+        if (user.UserRoleId == (int)UserRole.Admin)
+        {
+            Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }

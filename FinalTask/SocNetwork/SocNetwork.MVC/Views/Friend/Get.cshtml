@@ -1,4 +1,5 @@
-﻿@using System.Threading;
+﻿@model SocNetwork.Models.ViewModels.Friends.FriendsViewModel
+@using System.Threading;
 @using SocNetwork.Resources;
 @using DAL.Entities.Friends;
 
@@ -26,14 +27,8 @@
                 </span>
             </div>
             <div class="container content">
-                <div>
-                    <img class="avatar" src="~/Content/Images/default-avatar.png" />
-                </div>
-                <div>
-                    @if (Thread.CurrentPrincipal.Identity.IsAuthenticated && int.Parse(Thread.CurrentPrincipal.Identity.Name) != Model.User.Id)
-                    {
-                        @Html.Partial("_PartialUserActions");
-                    }
+                <div class="avatar-block img-circle">
+                    <img class="avatar" src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@Model.User.DetailInfo.Avatar" />
                 </div>
             </div>
         </div>
@@ -46,24 +41,28 @@
                     @foreach (var f in Model.Friends)
                     {
                         <tr>
-                            <td style="width:5%;"><a href="/user/@f.Id"><img src="~/Content/Images/default-avatar.png" class="avatar-small" /></a></td>
-                            <td style="width:25%; text-align:left;"><a href="/user/@f.Id">@f.Firstname @f.Surname</a></td>
-                            <td style="text-align:right; width:50%;">
-                            @if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
-                            { 
-                                int id = int.Parse(Thread.CurrentPrincipal.Identity.Name);
-                                if (!((List<Friends>)f.Friends).Exists(p => p.UserId == id || p.FriendId == id) && f.Id != id)
+                            <td width="5%">
+                                <div class="avatar-small-block img-circle">
+                                    <a href="/user/@f.Id"><img src="~/Content/Uploads/UserAvatars/@f.DetailInfo.Avatar" class="avatar-small" /></a>
+                                </div>
+                            </td>
+                            <td width="25%" , align="left"><a href="/user/@f.Id">@f.Firstname @f.Surname</a></td>
+                            <td width="50%" , align="right">
+                                @if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
                                 {
-                                    <a href="/user/@f.Id/add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> @Captions.AddFriend</a>
+                                    int id = int.Parse(Thread.CurrentPrincipal.Identity.Name);
+                                    if (!((List<Friends>)f.Friends).Exists(p => p.UserId == id || p.FriendId == id) && f.Id != id)
+                                    {
+                                        <a href="/user/@f.Id/add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> @Captions.AddFriend</a>
+                                    }
+                                    else
+                                    if (f.Id != id)
+                                    {
+                                        <a href="/user/@f.Id/dismiss" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> @Captions.Remove</a>
+                                    }
+                                    <a data-toggle="modal" data-target="#writeMessageModal" id="@f.Id" class="btn btn-primary">@Captions.WriteMsg</a>
                                 }
-                                else
-                                if (f.Id != id)
-                                {
-                                    <a href="/user/@f.Id/dismiss" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> @Captions.Remove</a>
-                                }
-                                <a href="#" class="btn btn-primary">@Captions.WriteMsg</a>
-                            }
-                        </td>
+                            </td>
                         </tr>
                     }
                 </table>
@@ -71,3 +70,38 @@
         </div>
     </div>
 </div>
+
+<!--WriteMessageModal-->
+<div class="modal fade" id="writeMessageModal" tabindex="-1" role="dialog" aria-labelledby="writeMessageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content content-dark">
+            <div class="modal-header">
+                <h5 class="modal-title text-light">@Captions.SendMsg</h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body center text-light">
+                <form action="/create-message" method="post" id="whiteMessageForm">
+                    <input type="hidden" name="InterlocutorId" id="InterlocutorId" value="" />
+                    <div class="form-group">
+                        <textarea name="Text" id="Text" rows="4" cols="60" class="form-control" maxlength="800" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn" value="@Captions.Send" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Captions.Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->
+
+<script type="text/javascript">
+    $('[data-target="#writeMessageModal"]').click(function () {
+        $('#InterlocutorId').val(this.id);
+    });
+</script>

@@ -122,16 +122,43 @@ a{
     margin-right: 10px
 }
 
-.avatar{
+.avatar-block {
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.avatar {
     width:200px;
-    height:200px;
+}
+
+.avatar-small-block {
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .avatar-small{
     width:50px;
-    height:50px;
 }
 
 .btn-link.white {
     color: white;
+}
+
+.message-scroll {
+    max-height: 400px;
+}
+
+.message-textarea {
+    min-width: 100%;
+}
+
+.message {
+    word-wrap: break-word;
+    word-break: break-all;
 }

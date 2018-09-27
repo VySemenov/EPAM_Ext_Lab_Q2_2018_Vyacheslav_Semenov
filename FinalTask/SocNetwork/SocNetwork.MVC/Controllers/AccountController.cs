@@ -11,15 +11,17 @@
     using DAL.ConnectionStrings;
     using DAL.Entities.Users;
     using DAL.Repositories;
+    using DAL.Repositories.Abstract;
     using SocNetwork.Models;
+    using SocNetwork.Models.ViewModels.Account;
 
     public class AccountController : Controller
     {
-        private UserRepository userRepository;
+        private IUserRepository userRepository;
 
-        public AccountController()
+        public AccountController(IUserRepository repo)
         {
-            this.userRepository = new UserRepository(ConnectionString.GetConnectionString());
+            this.userRepository = repo;
         }
 
         public ActionResult LogOn()
@@ -53,7 +55,6 @@
                             authenticationCookie.Expires = ticket.Expiration;
 
                             Response.Cookies.Add(authenticationCookie);
-
                         }
                         else
                         {

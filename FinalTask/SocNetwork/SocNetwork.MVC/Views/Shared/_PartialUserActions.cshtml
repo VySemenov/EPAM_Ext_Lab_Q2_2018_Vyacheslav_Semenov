@@ -1,9 +1,36 @@
 ﻿@using System.Threading;
 @using SocNetwork.Resources;
 @using DAL.Entities.Friends;
-
-<span class="user_action"><a class="btn-link"><span class="glyphicon glyphicon-pencil"></span> @Captions.WriteMsg</a></span>
+<span class="user_action"><a data-toggle="modal" data-target="#writeMessageModal" class="btn-link"><span class="glyphicon glyphicon-pencil"></span> @Captions.WriteMsg</a></span>
 @if (!((List<Friends>)Model.User.Friends).Exists(u => u.UserId == int.Parse(Thread.CurrentPrincipal.Identity.Name) || u.FriendId == int.Parse(Thread.CurrentPrincipal.Identity.Name)))
 {
     <br /><span class="user_action"><a href="/user/@Model.User.Id/add" class="btn-link"><span class="glyphicon glyphicon-plus"></span> @Captions.AddFriend</a></span>
 }
+<!--WriteMessageModal-->
+<div class="modal fade" id="writeMessageModal" tabindex="-1" role="dialog" aria-labelledby="writeMessageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content content-dark">
+            <div class="modal-header">
+                <h5 class="modal-title text-light">@Captions.SendMsg</h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body center text-light">
+                <form action="/create-message" method="post" id="whiteMessageForm">
+                    <input type="hidden" name="InterlocutorId" value="@Model.User.Id" />
+                    <div class="form-group">
+                        <textarea name="Text" id="Text" rows="4" cols="60" class="form-control" maxlength="800" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn" value="@Captions.Send" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@Captions.Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!---->

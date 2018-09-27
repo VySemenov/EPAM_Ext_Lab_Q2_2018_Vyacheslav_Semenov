@@ -69,6 +69,8 @@
     <Build Include="SocNetwork\Tables\M_FRIENDS.sql" />
     <Build Include="SocNetwork\Tables\M_USERDETAILINFO.sql" />
     <Build Include="SocNetwork\Tables\M_POSTS.sql" />
+    <Build Include="SocNetwork\Tables\M_DIALOGUES.sql" />
+    <Build Include="SocNetwork\Tables\M_MESSAGES.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Post-Deployment\Script.PostDeployment.sql" />
@@ -77,5 +79,8 @@
     <None Include="Scripts\Post-Deployment\USERS.sql" />
     <None Include="Scripts\Post-Deployment\USERROLE.sql" />
     <None Include="Scripts\Post-Deployment\GetAllUsers.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="SocNetwork.Db.refactorlog" />
   </ItemGroup>
 </Project>

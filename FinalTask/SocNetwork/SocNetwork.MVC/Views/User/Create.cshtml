@@ -7,6 +7,7 @@
     <h2>@Captions.CreateUser</h2>
 </div>
 <div class="container content text-light">
+    <div class="text-danger">@Model.ErrorMessage</div>
     <form action="/create-user" method="post">
         <div class="form-group">
             <label for="Firstname">@Captions.Firstname</label>
@@ -27,7 +28,7 @@
         <div class="form-group">
             <label for="Select">@Captions.Role</label>
             <select class="form-control" id="Select" name="UserRoleId">
-                @foreach(var r in Model.UserRoles)
+                @foreach (var r in Model.UserRoles)
                 {
                     <option value="@((int)r)">@r</option>
                 }

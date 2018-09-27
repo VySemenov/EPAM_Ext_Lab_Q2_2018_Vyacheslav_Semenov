@@ -12,5 +12,10 @@
         {
             return @"Data Source=BUG\EPAM_SQL17;Initial Catalog=SocNetwork;Integrated Security=True";
         }
+
+        public static string GetConnectionDbType()
+        {
+            return @"System.Data.SqlClient";
+        }
     }
 }

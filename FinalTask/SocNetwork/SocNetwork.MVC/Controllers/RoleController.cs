@@ -10,16 +10,17 @@
     using DAL.ConnectionStrings;
     using DAL.Entities.Users;
     using DAL.Repositories;
+    using DAL.Repositories.Abstract;
     using SocNetwork.Helpers;
     using SocNetwork.Models;
 
     public class RoleController : Controller
     {
-        private RoleRepository roleRepository;
+        private IRoleRepository roleRepository;
 
-        public RoleController()
+        public RoleController(IRoleRepository repo)
         {
-            this.roleRepository = new RoleRepository(ConnectionString.GetConnectionString());
+            this.roleRepository = repo;
         }
 
         [Authorize]

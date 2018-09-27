@@ -1,5 +1,5 @@
 ﻿@using SocNetwork.Resources;
-@model SocNetwork.Models.LoginViewModel
+@model SocNetwork.Models.ViewModels.Account.LoginViewModel
 
 @{
       ViewBag.Title = "Login";
@@ -50,7 +50,7 @@
                         <input type="text" name="Firstname" class="form-control" placeholder="@Captions.Firstname" maxlength="16" required/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="Lastname" class="form-control" placeholder="@Captions.Lastname" maxlength="16" required/>
+                        <input type="text" name="Surname" class="form-control" placeholder="@Captions.Lastname" maxlength="16" required/>
                     </div>
                     <div class="form-group">
                         <input type="email" name="Email" class="form-control" placeholder="@Captions.Email" maxlength="20" required/>

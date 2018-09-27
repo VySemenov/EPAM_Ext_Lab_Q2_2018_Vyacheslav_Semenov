@@ -8,11 +8,16 @@
 
     public class UserDetailInfo
     {
+        private const string DefaultAvatar = "default-avatar.png";
+        private const string DefaultCity = "Default City";
+        private const string DefaultInterests = "None";
+
         public UserDetailInfo()
         {
             this.DateOfBirth = DateTime.Now;
-            this.City = string.Empty;
-            this.Interests = string.Empty;
+            this.City = DefaultCity;
+            this.Interests = DefaultInterests;
+            this.Avatar = DefaultAvatar;
         }
 
         public int UserId { get; set; }
@@ -22,5 +27,7 @@
         public string City { get; set; }
 
         public string Interests { get; set; }
+
+        public string Avatar { get; set; }
     }
 }

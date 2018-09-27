@@ -8,6 +8,10 @@
 
     public class Friends
     {
+        public Friends()
+        {
+        }
+
         public Friends(int uid, int fid, int rel)
         {
             this.UserId = uid;

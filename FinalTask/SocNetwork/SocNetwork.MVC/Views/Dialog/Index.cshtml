@@ -1,0 +1,48 @@
+﻿@model SocNetwork.Models.ViewModels.Dialog.DialoguesViewModel
+@using System.Threading;
+@using SocNetwork.Resources;
+@using DAL.Entities.Users;
+
+@{
+    ViewBag.Title = "Dialogues";
+}
+@{
+    if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
+    {
+        @Html.Partial("_PartialAuthorizedUserPanel");
+    }
+    else
+    {
+        @Html.Partial("_PartialNotAuthorizedUserPanel");
+    }
+}
+<div class="container content text-light">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container content header">
+                <span>@Captions.Dialogues</span>
+            </div>
+            <div class="container content">
+                <table>
+                    @foreach (var d in Model.Dialogues)
+                    {
+                        User user;
+                        if (d.Dialog.UserId == int.Parse(Thread.CurrentPrincipal.Identity.Name))
+                        {
+                            user = Model.Users.FirstOrDefault((u => u.Id == d.Dialog.InterlocutorId));
+                        }
+                        else
+                        {
+                            user = user = Model.Users.FirstOrDefault((u => u.Id == d.Dialog.UserId));
+                        }
+                        <tr>
+                            <td width="5%"><a href="/dialog?dialogid=/@d.Dialog.Id"><img src="~/Content/Uploads/UserAvatars/UserAvatarsRounded/@user.DetailInfo.Avatar" class="avatar-small img-circle" /></a></td>
+                            <td align="left" width="25%"><a href="/dialog?dialogid=@d.Dialog.Id">@user.Firstname @user.Surname</a></td>
+                            <td><div>@Html.Raw(d.LastMessage.Text.Replace("\n", "<br>"))</div></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

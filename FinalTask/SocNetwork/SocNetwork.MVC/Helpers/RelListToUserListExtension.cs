@@ -9,6 +9,7 @@
     using DAL.Entities.Friends;
     using DAL.Entities.Users;
     using DAL.Repositories;
+    using DAL.Repositories.Abstract;
 
     public static class RelListToUserListExtension
     {
@@ -20,7 +21,7 @@
         /// <returns></returns>
         public static List<User> ToUserList(this List<Friends> relList, int userId)
         {
-            UserRepository usersRepo = new UserRepository(ConnectionString.GetConnectionString());
+            IUserRepository usersRepo = new UserRepository(ConnectionString.GetConnectionString(), ConnectionString.GetConnectionDbType());
 
             List<User> userList = new List<User>();
             foreach (var r in relList)

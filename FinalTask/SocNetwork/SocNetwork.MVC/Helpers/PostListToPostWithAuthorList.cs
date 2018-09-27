@@ -8,7 +8,9 @@
     using DAL.Entities.Posts;
     using DAL.Entities.Users;
     using DAL.Repositories;
+    using DAL.Repositories.Abstract;
     using SocNetwork.Models;
+    using SocNetwork.Models.ViewModels.Post;
 
     public static class PostListToPostWithAuthorList
     {
@@ -21,13 +23,13 @@
         /// <returns></returns>
         public static List<PostWithAuthor> ToPostWithAuthorList(this List<Post> postList, int userId)
         {
-            UserRepository usersRepo = new UserRepository(ConnectionString.GetConnectionString());
+            IUserRepository usersRepo = new UserRepository(ConnectionString.GetConnectionString(), ConnectionString.GetConnectionDbType());
 
             List<PostWithAuthor> posts = new List<PostWithAuthor>();
-            foreach(var p in postList)
+            foreach (var p in postList)
             {
                 User user = usersRepo.Get(p.AuthorId);
-                posts.Add(new PostWithAuthor(p, user.Firstname, user.Surname));
+                posts.Add(new PostWithAuthor(p, user));
             }
 
             return posts;
