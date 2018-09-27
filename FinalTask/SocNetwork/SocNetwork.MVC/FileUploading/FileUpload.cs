@@ -10,6 +10,7 @@
 
     public static class FileUpload
     {
+        private static readonly int Diameter = 200;
         private static readonly string UploadsFolderName = "Uploads";
         private static readonly string UserAvatarsFolderName = "UserAvatars";
         private static readonly string RoundedAvatarsFolderName = "UserAvatarsRounded";
@@ -78,7 +79,7 @@
         /// <summary>
         /// Remove file on path
         /// </summary>
-        /// <param name="path"></param>
+        /// <param name="path">Path</param>
         private static void RemoveFile(string path)
         {
             if (File.Exists(Path.GetFullPath(path)))
@@ -88,10 +89,10 @@
         }
 
         /// <summary>
-        /// 
+        /// Gets from the original image a circle with a specified diameter centered in the center of the original image.
         /// </summary>
-        /// <param name="file"></param>
-        /// <param name="fileName"></param>
+        /// <param name="file">File</param>
+        /// <param name="fileName">Name of file</param>
         private static void RoundingImage(HttpPostedFileBase file, string fileName)
         {
             string thumbnailDirectory = string.Format(@"{0}{1}{2}", FilesPath, DirSeparator, RoundedAvatarsFolderName);
@@ -107,7 +108,7 @@
             {
                 using (Image origImage = Image.FromStream(file.InputStream))
                 {
-                    int diameter = 200;
+                    int diameter = Diameter;
                     using (Bitmap roundedImage = new Bitmap(origImage.Width, origImage.Height))
                     {
                         using (Graphics gr = Graphics.FromImage(roundedImage))
