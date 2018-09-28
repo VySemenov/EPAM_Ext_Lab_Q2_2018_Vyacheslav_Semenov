@@ -53,9 +53,25 @@
                         uinfo = new UserDetailInfo() { UserId = id };
                     }
 
-                    uinfo.City = info.City;
+                    if (info.City != null)
+                    {
+                        uinfo.City = info.City;
+                    }
+                    else
+                    {
+                        uinfo.City = string.Empty;
+                    }
+
+                    if (info.Interests != null)
+                    {
+                        uinfo.Interests = info.Interests;
+                    }
+                    else
+                    {
+                        uinfo.Interests = string.Empty;
+                    }
+
                     uinfo.DateOfBirth = info.DateOfBirth;
-                    uinfo.Interests = info.Interests;
                     if (file != null)
                     {
                         string fileName = FileUpload.UploadFile(file, id);
